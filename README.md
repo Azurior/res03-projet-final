@@ -9,6 +9,7 @@ Le site sera un portfolio de mes créations graphiques.
 - Un carouselle avec une dizaine de mes créations qui défille. Si on clique sur l'image, cela renvoit sur cette dernière avec un article (le temps que cela m'a prit, le ou les logiciels, ect..)
 - Une liste des différents type de projets (Conception, Effet de Texte, Logo, ect ..). Cette liste renverra sur une page qui listera toutes les images correspondantes au type du projet
 - Les derniers postes créer
+- Un article qui me présentera un peu. Description de combien de temps je fais du graphisme, la formation en dev, ect ..
 
 
 ## Mes projets : 
@@ -23,9 +24,6 @@ Un formulaire avec plusieurs champs en fonction de ce que la personne veut :
 - Le logo : Un thème, Couleur Principal, Couleur Secondaire, Ajout de couleur supplémentaire, Un pseudo ou un nombre de lettre limité, taille du projet
 - Scène twitch : Nombre de scène, une description de chaque scène, un thème, couleur principal, couleur secondaire, ajout de couleur supplémentaire
 
-## A propos
-
-Une page qui me présentera un peu. Description de combien de temps je fais du graphisme, la formation en dev, ect ..
 
 # Back :
 
