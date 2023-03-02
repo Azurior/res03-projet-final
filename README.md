@@ -23,6 +23,10 @@ Un formulaire avec plusieurs champs en fonction de ce que la personne veut :
 - Le logo : Un thème, Couleur Principal, Couleur Secondaire, Ajout de couleur supplémentaire, Un pseudo ou un nombre de lettre limité, taille du projet
 - Scène twitch : Nombre de scène, une description de chaque scène, un thème, couleur principal, couleur secondaire, ajout de couleur supplémentaire
 
+## A propos
+
+Une page qui me présentera un peu. Description de combien de temps je fais du graphisme, la formation en dev, ect ..
+
 
 # Partie Développement
 
