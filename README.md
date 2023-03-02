@@ -2,7 +2,7 @@
 
 Le site sera un portfolio de mes créations graphiques.
 
-# Les pages de mon site :
+# Front :
 
 ## Accueil :
 
@@ -15,7 +15,7 @@ Le site sera un portfolio de mes créations graphiques.
 
 La liste de tous les postes (image et description de ces dernières) classé ou non par catégorie. Dans chaque page de projet les visiteurs pourront écrire un commentaire pour toutes questions sans avoir besoin d'être inscrit sur le site
 
-## Devis (nom qui pourra changer) :
+## Demande de projet/devis (nom qui pourra changer) :
 
 Un formulaire avec plusieurs champs en fonction de ce que la personne veut :
 
@@ -27,6 +27,14 @@ Un formulaire avec plusieurs champs en fonction de ce que la personne veut :
 
 Une page qui me présentera un peu. Description de combien de temps je fais du graphisme, la formation en dev, ect ..
 
+# Back :
+
+## CRUD :
+
+- Une page qui liste les utilisateurs
+- Une page qui liste tous mes pojets (permet d'ajout, modifier, supprimer)
+- Une page qui liste tous les commentaires à valider
+- Une page qui liste toutes les demandent de projet/devis
 
 # Partie Développement
 
