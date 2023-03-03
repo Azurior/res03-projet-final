@@ -1,21 +1,25 @@
-Front :
+/
+/projects
+/projects/:categories
+/projects/:categories/:article
+/devis
+/register
+/login
 
-home
-projects
-projects/categories
-projects/categories/article
-projects-request
-register
-login
-
-
-Back : 
-
-admin
-admin/users
-admin/projects
-admin/projects/new
-admin/projects/edit
-admin/posts
-admin/posts/accept
-admin/projects-request
+/admin
+/admin/users
+/admin/categories
+/admin/categories/ajouter
+/admin/categories/:id/details
+/admin/categories/:id/new
+/admin/categories/:id/delete
+/admin/categories/:id/edit
+/admin/projects
+/admin/projects/ajouter
+/admin/projects/:id/details
+/admin/projects/:id/new
+/admin/projects/:id/edit
+/admin/projects/:id/delete
+/admin/posts
+/admin/posts/accept
+/admin/devis
