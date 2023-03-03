@@ -1,9 +1,9 @@
 Front :
 
 home
-home/projects
-home/projects/categories
-home/projects/categories/article
+projects
+projects/categories
+projects/categories/article
 projects-request
 register
 login
@@ -16,6 +16,6 @@ admin/users
 admin/projects
 admin/projects/new
 admin/projects/edit
-admin/comments
-admin/comments/accept
+admin/posts
+admin/posts/accept
 admin/projects-request
