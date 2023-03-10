@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Titre de la page</title>
+      <link rel="stylesheet" href="assets/style/css/style.css">
+    </head>
+    <body>
+        <?php
+        require './admin/admin_partials/_admin-header.phtml';
+        
+        var_dump($template);
+        
+        require $template.'/'.$template.'.phtml';
+        
+        ?>
+    </body>
+</html>

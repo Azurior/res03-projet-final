@@ -1,0 +1,9 @@
+/users UserController:getUsers
+/user/* UserController:getUser
+/create-user UserController:createUser
+/update-user/* UserController:updateUser
+/delete-user/* UserController:deleteUser
+/login UserController:login
+/home HomeController:home
+/projects/categories/articles/test UserController:getUsers
+/projects/categories/articles HomeController:home
