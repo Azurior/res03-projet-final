@@ -6,4 +6,4 @@
 /login UserController:login
 /home HomeController:home
 /projects/categories/articles/test UserController:getUsers
-/projects/categories/articles HomeController:home
+/projects/categories/articles UserController:getUsers

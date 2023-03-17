@@ -8,11 +8,9 @@
     </head>
     <body>
         <?php
-        require './admin/admin_partials/_admin-header.phtml';
+        require 'admin_partials/_admin-header.phtml';
         
-        var_dump($template);
-        
-        require $template.'/'.$template.'.phtml';
+        require $page.'/'.$page.'.phtml';
         
         ?>
     </body>

@@ -12,6 +12,7 @@ require "managers/UserManager.php";
 require "controllers/AbstractController.php";
 require "controllers/UserController.php";
 require "controllers/HomeController.php";
+require "controllers/CategoriesController.php";
 
 $routes = [];
 
@@ -44,15 +45,13 @@ if ($handle) { // if the file exists
             
                     $route["path"] = "/".$pathData[1] . "/" . $pathData[2]. "/" . $pathData[3];
                     
-                    
                 }
                 else if(substr_count($route["path"], "/") === 4){ //check if the path string is strictly equal to 4 "/"
                     
                     $route["path"] = "/".$pathData[1] . "/" . $pathData[2]. "/" . $pathData[3]. "/" . $pathData[4];
                     
-                    
                 }
-                // Ceci permet de gérer jusqu'à 4 pages maximum et pas plus. Si je veux en rajouter, je devrais rajouter un else if.
+                // Ceci permet de gérer jusqu'à 4 string en maximum et pas plus. Si je veux en rajouter, je devrais rajouter un else if.
                 else {
                     
                     $route["path"] = "/".$pathData[1]; // isolate the path without the parameters
@@ -75,6 +74,7 @@ if ($handle) { // if the file exists
         $route["method"] = $controllerData[1]; // the method is what was after the ":"
 
         $routes[] = $route; // add the new route to the routes array
+        //var_dump($route);
     }
 
     fclose($handle); // close the file

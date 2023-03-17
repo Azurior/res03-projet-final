@@ -1,6 +1,6 @@
-//import { updateUser } from "./update-user.js";
-//import { deleteUser } from "./delete-user.js";
-//import { getUser } from "./user.js";
+//import { updateUser } from "update-user.js";
+//import { deleteUser } from "delete-user.js";
+//import { getUser } from "user.js";
 
 function getUsers()
 {

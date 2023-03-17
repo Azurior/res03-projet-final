@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function(){
     
     console.log(page);
     
-    if(page === "admin-users.phtml")
+    if(page === "articles")
     {
         getUsers();
         let addBtn = document.getElementById("btnAddUser");
@@ -32,15 +32,19 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     else if (page === "user.phtml")
     {
-        getUser();
+        //getUser();
     }
     else if (page === "update-user.html")
     {
-        updateUser();
+        //updateUser();
     }
     else if (page === "login.phtml")
     {
-        createUser();
+        //createUser();
+    }
+    else
+    {
+        console.log("Aucune condition n'a fonctionné");
     }
     
 })

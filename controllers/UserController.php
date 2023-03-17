@@ -20,6 +20,7 @@ class UserController extends AbstractController {
             
         }
         // render
+        //$this->renderAdminPartial('users', []);
         $this->render($users);
     }
 
