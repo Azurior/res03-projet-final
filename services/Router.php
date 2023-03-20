@@ -108,15 +108,7 @@ class Router {
                 $routeAndParams["route"] = "devis";  
                  
             }
-            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création d'un utilisateur 
-            {  
-                 
-                $routeAndParams["route"] = "authentificator"; 
-                $routeAndParams["sub-route"] = $tab[1];
-                $routeAndParams["methode"] = $tab[2];
-                
-            }
-            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "login" && !isset($tab[3])) // page de connexion d'un utilisateur
+            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "login-register" && !isset($tab[3])) // page de création d'un utilisateur 
             {  
                  
                 $routeAndParams["route"] = "authentificator"; 
@@ -354,20 +346,102 @@ class Router {
         }
         else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authentificatorController->login(); // appeler la méthode du controlleur pour se connecter 
+            $this->authentificatorController->loginRegister(); // appeler la méthode du controlleur pour se connecter 
         }
-        else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
+        else if($routeTab["route"] === "user" && $routeTab["user-id"] !== null) // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authentificatorController->register(); // appeler la méthode du controlleur pour s'inscrire
+            $this->userController->getUser(intval($routeTab["user-id"])); // appeler la méthode du controlleur pour s'inscrire
         }
         
         // Admin
         
-        else if($routeTab["route"] === "admin-users") // condition(s) pour envoyer vers la page de connexion/inscription 
+        // users
+        else if($routeTab["route"] === "admin-users") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
         {  
-            $this->authentificatorController->register(); // appeler la méthode du controlleur pour s'inscrire
+            $this->userController->getAllUsers(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-user" && $routeTab["user-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->userController->updateUser($routeTab["user-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-user" && $routeTab["user-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->userController->deleteUser($routeTab["user-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
         }
         
+        //projets
+        else if($routeTab["route"] === "admin-projects") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->projectsController->getAllProject(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-projects" && $routeTab["projects-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->projectController->createProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-projects" && $routeTab["projects-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->projectController->updateProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-projects" && $routeTab["projects-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->projectController->deleteProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        
+        //categories
+        else if($routeTab["route"] === "admin-categories") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->categoriesController->getAllCategories(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->categoriesController->createCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->categoriesController->updateCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->categoriesController->deleteCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        
+        //articles
+        else if($routeTab["route"] === "admin-articles") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->articlesController->getAllArticles(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->articlesController->createArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->articlesController->updateArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->articlesController->deleteArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        
+        //comments
+        else if($routeTab["route"] === "admin-comments") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->commentsController->getAllComments(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-comments" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->commentsController->createComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        else if($routeTab["route"] === "admin-comments" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->commentsController->updateComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
+        
+        //devis
+        else if($routeTab["route"] === "admin-devis") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
+        {  
+            $this->devisController->getAllDevis(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        }
     }
     
 }
