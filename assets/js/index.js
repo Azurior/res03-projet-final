@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function(){
     
     console.log(page);
     
-    if(page === "articles")
+    if(page === "users")
     {
         getUsers();
         let addBtn = document.getElementById("btnAddUser");

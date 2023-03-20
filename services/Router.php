@@ -7,83 +7,367 @@
 
 class Router {
 
-    private function parseRequest(string $request)
-    {
-        $route = [];
-
-        $routeData = explode("/", $request); // we split the request using the / character
-        //var_dump($routeData);
-        if(count($routeData) > 1){ //if we only have one road
-            
-            
-            $route["path"] = "/".$routeData[1];
-            
-            if(count($routeData) > 2) // if we have more than one /
-            {
-                $route["parameter"] = $routeData[2]; // the parameter is after the second /
-                $route["path"] = "/".$routeData[1]."/".$routeData[2];
+    private UserController $userController;
+    private HomeController $homeController;
+    private ArticleController $articleController;
+    private CategoriesController $categoriesController;
+    private CommentsController $commentsController;
+    private DevisController $devisController;
+    private ProjectsController $projectsController;
+    private AuthentificatorController $authentificatorController;
+    
+    public function __construct(){
+        
+        $this->userController = new UserController();
+        $this->homeController = new HomeController();
+        $this->articleController = new ArticleController();
+        $this->categoriesController = new CategoriesController();
+        $this->commentsController = new CommentsController();
+        $this->devisController = new DevisController();
+        $this->projectsController = new ProjectsController();
+        $this->authentificatorController = new AuthentificatorController();
+    }
+    
+    private function splitRouteAndParameters(string $route) : array  
+    {  
+        $routeAndParams = [];  
+        $routeAndParams["route"] = null;  
+        $routeAndParams["project-id"] = null;
+        $routeAndParams["categories-id"] = null;
+        $routeAndParams["article-id"] = null;
+        $routeAndParams["comments-id"] = null;
+        $routeAndParams["user-id"] = null;
+        $routeAndParams["sub-route"] = null; 
+        $routeAndParams["sub-route-two"] = null;
+        $routeAndParams["sub-route-three"] = null;
+        $routeAndParams["methode"] = null; 
+        
+        
+      
+        if(strlen($route) > 0) // si la chaine de la route n'est pas vide (donc si ça n'est pas la home)  
+        {  
+            $tab = explode("/", $route);  
+      
+            if($tab[0] === "projects" && !isset($tab[1])) // page Projects  
+            {  
+                 
+                $routeAndParams["route"] = "projects";  
                 
-                if(count($routeData) > 3) // if we have more than two /
-                    {
-                        $route["parameter"] = $routeData[2]."/".$routeData[3]; // the parameter is after the third /
-                        $route["path"] = "/".$routeData[1]."/".$routeData[2]."/".$routeData[3];
-                        
-                        if(count($routeData) > 4) // if we have more than three /
-                            {
-                                $route["parameter"] = $routeData[2]."/".$routeData[3]."/".$routeData[4]; // the parameter is after the four /
-                                $route["path"] = "/".$routeData[1]."/".$routeData[2]."/".$routeData[3]."/".$routeData[4];
-                            }
-                    }else
-                        {
-                            $route["parameter"] = null; // we don't have a parameter
-                        }
-            }else
-                {
-                    $route["parameter"] = null; // we don't have a parameter
-                }
+            }
+            else if($tab[0] === "projects" && $tab[1] !== null && !isset($tab[2])) // page project en fonction de l'id 
+            {  
+                 
+                $routeAndParams["route"] = "projects";  
+                $routeAndParams["projects-id"] = $tab[1];
+                 
+            } 
+            else if($tab[0] === "projects" && $tab[1] !== null && $tab[2] !== null && !isset($tab[3])) // page Categorie  
+            {  
+                 
+                $routeAndParams["route"] = "projects";
+                $routeAndParams["projects-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                
+                 
+            }
+            else if($tab[0] === "projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] !== null && !isset($tab[4])) // page Categorie en fonction de l'id 
+            {  
+                 
+                $routeAndParams["route"] = "projects";
+                $routeAndParams["projects-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["categories-id"] = $tab[3];
+                
+                 
+            }
+            else if($tab[0] === "projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] !== null && $tab[4] !== null && !isset($tab[5])) // page Article  
+            {  
+                 
+                $routeAndParams["route"] = "projects";
+                $routeAndParams["projects-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["categories-id"] = $tab[3];
+                $routeAndParams["sub-route-two"] = $tab[4];
+                
+                 
+            }
+            else if($tab[0] === "projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] !== null && $tab[4] !== null && $tab[5] !== null && !isset($tab[6])) // page Articles en fonction de l'id 
+            {  
+                 
+                $routeAndParams["route"] = "projects";
+                $routeAndParams["projects-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["categories-id"] = $tab[3];
+                $routeAndParams["sub-route-two"] = $tab[4];
+                $routeAndParams["article-id"] = $tab[5];
+                 
+            }
+            else if($tab[0] === "devis" && !isset($tab[1])) // page Devis  
+            {  
+                 
+                $routeAndParams["route"] = "devis";  
+                 
+            }
+            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création d'un utilisateur 
+            {  
+                 
+                $routeAndParams["route"] = "authentificator"; 
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["methode"] = $tab[2];
+                
+            }
+            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "login" && !isset($tab[3])) // page de connexion d'un utilisateur
+            {  
+                 
+                $routeAndParams["route"] = "authentificator"; 
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["methode"] = $tab[2];
+                
+            }
+            else if($tab[0] === "user" && $tab[1] !== null &&!isset($tab[2])) // page d'un Utilisateur  
+            {  
+                 
+                $routeAndParams["route"] = "user"; 
+                $routeAndParams["user-id"] = $tab[1];
+                 
+            }
             
-        }else
-        {
-            $route["parameter"] = null; // we don't have a parameter
+            // Admin
+            
+            
+            // User
+            else if($tab[0] === "admin-users" && !isset($tab[1])) // page Admin Tout Utilisateurs  
+            {  
+                 
+                $routeAndParams["route"] = "admin-users";  
+                 
+            }
+            else if($tab[0] === "admin-user" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édition d'un utilisateur 
+            {  
+                 
+                $routeAndParams["route"] = "admin-user"; 
+                $routeAndParams["user-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-user" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un utilisateur  
+            {  
+                 
+                $routeAndParams["route"] = "admin-user"; 
+                $routeAndParams["user-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            
+            // Projet
+            else if($tab[0] === "admin-projects" && !isset($tab[1])) // page de tous les projets 
+            {  
+                 
+                $routeAndParams["route"] = "admin-projects"; 
+                
+            }
+            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "create" && !isset($tab[4])) // page de création de projet
+            {  
+                 
+                $routeAndParams["route"] = "admin-projects";
+                $routeAndParams["project-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit de projet
+            {  
+                 
+                $routeAndParams["route"] = "admin-projects";
+                $routeAndParams["project-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
+            {  
+                 
+                $routeAndParams["route"] = "admin-projects";
+                $routeAndParams["project-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            
+            // Categorie
+            else if($tab[0] === "admin-categories" && !isset($tab[1])) // page de toutes les categories
+            {  
+                 
+                $routeAndParams["route"] = "admin-categories";
+                
+            }
+            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "create" && !isset($tab[4])) // page de création d'une catégorie
+            {  
+                 
+                $routeAndParams["route"] = "admin-categories";
+                $routeAndParams["categories-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'une catégorie
+            {  
+                 
+                $routeAndParams["route"] = "admin-categories";
+                $routeAndParams["categories-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'une catégorie
+            {  
+                 
+                $routeAndParams["route"] = "admin-categories";
+                $routeAndParams["categories-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            
+            // Article
+            
+            else if($tab[0] === "admin-articles" && !isset($tab[1])) // page de tous les articles
+            {  
+                 
+                $routeAndParams["route"] = "admin-articles";
+                
+                
+            }
+            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "create" && !isset($tab[4])) // page de création d'un article
+            {  
+                 
+                $routeAndParams["route"] = "admin-articles";
+                $routeAndParams["articles-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'un article
+            {  
+                 
+                $routeAndParams["route"] = "admin-articles";
+                $routeAndParams["articles-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un article
+            {  
+                 
+                $routeAndParams["route"] = "admin-articles";
+                $routeAndParams["articles-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            
+            // Commentaires
+            
+            else if($tab[0] === "admin-comments" && !isset($tab[1])) // page de tous les commentaires
+            {  
+                 
+                $routeAndParams["route"] = "admin-comments";
+                
+            }
+            else if($tab[0] === "admin-comments" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "accept" && !isset($tab[4])) // page d'acceptation d'un commentaire
+            {  
+                 
+                $routeAndParams["route"] = "admin-comments";
+                $routeAndParams["comments-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            else if($tab[0] === "admin-comments" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un commentaire
+            {  
+                 
+                $routeAndParams["route"] = "admin-comments";
+                $routeAndParams["comments-id"] = $tab[1];
+                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["methode"] = $tab[3];
+                
+            }
+            
+            // Devis
+            
+            else if($tab[0] === "admin-devis" && !isset($tab[1])) // Liste de tous les devis
+            {  
+                 
+                $routeAndParams["route"] = "admin-devis";
+                
+            }
+            
+            
+        }  
+        else  
+        {  
+            $routeAndParams["route"] = "";  
+        }  
+      
+        return $routeAndParams;  
+    }
+    
+    public function checkRoute(string $route) : void  
+    {  
+        $routeTab = $this->splitRouteAndParameters($route);  
+      
+        // Public 
+    
+        if($routeTab["route"] === "") // condition(s) pour envoyer vers la home  
+        {  
+            $this->homeController->home(); // appeler la méthode du controlleur pour afficher la home  
+        }  
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] === null) // condition(s) pour envoyer vers les projets
+        {  
+            $this->projectsController->allProjects(); // appeler la méthode du controlleur pour tous les projets
+        }  
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null) // condition(s) pour envoyer vers un projet par rapport à son ID
+        {  
+            $this->projectsController->projectId(intval($routeTab["project-id"])); // appeler la méthode du controlleur pour afficher un projet par rapport à son ID  
+        }  
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories") // condition(s) pour envoyer vers les catégories d'un projet 
+        {  
+            $this->categoriesController->allCategories();// appeler la méthode du controlleur pour afficher les catégories d'un projet 
+        }
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories" && $routeTab["categories-id"] !== null) // condition(s) pour envoyer vers une seule catégorie  
+        {  
+            $this->categoriesController->categoriesId(intval($routeTab["categories-id"]));// appeler la méthode du controlleur pour afficher une seule catégorie 
+        }
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route-two"] === "articles") // condition(s) pour envoyer vers tous les articles de la catégorie choisis 
+        {  
+            $this->articleController->allArticles();// appeler la méthode du controlleur pour afficher tous les articles de la catégorie choisis
+        } 
+        else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route-two"] === "articles" && $routeTab["articles-id"] !== null) // condition(s) pour envoyer vers l'article sélectionné  
+        {  
+            $this->articleController->articlesId(intval($routeTab["articles-id"]));// appeler la méthode du controlleur pour afficher l'article sélectionné
+        } 
+        else if($routeTab["route"] === "devis") // condition(s) pour envoyer vers la page devis 
+        {  
+            $this->devisController->devis(); // appeler la méthode du controlleur pour récupérer le formulaire du devis
+        }
+        else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authentificatorController->login(); // appeler la méthode du controlleur pour se connecter 
+        }
+        else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authentificatorController->register(); // appeler la méthode du controlleur pour s'inscrire
         }
         
-        return $route;
-    }
-
-    public function route(array $routes, string $request)
-    {
-        $requestData = $this->parseRequest($request); // we analyze the request and sort it
-        $routeFound = false;
-        //var_dump($routes);
-        foreach($routes as $route) // we go through the list of routes we built in the autoload
-        {
-            $controller = $route["controller"];
-            $method = $route["method"];
-            $parameter = $route["parameter"];
-            //var_dump($route["path"]);
-            //var_dump($requestData["path"]);
-            if($route["path"] === $requestData["path"]) // if the path exists
-            {
-                if($route["parameter"] && $requestData["parameter"] !== null) // if a parameter was needed and we have one
-                {
-                    $routeFound = true;
-
-                    $ctrl = new $controller();
-                    $ctrl->$method($requestData["parameter"]);
-                }
-                else if(!$route["parameter"] && $requestData["parameter"] === null) // or a parameter was not needed and we don't have one
-                {
-                    $routeFound = true;
-
-                    $ctrl = new $controller();
-                    $ctrl->$method($_POST);
-                }
-            }
+        // Admin
+        
+        else if($routeTab["route"] === "admin-users") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authentificatorController->register(); // appeler la méthode du controlleur pour s'inscrire
         }
-
-        if(!$routeFound) // anything else will throw an exception telling us the route does not exist
-        {
-            throw new Exception("Route not found", 404);
-        }
+        
     }
+    
 }

@@ -1,9 +1,30 @@
+- Public -
+/home HomeController:home
+/projects
+/projects/:id/categories
+/projects/:id/categories/:id/articles
+/projects/:id/categories/:id/articles/:id
+/authentificator - login & register -
+/devis
+
+- Privé -
 /users UserController:getUsers
 /user/* UserController:getUser
-/create-user UserController:createUser
 /update-user/* UserController:updateUser
 /delete-user/* UserController:deleteUser
-/login UserController:login
-/home HomeController:home
-/projects/categories/articles/test UserController:getUsers
-/projects/categories/articles UserController:getUsers
+/projects
+/projects/create
+/projects/edit
+/projects/delete
+/categories
+/categories/create
+/categories/edit
+/categories/delete
+/articles
+/articles/create
+/articles/edit
+/articles/delete
+/comments
+/comments/accept
+/comments/delete
+/devis
