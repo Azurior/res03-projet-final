@@ -1,0 +1,39 @@
+<h1>Page de connexion et d'inscription</h1>
+<section>
+    <h2>Connexion</h2>
+    <form action="/res03-projet-final/check-login" method="POST">
+        <input type="hidden" name="formName" id="formName" value="formLogin" /> 
+        <fieldset>
+            <label for="login-email">Email :</label>
+            <input type="email" name="login-email"/>
+        </fieldset>
+        <fieldset>
+            <label for="login-password"></label>
+            <input type="password" name="login-password"/>
+        </fieldset>
+        <input type="submit" name="submit"/>
+    </form>
+</section>
+<section>
+    <h2>S'inscrire</h2>
+    <form action="/res03-projet-final/check-register" method="POST">
+        <input type="hidden" name="formName" id="formName" value="formRegister" /> 
+        <fieldset>
+            <label for="register-username">Nom :</label>
+            <input type="text" name="register-username"/>
+        </fieldset>
+        <fieldset>
+            <label for="register-email">Email :</label>
+            <input type="email" name="register-email"/>
+        </fieldset>
+        <fieldset>
+            <label for="register-password">Votre mot de passe :</label>
+            <input type="password" name="register-password"/>
+        </fieldset>
+        <fieldset>
+            <label for="register-confPassword">Confirmation du mot de passe:</label>
+            <input type="password" name="register-confPassword"/>
+        </fieldset>
+        <input type="submit" name="submit"/>
+    </form>
+</section>

@@ -108,19 +108,17 @@ class Router {
                 $routeAndParams["route"] = "devis";  
                  
             }
-            else if($tab[0] === "authentificator" && $tab[1] !== null && $tab[2] === "login-register" && !isset($tab[3])) // page de création d'un utilisateur 
+            else if($tab[0] === "authentificator" && !isset($tab[1])) // page de création d'un utilisateur 
             {  
                  
                 $routeAndParams["route"] = "authentificator"; 
-                $routeAndParams["sub-route"] = $tab[1];
-                $routeAndParams["methode"] = $tab[2];
                 
             }
-            else if($routeTab["route"] === "check-register") // condition(s) pour envoyer vers la page de connexion/inscription 
+            else if($tab[0] === "check-register" && !isset($tab[1])) // condition(s) pour envoyer vers la page de connexion/inscription 
             {  
                 $routeAndParams["route"] = "check-register"; 
             }
-            else if($routeTab["route"] === "check-login") // condition(s) pour envoyer vers la page de connexion/inscription 
+            else if($tab[0] === "check-login" && !isset($tab[1])) // condition(s) pour envoyer vers la page de connexion/inscription 
             {  
                 $routeAndParams["route"] = "check-login";
             }
@@ -354,7 +352,7 @@ class Router {
         }
         else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authController->loginRegister(); // appeler la méthode du controlleur pour se connecter 
+            $this->authController->loginRegister();
         }
         else if($routeTab["route"] === "check-register") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  

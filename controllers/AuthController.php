@@ -12,36 +12,46 @@ class AuthController extends AbstractController {
     /* Pour la page d'inscription */  
     public function loginRegister() : void  
     {  
-        $this->renderPartial("authentification", []);// render la page avec le formulaire d'inscription  
+        $this->renderPartial("authentificator", []);// render la page avec le formulaire d'inscription  
     }  
       
     /* Pour vérifier l'inscription */  
     public function checkRegister() : void  
     {  
-        if($_POST["formRegister"]) // vérifier que le formulaire a été soumis 
+        
+        if(isset($_POST["formRegister"]) === true)
         {
             // récupérer les champs du formulaire 
             $username = $_POST["register-username"];
             $email = $_POST["register-email"];
             $password = $_POST["register-password"];
+            $confPassword = $_POST["register-confPassword"];
             $role = "user";
             
-            // chiffrer le mot de passe 
-            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-           
-           // appeler le manager pour créer l'utilisateur en base de données
-           $user = new User(null, $username, $email, $hashPassword, $role);
-           
-           // connecter l utilisateur
-           $_SESSION["user"] = $user; 
-           
-           // le renvoyer vers l'accueil
-           header("Location : res03-projet-final/")
+            if($password === $confPassword)
+            {
+                
+                // chiffrer le mot de passe 
+                $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+                
+                // appeler le manager pour créer l'utilisateur en base de données
+                $user = new User(null, $username, $email, $hashPassword, $role);
+                
+                // connecter l'utilisateur
+                $_SESSION["user"] = $user;
+                
+                // le renvoyer vers l'accueil
+                header("Location : res03-projet-final/");
+            }
+            else
+            {
+                header("Location : res03-projet-final/authentificator");
+            }
         }
         else
         {
             
-            header("Location : res03-projet-final/authentificator")
+            header("Location : res03-projet-final/authentificator");
             
         }
            

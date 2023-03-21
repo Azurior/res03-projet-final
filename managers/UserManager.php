@@ -62,17 +62,10 @@ class UserManager extends AbstractManager {
             'role' => $user->getRole()
         ];
         $query->execute($parameters);
-        
-        $query = $this->db->prepare('SELECT * FROM users WHERE users.email = :email');
-        $parameters = [
-            'email' => $user->getEmail()
-        ];
-        $query->execute($parameters);
-        $item = $query->fetch(PDO::FETCH_ASSOC);
-        
-        
-        $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
-        
+        $query->fetch(PDO::FETCH_ASSOC);
+        $id = $query->lastInsertId();
+        $user->setId($id);
+ 
         return $user;
 
         // return it with its id

@@ -2,8 +2,22 @@
 
 class CategoriesController extends AbstractController{
     
+    public function __construct()
+    {
+        
+    }
+
+    public function allCategory(){
+        
+        $tab = [];
+        
+        array_push($tab, 'test1');
+        
+        $this->renderPartial('categories', [$tab]);
+        
+    }
     
-    public function category(){
+    public function categoryId(){
         
         $tab = [];
         
