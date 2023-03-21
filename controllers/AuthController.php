@@ -43,17 +43,18 @@ class AuthController extends AbstractController {
                 $_SESSION["user"] = $user;
                 
                 // le renvoyer vers l'accueil
-                header("Location : res03-projet-final/");
+                header("Location: /res03-projet-final");
             }
             else
             {
-                header("Location : res03-projet-final/authentificator");
+                
+                header("Location: /res03-projet-final/authentificator");
             }
         }
         else
         {
             
-            header("Location : res03-projet-final/authentificator");
+            header("Location: /res03-projet-final/authentificator");
             
         }
            
@@ -77,17 +78,24 @@ class AuthController extends AbstractController {
                 if(password_verify($password, $user->getPassword())) // si il est bon, connecter l'utilisateur 
                 {
                     $_SESSION["user"] = $user;
-                    header("Location : res03-projet-final/");
+                    header("Location: /res03-projet-final");
                 }
                 else // si il n'est pas bon renvoyer sur la page de connexion 
                 {
-                    header("Location : res03-projet-final/authentificator");
+                    echo 'mauvais mot de passe';
+                    //header("Location: /res03-projet-final/authentificator");
                 }
             }
             else // si il n'existe pas renvoyer vers la page de connexion
             {
-                header("Location : res03-projet-final/authentificator");
+                echo '$user = false';
+                //header("Location: /res03-projet-final/authentificator");
             }
+        }
+        else
+        {
+            echo 'formLogin = false';
+            //header("Location: /res03-projet-final/authentificator");
         }
     }
     

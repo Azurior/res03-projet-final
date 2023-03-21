@@ -23,31 +23,34 @@ class UserManager extends AbstractManager {
     public function getUserById(int $id) : User
     {
         // get the user with $id from the database
-        $query = $this->db->prepare('SELECT * FROM users WHERE users.id = :id');
+        $query = $this->db->prepare('SELECT * FROM users WHERE id = :id');
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
-        $item = $query->fetch(PDO::FETCH_ASSOC);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
+        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
+        $newUser->setId($user['id']);
         
-        return $user;
+        
+        return $newUser;
     }
     
     public function getUserByEmail(string $email) : User
     {
-        // get the user with $id from the database
+        // get the user with $email from the database
         $query = $this->db->prepare('SELECT * FROM users WHERE email = :email');
         $parameters = [
             'email' => $email
         ];
         $query->execute($parameters);
-        $item = $query->fetch(PDO::FETCH_ASSOC);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
+        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
+        $newUser->setId($user['id']);
         
-        return $user;
+        return $newUser;
     }
 
     public function createUser(User $user) : User
@@ -64,13 +67,13 @@ class UserManager extends AbstractManager {
         ];
         $query->execute($parameters);
         
-        
-        $id = $this->db->lastInsertId();
-        $user->setId($id);
+        //$user->setId($id);
         
         $newUser = $query->fetch(PDO::FETCH_ASSOC);
         
-        return $this->getId($id);
+        $id = $this->db->lastInsertId();
+        
+        return $this->getUserById($id);
 
         // return it with its id
     }
