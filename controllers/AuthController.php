@@ -10,7 +10,7 @@ class AuthController extends AbstractController {
     }  
     
     /* Pour la page d'inscription */  
-    public function loginRegister() : void  
+    public function authentificator() : void  
     {  
         $this->renderPartial("authentificator", []);// render la page avec le formulaire d'inscription  
     }  
@@ -35,7 +35,9 @@ class AuthController extends AbstractController {
                 $hashPassword = password_hash($password, PASSWORD_DEFAULT);
                 
                 // appeler le manager pour créer l'utilisateur en base de données
-                $user = new User(null, $username, $email, $hashPassword, $role);
+                $createUser = new User($username, $email, $hashPassword, $role);
+                
+                $user = $this->um->createUser($createUser);
                 
                 // connecter l'utilisateur
                 $_SESSION["user"] = $user;

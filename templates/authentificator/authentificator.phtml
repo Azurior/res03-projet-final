@@ -2,7 +2,7 @@
 <section>
     <h2>Connexion</h2>
     <form action="/res03-projet-final/check-login" method="POST">
-        <input type="hidden" name="formName" id="formName" value="formLogin" /> 
+        <input type="hidden" name="formLogin" id="formLogin" value="formLogin" /> 
         <fieldset>
             <label for="login-email">Email :</label>
             <input type="email" name="login-email"/>
@@ -17,22 +17,22 @@
 <section>
     <h2>S'inscrire</h2>
     <form action="/res03-projet-final/check-register" method="POST">
-        <input type="hidden" name="formName" id="formName" value="formRegister" /> 
+        <input type="hidden" name="formRegister" id="formRegister" value="formRegister" /> 
         <fieldset>
             <label for="register-username">Nom :</label>
-            <input type="text" name="register-username"/>
+            <input type="text" id="register-username" name="register-username"/>
         </fieldset>
         <fieldset>
             <label for="register-email">Email :</label>
-            <input type="email" name="register-email"/>
+            <input type="email" id="register-email" name="register-email"/>
         </fieldset>
         <fieldset>
             <label for="register-password">Votre mot de passe :</label>
-            <input type="password" name="register-password"/>
+            <input type="password" id="register-password" name="register-password"/>
         </fieldset>
         <fieldset>
             <label for="register-confPassword">Confirmation du mot de passe:</label>
-            <input type="password" name="register-confPassword"/>
+            <input type="password" id="register-confPassword" name="register-confPassword"/>
         </fieldset>
         <input type="submit" name="submit"/>
     </form>

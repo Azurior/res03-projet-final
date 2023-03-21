@@ -352,11 +352,11 @@ class Router {
         }
         else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authController->loginRegister();
+            $this->authController->authentificator();
         }
         else if($routeTab["route"] === "check-register") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authController->checkRegister(); // appeler la méthode du controlleur pour se connecter 
+            $this->authController->checkRegister(); // appeler la méthode du controlleur pour s'enregistrer
         }
         else if($routeTab["route"] === "check-login") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  

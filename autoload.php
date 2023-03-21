@@ -16,7 +16,6 @@ require "models/Projects.php";
 require "managers/AbstractManager.php";
 require "managers/UserManager.php";
 require "managers/AdminManager.php";
-require "managers/AuthManager.php";
 require "managers/CategoriesManager.php";
 require "managers/CommentsManager.php";
 require "managers/DevisManager.php";
