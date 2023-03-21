@@ -8,12 +8,13 @@ try {
 
     if(isset($_GET['path']))
     {
-        $request = "/".$_GET['path'];
+        
+        $router->checkRoute($_GET["path"]); 
         //var_dump($_GET['path']);
     }
     else
     {
-        $request = "/";
+        $router->checkRoute("");
     }
     $router->route($routes, $request);
 }

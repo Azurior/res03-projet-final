@@ -14,7 +14,7 @@ class Router {
     private CommentsController $commentsController;
     private DevisController $devisController;
     private ProjectsController $projectsController;
-    private AuthentificatorController $authentificatorController;
+    private AuthController $authController;
     
     public function __construct(){
         
@@ -25,7 +25,7 @@ class Router {
         $this->commentsController = new CommentsController();
         $this->devisController = new DevisController();
         $this->projectsController = new ProjectsController();
-        $this->authentificatorController = new AuthentificatorController();
+        $this->authController = new AuthController();
     }
     
     private function splitRouteAndParameters(string $route) : array  
@@ -115,6 +115,14 @@ class Router {
                 $routeAndParams["sub-route"] = $tab[1];
                 $routeAndParams["methode"] = $tab[2];
                 
+            }
+            else if($routeTab["route"] === "check-register") // condition(s) pour envoyer vers la page de connexion/inscription 
+            {  
+                $routeAndParams["route"] = "check-register"; 
+            }
+            else if($routeTab["route"] === "check-login") // condition(s) pour envoyer vers la page de connexion/inscription 
+            {  
+                $routeAndParams["route"] = "check-login";
             }
             else if($tab[0] === "user" && $tab[1] !== null &&!isset($tab[2])) // page d'un Utilisateur  
             {  
@@ -346,7 +354,15 @@ class Router {
         }
         else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
-            $this->authentificatorController->loginRegister(); // appeler la méthode du controlleur pour se connecter 
+            $this->authController->loginRegister(); // appeler la méthode du controlleur pour se connecter 
+        }
+        else if($routeTab["route"] === "check-register") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authController->checkRegister(); // appeler la méthode du controlleur pour se connecter 
+        }
+        else if($routeTab["route"] === "check-login") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authController->checkLogin(); // appeler la méthode du controlleur pour se connecter 
         }
         else if($routeTab["route"] === "user" && $routeTab["user-id"] !== null) // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
