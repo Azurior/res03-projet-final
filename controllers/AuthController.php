@@ -72,12 +72,14 @@ class AuthController extends AbstractController {
             
             // utiliser le manager pour vérifier si un utilisateur avec cet email existe
             $user = $this->um->getUserByEmail($email);
+            var_dump($user);
             
-            if($user === true) // si il existe, vérifier son mot de passe 
+            if($user->getEmail() === $email) // si il existe, vérifier son mot de passe 
             {
                 if(password_verify($password, $user->getPassword())) // si il est bon, connecter l'utilisateur 
                 {
-                    $_SESSION["user"] = $user;
+                    $_SESSION["user"] = $user->getUser();
+                    $_SESSION["role"] = $user->getRole();
                     header("Location: /res03-projet-final");
                 }
                 else // si il n'est pas bon renvoyer sur la page de connexion 
@@ -97,6 +99,13 @@ class AuthController extends AbstractController {
             echo 'formLogin = false';
             //header("Location: /res03-projet-final/authentificator");
         }
+    }
+    
+    public function logout() : void
+    {
+        session_destroy();
+        
+        header("Location: /res03-projet-final");
     }
     
 }

@@ -13,7 +13,8 @@ class UserManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
+            $user = new User($item["user"], $item["email"], $item['password'], $item['role']);
+            $user->setId($item['id']);
             $users[] = $user;
         }
         

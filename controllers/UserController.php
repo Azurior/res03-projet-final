@@ -8,7 +8,7 @@ class UserController extends AbstractController {
         $this->um = new UserManager();
     }
 
-    public function getUsers()
+    public function getAllUsers()
     {
         // get all the users from the manager
         $allUsers = $this->um->getAllUsers();

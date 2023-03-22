@@ -15,7 +15,6 @@ require "models/Projects.php";
 // managers
 require "managers/AbstractManager.php";
 require "managers/UserManager.php";
-require "managers/AdminManager.php";
 require "managers/CategoriesManager.php";
 require "managers/CommentsManager.php";
 require "managers/DevisManager.php";
@@ -32,5 +31,6 @@ require "controllers/AuthController.php";
 require "controllers/CommentsController.php";
 require "controllers/DevisController.php";
 require "controllers/ProjectsController.php";
+require "controllers/AdminController.php";
 
 

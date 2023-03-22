@@ -122,6 +122,10 @@ class Router {
             {  
                 $routeAndParams["route"] = "check-login";
             }
+            else if($tab[0] === "logout" && !isset($tab[1])) // page de deconnexion
+            {
+                $routeAndParams["route"] = "logout";
+            }
             else if($tab[0] === "user" && $tab[1] !== null &&!isset($tab[2])) // page d'un Utilisateur  
             {  
                  
@@ -361,6 +365,10 @@ class Router {
         else if($routeTab["route"] === "check-login") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
             $this->authController->checkLogin(); // appeler la méthode du controlleur pour se connecter 
+        }
+        else if($routeTab["route"] === "logout") // condition(s) pour envoyer vers la page de connexion/inscription 
+        {  
+            $this->authController->logout(); // appeler la méthode du controlleur pour se déconnecter 
         }
         else if($routeTab["route"] === "user" && $routeTab["user-id"] !== null) // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
