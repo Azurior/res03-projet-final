@@ -4,12 +4,16 @@ class Categories{
     
     private ?int $id;
     private string $title;
+    private int $idMedia;
+    private int $idArticles;
 
     
     public function __construct(string $title){
         
         $this->id = null;
         $this->title = $title;
+        $this->idMedia = null;
+        $this->idArticles = null;
 
     }
     
@@ -32,6 +36,26 @@ class Categories{
     public function setTitle(string $title) : void
     {
         $this->title = $title;
+    }
+    
+    public function getIdMedia() : int
+    {
+        return $this->idMedia;
+    }
+
+    public function setIdMedia(?int $id) : void
+    {
+        $this->idMedia = $idMedia;
+    }
+    
+    public function getIdArticles() : int
+    {
+        return $this->idArticles;
+    }
+
+    public function setIdArticles(?int $id) : void
+    {
+        $this->idArticles = $idArticles;
     }
     
     

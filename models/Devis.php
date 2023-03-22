@@ -3,18 +3,30 @@
 class Devis{
     
     private ?int $id;
-    private string $user;
-    private string $email;
-    private string $password;
-    private string $role;
+    private string $theme;
+    private string $primary_color;
+    private string $second_color;
+    private string $option1_color;
+    private string $option2_color;
+    private string $option3_color;
+    private string $text;
+    private string $image;
+    private string $size_project;
+    private int $id_user;
     
-    public function __construct(string $user, string $email, string $password, string $role){
+    public function __construct(string $theme, string $primary_color, string $second_color, string $text, string $image, string $size_project, int $id_user){
         
         $this->id = null;
-        $this->user = $user;
-        $this->email = $email;
-        $this->password = $password;
-        $this->role = $role;
+        $this->theme = $theme;
+        $this->primary_color = $primary_color;
+        $this->second_color = $second_color;
+        $this->option1_color = null;
+        $this->option2_color = null;
+        $this->option3_color = null;
+        $this->text = $text;
+        $this->image = $image;
+        $this->size_project = $size_project;
+        $this->id_user = $id_user;
     }
     
     
@@ -28,57 +40,107 @@ class Devis{
         $this->id = $id;
     }
     
-    public function getUser() : string
+    public function getTheme() : string
     {
-        return $this->user;
+        return $this->theme;
     }
 
-    public function setUser(string $user) : void
+    public function setTheme(string $theme) : void
     {
-        $this->user = $user;
+        $this->theme = $theme;
     }
     
-    public function getEmail() : string
+    public function getPrimaryColor() : string
     {
-        return $this->email;
+        return $this->primary_color;
     }
 
-    public function setEmail(string $email) : void
+    public function setPrimaryColor(string $primary_color) : void
     {
-        $this->email = $email;
+        $this->primary_color = $primary_color;
     }
     
-    public function getPassword() : string
+    public function getSecondColor() : string
     {
-        return $this->password;
+        return $this->second_color;
     }
 
-    public function setPassword(string $password) : void
+    public function setSecondColor(string $second_color) : void
     {
-        $this->password = $password;
+        $this->second_color = $second_color;
     }
     
-    public function getRole() : string
+    public function getOption1Color() : ?string
     {
-        return $this->role;
+        return $this->option1_color;
     }
 
-    public function setRole(string $role) : void
+    public function setOption1Color(string $option1_color) : void
     {
-        $this->role = $role;
+        $this->option1_color = $option1_color;
     }
     
-    public function toArray() : array
+    public function getOption2Color() : ?string
     {
-        return [
-            "id" => $this->id,
-            "user" => $this->user,
-            "email" => $this->email,
-            "password" => $this->password,
-            "role" => $this->role
-        ];
+        return $this->option2_color;
+    }
+
+    public function setOption2Color(string $option2_color) : void
+    {
+        $this->option2_color = $option2_color;
     }
     
+    public function getOption3Color() : ?string
+    {
+        return $this->option3_color;
+    }
+
+    public function setOption3Color(string $option3_color) : void
+    {
+        $this->option3_color = $option3_color;
+    }
+    
+    public function getText() : string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text) : void
+    {
+        $this->text = $text;
+    }
+    
+    public function getImage() : string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image) : void
+    {
+        $this->image = $image;
+    }
+    
+    public function getSizeProject() : string
+    {
+        return $this->size_project;
+    }
+
+    public function setSizeProject(string $size_project) : void
+    {
+        $this->size_project = $size_project;
+    }
+    
+    public function getIdUser() : int
+    {
+        return $this->id_user;
+    }
+
+    public function setIdUser(int $id_user) : void
+    {
+        $this->id_user = $id_user;
+    }
+    
+
 }
 
 ?>

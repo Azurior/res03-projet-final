@@ -5,12 +5,16 @@ class User{
     private ?int $id;
     private string $title;
     private string $description;
+    private int $idCategories;
+    private int $idComments;
     
-    public function __construct(?int $id, string $title, string $description){
+    public function __construct(string $title, string $description, int $idCategories){
         
-        $this->id = $id;
+        $this->id = null;
         $this->title = $title;
         $this->description = $description;
+        $this->idCategories = $idCategories;
+        $this->idComments = null;
         
     }
     
@@ -43,6 +47,26 @@ class User{
     public function setDescription(string $description) : void
     {
         $this->description = $description;
+    }
+    
+    public function getIdCategories() : int
+    {
+        return $this->idCategories;
+    }
+
+    public function setIdCategories(int $id) : void
+    {
+        $this->idCategories = $idCategories;
+    }
+    
+    public function getIdComments() : ?int
+    {
+        return $this->idComments;
+    }
+
+    public function setIdComments(?int $id) : void
+    {
+        $this->idComments = $idComments;
     }
     
     
