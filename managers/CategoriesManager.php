@@ -13,12 +13,12 @@ class CategoriesManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $project = new Projects($item["text"]);
-            $project->setId($item['id']);
-            $projects[] = $project;
+            $categorie = new Categories($item["title"]);
+            $categorie->setId($item['id']);
+            $categories[] = $categorie;
         }
         
-        return $projects;
+        return $categories;
     }
 
     public function getCategoriesById(int $id) : Categories
@@ -31,11 +31,11 @@ class CategoriesManager extends AbstractManager {
         $query->execute($parameters);
         $categories = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newCategories = new Categories($categories["text"]);
+        $newCategories = new Categories($categories["title"]);
         $newCategories->setId($categories['id']);
         
         
-        return $newProject;
+        return $newCategories;
     }
     
 
@@ -46,7 +46,7 @@ class CategoriesManager extends AbstractManager {
         $query = $this->db->prepare('INSERT INTO categories VALUES(:id, :title)');
         $parameters = [
             'id' => null,
-            'title' => $projects->getText(),
+            'title' => $categories->getTitle(),
         ];
         $query->execute($parameters);
         
@@ -64,10 +64,10 @@ class CategoriesManager extends AbstractManager {
     public function updateCategories(Categories $categories) : Categories
     {
         // update the user in the database
-        $query = $this->db->prepare('UPDATE categories SET :text WHERE :id');
+        $query = $this->db->prepare('UPDATE categories SET :title WHERE :id');
         $parameters = [
             'id' => $categories->getId(),
-            'text' => $categories->getText()
+            'title' => $categories->getTitle()
         ];
         $query->execute($parameters);
         
@@ -78,23 +78,23 @@ class CategoriesManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $categories = new Categories($item["text"]);
-        $categories->setId($item['id']);
+        $newCategorie = new Categories($item["title"]);
+        $newCategorie->setId($item['id']);
         
-        return $categories;
+        return $newCategorie;
         // return it
     }
 
-    public function deleteUser(int $id) : array
+    public function deleteCategories(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM projects WHERE :id');
+        $query = $this->db->prepare('DELETE FROM categories WHERE :id');
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
 
         // return the full list of users
-        return $this->getAllProjects();
+        return $this->getAllCategories();
     }
 }
