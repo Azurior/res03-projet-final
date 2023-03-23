@@ -24,7 +24,7 @@ class UserManager extends AbstractManager {
     public function getUserById(int $id) : User
     {
         // get the user with $id from the database
-        $query = $this->db->prepare('SELECT * FROM users WHERE id = :id');
+        $query = $this->db->prepare('SELECT * FROM users WHERE :id');
         $parameters = [
             'id' => $id
         ];
@@ -82,7 +82,7 @@ class UserManager extends AbstractManager {
     public function updateUser(User $user) : User
     {
         // update the user in the database
-        $query = $this->db->prepare('UPDATE users SET user=:user, email=:email, password=:password, role=:role WHERE users.id=:id');
+        $query = $this->db->prepare('UPDATE users SET :user, :email, :password, :role WHERE :id');
         $parameters = [
             'id' => $user->getId(),
             'user' => $user->getUser(),
@@ -92,14 +92,15 @@ class UserManager extends AbstractManager {
         ];
         $query->execute($parameters);
         
-        $query = $this->db->prepare('SELECT * FROM users WHERE users.id = :id');
+        $query = $this->db->prepare('SELECT * FROM users WHERE :id');
         $parameters = [
             'id' => $user->getId()
         ];
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
+        $user = new User($item["user"], $item["email"], $item['password'], $item['role']);
+        $user->setId($item['id']);
         
         return $user;
         // return it
@@ -108,7 +109,7 @@ class UserManager extends AbstractManager {
     public function deleteUser(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM users WHERE users.id = :id');
+        $query = $this->db->prepare('DELETE FROM users WHERE :id');
         $parameters = [
             'id' => $id
         ];

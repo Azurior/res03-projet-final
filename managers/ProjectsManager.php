@@ -2,119 +2,99 @@
 
 class ProjectsManager extends AbstractManager {
 
-    public function getAllUsers() : array
+    public function getAllProjects() : array
     {
         // get all the users from the database
         $query = $this->db->prepare('SELECT * FROM projects');
         $query->execute();
         $items = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        $users = [];
+        $projects = [];
         
         foreach($items as $item)
         {
-            $user = new User($item["user"], $item["email"], $item['password'], $item['role']);
-            $user->setId($item['id']);
-            $users[] = $user;
+            $project = new Projects($item["text"]);
+            $project->setId($item['id']);
+            $projects[] = $project;
         }
         
-        return $users;
+        return $projects;
     }
 
-    public function getUserById(int $id) : User
+    public function getProjectsById(int $id) : User
     {
         // get the user with $id from the database
-        $query = $this->db->prepare('SELECT * FROM users WHERE id = :id');
+        $query = $this->db->prepare('SELECT * FROM projects WHERE :id');
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
-        $user = $query->fetch(PDO::FETCH_ASSOC);
+        $project = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
-        $newUser->setId($user['id']);
+        $newProject = new Projects($project["text"]);
+        $newProject->setId($project['id']);
         
         
-        return $newUser;
+        return $newProject;
     }
     
-    public function getUserByEmail(string $email) : User
-    {
-        // get the user with $email from the database
-        $query = $this->db->prepare('SELECT * FROM users WHERE email = :email');
-        $parameters = [
-            'email' => $email
-        ];
-        $query->execute($parameters);
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-        
-        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
-        $newUser->setId($user['id']);
-        
-        return $newUser;
-    }
 
-    public function createUser(User $user) : User
+    public function createProjects(Projects $projects) : User
     {
         // create the user from the database
         // get the user with $id from the database
-        $query = $this->db->prepare('INSERT INTO users VALUES(:id, :user, :email, :password, :role)');
+        $query = $this->db->prepare('INSERT INTO projects VALUES(:id, :text)');
         $parameters = [
             'id' => null,
-            'user' => $user->getUser(),
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword(),
-            'role' => $user->getRole()
+            'text' => $projects->getText(),
         ];
         $query->execute($parameters);
         
         //$user->setId($id);
         
-        $newUser = $query->fetch(PDO::FETCH_ASSOC);
+        $newProject = $query->fetch(PDO::FETCH_ASSOC);
         
         $id = $this->db->lastInsertId();
         
-        return $this->getUserById($id);
+        return $this->getProjectsById($id);
 
         // return it with its id
     }
 
-    public function updateUser(User $user) : User
+    public function updateProject(Projects $projects) : Projects
     {
         // update the user in the database
-        $query = $this->db->prepare('UPDATE users SET user=:user, email=:email, password=:password, role=:role WHERE users.id=:id');
+        $query = $this->db->prepare('UPDATE projects SET :text WHERE :id');
         $parameters = [
-            'id' => $user->getId(),
-            'user' => $user->getUser(),
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword(),
-            'role' => $user->getRole()
+            'id' => $projects->getId(),
+            'text' => $projects->getText()
         ];
         $query->execute($parameters);
         
-        $query = $this->db->prepare('SELECT * FROM users WHERE users.id = :id');
+        $query = $this->db->prepare('SELECT * FROM projects WHERE :id');
         $parameters = [
-            'id' => $user->getId()
+            'id' => $projects->getId()
         ];
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $user = new User($item["id"], $item["user"], $item["email"], $item['password'], $item['role']);
+        $projects = new Projects($item["text"]);
+        $projects->setId($item['id']);
         
-        return $user;
+        return $projects;
         // return it
     }
 
     public function deleteUser(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM users WHERE users.id = :id');
+        $query = $this->db->prepare('DELETE FROM projects WHERE :id');
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
 
         // return the full list of users
-        return $this->getAllUsers();
+        return $this->getAllProjects();
     }
 }
