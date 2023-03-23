@@ -10,6 +10,7 @@ require "models/Categories.php";
 require "models/Comments.php";
 require "models/Devis.php";
 require "models/Projects.php";
+require "models/DevisScene.php";
 
 
 // managers

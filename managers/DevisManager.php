@@ -2,26 +2,71 @@
 
 class DevisManager extends AbstractManager {
 
-    public function getAllDevis() : array
+    // Models DevisScene
+    public function getAllDevisLogo() : array
     {
         // get all the users from the database
-        $query = $this->db->prepare('SELECT * FROM devis');
+        $query = $this->db->prepare('SELECT * FROM devis_logo');
         $query->execute();
         $items = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        $articles = [];
+        $devis = [];
         
         foreach($items as $item)
         {
-            $article = new Categories($item["title"], $item["description"], $item["idCategories"]);
-            $article->setId($item['id']);
-            $articles[] = $article;
+            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+            $newDevis->setId($item['id']);
+            $newDevis->setOption1($item['option1_color']);
+            $newDevis->setOption2($item['option2_color']);
+            $newDevis->setOption3($item['option3_color']);
+            $devis[] = $newDevis;
         }
         
-        return $articles;
+        return $devis;
+    }
+    
+    public function getAllDevisWallpaper() : array
+    {
+        // get all the users from the database
+        $query = $this->db->prepare('SELECT * FROM devis_wallpaper');
+        $query->execute();
+        $items = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $devis = [];
+        
+        foreach($items as $item)
+        {
+            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+            $newDevis->setId($item['id']);
+            $newDevis->setOption1($item['option1_color']);
+            $newDevis->setOption2($item['option2_color']);
+            $newDevis->setOption3($item['option3_color']);
+            $devis[] = $newDevis;
+        }
+        
+        return $devis;
+    }
+    
+    public function getAllDevisScene() : array
+    {
+        // get all the users from the database
+        $query = $this->db->prepare('SELECT * FROM devis_scene');
+        $query->execute();
+        $items = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $devis = [];
+        
+        foreach($items as $item)
+        {
+            $newDevis = new DevisScene($item["title"], $item["description"], $item["idCategories"]);
+            $newDevis->setId($item['id']);
+            $devis[] = $newDevis;
+        }
+        
+        return $devis;
     }
 
-    public function getArticleById(int $id) : Article
+    public function getDevisById(int $id) : Devis
     {
         // get the user with $id from the database
         $query = $this->db->prepare('SELECT * FROM article WHERE :id');
