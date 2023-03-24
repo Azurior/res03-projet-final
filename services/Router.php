@@ -328,7 +328,7 @@ class Router {
         }  
         else if($routeTab["route"] === "projects" && $routeTab["project-id"] === null) // condition(s) pour envoyer vers les projets
         {  
-            $this->projectsController->allProjects(); // appeler la méthode du controlleur pour tous les projets
+            $this->projectsController->getAllProjects()(); // appeler la méthode du controlleur pour les projects en fonction de leurs ID
         }  
         else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null) // condition(s) pour envoyer vers un projet par rapport à son ID
         {  

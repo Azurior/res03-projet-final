@@ -30,7 +30,7 @@ class UserController extends AbstractController {
         
         // render
         
-        $this->render($user);
+        $this->renderAdminPartial('user', $user);
 
         
     }
@@ -43,8 +43,6 @@ class UserController extends AbstractController {
         $user = new User(null, $post["user"], $post["email"], $password_hash, "user");
         $user = $this->um->createUser($user);
 
-        // render the created user
-        $this->render(["data" => $user->toArray()]);
     }
 
     public function updateUser(string $get)
@@ -55,22 +53,15 @@ class UserController extends AbstractController {
         $user = $this->um->updateUser($user);
 
         // render the updated user
-        $this->render(["data" => $user->toArray()]);
+        header('Location: /res03-projet-final/admin-users');
     }
 
     public function deleteUser(string $get)
     {
         // delete the user in the manager
-        $users = $this->um->deleteUser(intval($get));
-
-        $list = [];
-        
-        foreach($users as $user)
-        {
-            $list[] = $user->toArray();
-        }
+        $user = $this->um->deleteUser(intval($get));
 
         // render the list of all users
-        $this->render(["data" => $list]);
+        header('Location: /res03-projet-final/admin-users');
     }
 }

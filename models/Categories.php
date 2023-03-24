@@ -5,14 +5,14 @@ class Categories{
     private ?int $id;
     private string $title;
     private int $idMedia;
-    private int $idArticles;
+    private ?int $idArticles;
 
     
-    public function __construct(string $title){
+    public function __construct(string $title, int $idMedia){
         
         $this->id = null;
         $this->title = $title;
-        $this->idMedia = null;
+        $this->idMedia = $idMedia;
         $this->idArticles = null;
 
     }

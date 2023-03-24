@@ -2,29 +2,74 @@
 
 class CategoriesController extends AbstractController{
     
+    private CategoriesManager $cm;
+    
     public function __construct()
     {
-        
+        $this->cm = new CategoriesManager();
     }
-
-    public function allCategory(){
+    
+    
+    public function categoriesId(string $get){
         
-        $tab = [];
+        $id = intval($get);
+        $categories = $this->pm->getCategoriesById($id);
         
-        array_push($tab, 'test1');
-        
-        $this->renderPartial('categories', [$tab]);
+        $this->renderPartial('categories', $categories);
         
     }
     
-    public function categoryId(){
+    public function getAllCategories()
+    {
+        // get all the users from the manager
+        $allCategories = $this->pm->getAllCategories();
         
-        $tab = [];
+        // render
+        //$this->renderAdminPartial('users', []);
+        $this->renderAdminPartial('categories', $allCategories);
+    }
+
+    public function createCategory()
+    {
+        // create the user in the manager
         
-        array_push($tab, 'test1');
+        if(isset($_POST['formCreateCat']) === true){
+            
+            $title = $_POST['title'];
+            $media = $_POST['media'];
+            
+            $cat = new Categories(null, $title, $media);
+            $newCategories = $this->cm->createCategories($cat);
+            
+        }
+
+        // render the created user
+        header('Location: /res03-projet-final/admin-projects');
+    }
+
+    public function updateCategory()
+    {
         
-        $this->renderPartial('categories', [$tab]);
-        
+        if(isset($_POST['formUpdateCat']) === true){
+            
+            $title = $_POST['title'];
+            $media = $_POST['media'];
+            
+            $car = new User(null, $title, $media);
+            $car = $this->pm->updateUser($post);
+            
+        }
+
+        // render the updated user
+        header('Location: /res03-projet-final/admin-projects');
+    }
+
+    public function deleteCategory(string $get)
+    {
+        // delete the user in the manager
+        $users = $this->pm->deletePost(intval($get));
+
+       header('Location: /res03-projet-final/admin-projects');
     }
     
     
