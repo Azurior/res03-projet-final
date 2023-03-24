@@ -34,4 +34,8 @@ require "controllers/DevisController.php";
 require "controllers/ProjectsController.php";
 require "controllers/AdminController.php";
 
+//upload
 
+require "Media.php";
+require "RandomStringGenerator.php";
+require "Uploader.php";

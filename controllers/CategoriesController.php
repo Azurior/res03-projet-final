@@ -44,7 +44,7 @@ class CategoriesController extends AbstractController{
         }
 
         // render the created user
-        header('Location: /res03-projet-final/admin-projects');
+        header('Location: /res03-projet-final/admin-categories');
     }
 
     public function updateCategory()
@@ -56,20 +56,20 @@ class CategoriesController extends AbstractController{
             $media = $_POST['media'];
             
             $car = new User(null, $title, $media);
-            $car = $this->pm->updateUser($post);
+            $car = $this->cm->updateUser($post);
             
         }
 
         // render the updated user
-        header('Location: /res03-projet-final/admin-projects');
+        header('Location: /res03-projet-final/admin-categories');
     }
 
     public function deleteCategory(string $get)
     {
         // delete the user in the manager
-        $users = $this->pm->deletePost(intval($get));
+        $users = $this->cm->deletePost(intval($get));
 
-       header('Location: /res03-projet-final/admin-projects');
+       header('Location: /res03-projet-final/admin-categories');
     }
     
     

@@ -33,8 +33,15 @@ class ProjectsController extends AbstractController{
     {
         // create the user in the manager
         
-        $posts = new Projects(null, $post["text"]);
-        $newPosts = $this->pm->createProjects($posts);
+        if(isset($_POST['formCreatePost']) === true){
+            
+            $text = $_POST['text'];
+            
+            $posts = new Projects(null, $text);
+            $newPosts = $this->pm->createProjects($posts);
+        }
+        
+        
 
         // render the created user
         header('Location: /res03-projet-final/admin-projects');
@@ -42,10 +49,13 @@ class ProjectsController extends AbstractController{
 
     public function updatePost(string $get)
     {
-        $post = $_POST;
-        // update the user in the manager
-        $post = new User(null, $post["text"]);
-        $post = $this->pm->updateUser($post);
+        if(isset($_POST['formUpdatePost']) === true){
+            
+            $text = $_POST['text'];
+            
+            $posts = new Projects(null, $text);
+            $newPosts = $this->pm->updateProjects($posts);
+        }
 
         // render the updated user
         header('Location: /res03-projet-final/admin-projects');
