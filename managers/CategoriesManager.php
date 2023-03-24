@@ -5,7 +5,9 @@ class CategoriesManager extends AbstractManager {
     public function getAllCategories() : array
     {
         // get all the users from the database
-        $query = $this->db->prepare('SELECT * FROM categories');
+        $query = $this->db->prepare('SELECT projects.*, categories.* FROM projects_categories 
+                                    JOIN projects ON projects_categories.projects_id = projects.id 
+                                    JOIN categories ON projects_categories.category_id = categories.id');
         $query->execute();
         $items = $query->fetchAll(PDO::FETCH_ASSOC);
         
@@ -24,7 +26,9 @@ class CategoriesManager extends AbstractManager {
     public function getCategoriesById(int $id) : Categories
     {
         // get the user with $id from the database
-        $query = $this->db->prepare('SELECT * FROM categories WHERE :id');
+        $query = $this->db->prepare('SELECT projects.*, categories.* FROM projects_categories 
+                                    JOIN projects ON projects_categories.projects_id = projects.id 
+                                    JOIN categories ON projects_categories.category_id = categories.id WHERE categories_id = :id');
         $parameters = [
             'id' => $id
         ];

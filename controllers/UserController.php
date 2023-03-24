@@ -12,16 +12,10 @@ class UserController extends AbstractController {
     {
         // get all the users from the manager
         $allUsers = $this->um->getAllUsers();
-        $users = [];
         
-        
-        foreach($allUsers as $user){
-            array_push($users, $user->toArray());
-            
-        }
         // render
         //$this->renderAdminPartial('users', []);
-        $this->render($users);
+        $this->renderAdminPartial('users', $allUsers);
     }
 
     public function getUser(string $get)
