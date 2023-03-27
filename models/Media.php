@@ -1,47 +1,56 @@
 <?php
-/**
- * @author : Gaellan
- * @link : https://github.com/Gaellan
- */
 
-class Media {
+class Media{
+
+    private ?int $id;
+    private string $type;
     private string $name;
     private string $url;
 
-    public function __construct(string $name, string $url)
-    {
+    public function __construct(string $type, string $name, string $url){
+
+        $this->id = null;
+        $this->type = $type;
         $this->name = $name;
         $this->url = $url;
     }
 
-    /**
-     * @return string
-     */
-    public function getName(): string
+    public function getId() : int
     {
-        return $this->name;
+        return $this->id;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
+    public function setId(int $id) : void
+    {
+        $this->id = $id;
+    }
+
+    public function getType() : string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type) : void
+    {
+        $this->type = $type;
+    }
+
+    public function getName() : string
+    {
+        return $this->name;        
+    }
+
+    public function setName(string $name) : void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl(): string
+    public function getUrl() : string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl(string $url): void
+    public function setUrl(string $url) : void
     {
         $this->url = $url;
     }

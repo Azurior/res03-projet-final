@@ -21,6 +21,12 @@ require "managers/CommentsManager.php";
 require "managers/DevisManager.php";
 require "managers/ProjectsManager.php";
 
+//upload
+
+require "models/Media.php";
+require "models/RandomStringGenerator.php";
+require "models/Uploader.php";
+
 
 // controllers
 require "controllers/AbstractController.php";
@@ -34,8 +40,4 @@ require "controllers/DevisController.php";
 require "controllers/ProjectsController.php";
 require "controllers/AdminController.php";
 
-//upload
 
-require "Media.php";
-require "RandomStringGenerator.php";
-require "Uploader.php";
