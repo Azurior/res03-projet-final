@@ -22,6 +22,30 @@ class CategoriesManager extends AbstractManager {
         
         return $categories;
     }
+    
+    public function getAllCategoriesByProject(int $id) : array
+    {
+        // get all the users from the database
+        $query = $this->db->prepare('SELECT projects.*, categories.* FROM projects_categories 
+                                    JOIN projects ON projects_categories.projects_id = projects.id 
+                                    JOIN categories ON projects_categories.category_id = categories.id WHERE project_id = :id');
+        $parameters = [
+                'id' => $id
+        ];
+        $query->execute($parameters);
+        $items = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $categories = [];
+        
+        foreach($items as $item)
+        {
+            $categorie = new Categories($item["title"]);
+            $categorie->setId($item['id']);
+            $categories[] = $categorie;
+        }
+        
+        return $categories;
+    }
 
     public function getCategoriesById(int $id) : Categories
     {

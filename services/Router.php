@@ -442,7 +442,7 @@ class Router {
         }
         else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
         {  
-            $this->articlesController->deleteArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            $this->articlesController->deleteArticle($routeTab["articles-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
         }
         
         //comments

@@ -45,15 +45,28 @@ class UserController extends AbstractController {
 
     }
 
-    public function updateUser(string $get)
+    public function updateUser(int $id)
     {
-        $post = $_POST;
-        // update the user in the manager
-        $user = new User($post["id"], $post["user"], $post["email"], $past['password'], $post['role']);
-        $user = $this->um->updateUser($user);
-
-        // render the updated user
-        header('Location: /res03-projet-final/admin-users');
+        $userId = getUser($id);
+        
+        
+        if(isset($_POST['formUpdateUser']) === true){
+            
+            $user = $_POST['user'];
+            $role = $_POST['role'];
+            
+            // update the user in the manager
+            $user = new User($user, $role);
+            $user->getId($id);
+            $user->getEmail($id);
+            $user->getPassword($id);
+            $user = $this->um->updateUser($user);
+    
+            // render the updated user
+            header('Location: /res03-projet-final/admin-users');
+            
+        }
+        
     }
 
     public function deleteUser(string $get)

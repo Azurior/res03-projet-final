@@ -3,6 +3,8 @@
 class CategoriesController extends AbstractController{
     
     private CategoriesManager $cm;
+    private Uploader $uploader;
+    private MediaManager $mediaManager;
     
     public function __construct()
     {
@@ -10,23 +12,42 @@ class CategoriesController extends AbstractController{
     }
     
     
-    public function categoriesId(string $get){
+    public function categoriesId(int $id){
         
-        $id = intval($get);
+       
         $categories = $this->pm->getCategoriesById($id);
         
         $this->renderPartial('categories', $categories);
         
     }
     
+     public function categoriesAdminId(int $id){
+        
+        
+        $categories = $this->pm->getCategoriesById($id);
+        
+        $this->renderAdminPartial('categories', $categories);
+        
+    }
+    
     public function getAllCategories()
     {
         // get all the users from the manager
-        $allCategories = $this->pm->getAllCategories();
+        $allCategories = $this->cm->getAllCategories();
         
         // render
         //$this->renderAdminPartial('users', []);
         $this->renderAdminPartial('categories', $allCategories);
+    }
+    
+    public function getAllCategoriesByProject(int $id)
+    {
+        // get all the users from the manager
+        $allCategories = $this->cm->getAllCategoriesByProject($id);
+        
+        // render
+        //$this->renderAdminPartial('users', []);
+        $this->renderPartial('categories', $allCategories);
     }
 
     public function createCategory()
@@ -36,10 +57,13 @@ class CategoriesController extends AbstractController{
         if(isset($_POST['formCreateCat']) === true){
             
             $title = $_POST['title'];
-            $media = $_POST['media'];
+            $uploader = new Uploader();
+            $media = $uploader->upload($_FILES, "image");
             
-            $cat = new Categories(null, $title, $media);
-            $newCategories = $this->cm->createCategories($cat);
+            $category = new Categories(null, $title, $media);
+            $newCategories = $this->cm->createCategories($category);
+            
+            
             
         }
 
@@ -53,10 +77,11 @@ class CategoriesController extends AbstractController{
         if(isset($_POST['formUpdateCat']) === true){
             
             $title = $_POST['title'];
-            $media = $_POST['media'];
+            $uploader = new Uploader();
+            $media = $uploader->upload($_FILES, "image");
             
             $car = new User(null, $title, $media);
-            $car = $this->cm->updateUser($post);
+            $car = $this->cm->updateCatageories($post);
             
         }
 
@@ -64,10 +89,10 @@ class CategoriesController extends AbstractController{
         header('Location: /res03-projet-final/admin-categories');
     }
 
-    public function deleteCategory(string $get)
+    public function deleteCategory(int $id)
     {
         // delete the user in the manager
-        $users = $this->cm->deletePost(intval($get));
+        $users = $this->cm->deleteCategories(intval($id));
 
        header('Location: /res03-projet-final/admin-categories');
     }

@@ -1,8 +1,8 @@
 <?php
 
-class ArticlesManager extends AbstractManager {
+class ArticleManager extends AbstractManager {
 
-    public function getAllArticle() : array
+    public function getAllArticles() : array
     {
         // get all the users from the database
         $query = $this->db->prepare('SELECT * FROM article');
@@ -13,7 +13,7 @@ class ArticlesManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $article = new Categories($item["title"], $item["description"], $item["idCategories"]);
+            $article = new Categories($item["title"], $item["text"], $item["description"], $item["idCategories"]);
             $article->setId($item['id']);
             $articles[] = $article;
         }
@@ -31,7 +31,7 @@ class ArticlesManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newArticle = new Article($item["title"], $item["description"], $item["idCategories"]);
+        $newArticle = new Article($item["title"], $item["text"], $item["description"], $item["idCategories"]);
         $newArticle->setId($item['id']);
         
         
@@ -43,10 +43,11 @@ class ArticlesManager extends AbstractManager {
     {
         // create the user from the database
         // get the user with $id from the database
-        $query = $this->db->prepare('INSERT INTO article VALUES(:id, :title, :description, :idCategories)');
+        $query = $this->db->prepare('INSERT INTO article VALUES(:id, :title, :text, :description, :idCategories)');
         $parameters = [
             'id' => null,
             'title' => $article->getTitle(),
+            'text' => $article->getText(),
             'description' => $article->getDescription(),
             'idCategories' => $article->getIdCategories()
         ];
@@ -66,10 +67,11 @@ class ArticlesManager extends AbstractManager {
     public function updateArticle(Article $article) : Article
     {
         // update the user in the database
-        $query = $this->db->prepare('UPDATE article SET :title, :description, :idCategories WHERE :id');
+        $query = $this->db->prepare('UPDATE article SET :title, :text, :description, :idCategories WHERE :id');
         $parameters = [
             'id' => $article->getId(),
             'title' => $article->getTitle(),
+            'text' => $artiicle->geText(),
             'description' => $article->getDescription(),
             'idCategories' => $article->getIdCategories()
         ];
@@ -82,7 +84,7 @@ class ArticlesManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newArticle = new Article($item["title"], $item["description"], $item["idCategories"]);
+        $newArticle = new Article($item["title"], $item['text'], $item["description"], $item["idCategories"]);
         $newArticle->setId($item['id']);
         
         return $newArticle;

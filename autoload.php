@@ -20,6 +20,7 @@ require "managers/CategoriesManager.php";
 require "managers/CommentsManager.php";
 require "managers/DevisManager.php";
 require "managers/ProjectsManager.php";
+require "managers/ArticleManager.php";
 
 //upload
 
