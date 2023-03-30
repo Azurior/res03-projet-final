@@ -15,7 +15,7 @@ class ProjectsController extends AbstractController{
         $id = intval($get);
         $projects = $this->pm->getProjectById($id);
         
-        $this->renderPartial('projects', $projects);
+        $this->renderPublic('projects', 'id', $projects);
         
     }
     
@@ -25,26 +25,44 @@ class ProjectsController extends AbstractController{
         $allProjects = $this->pm->getAllProjects();
         
         // render
-        //$this->renderAdminPartial('users', []);
-        $this->renderAdminPartial('projects', $allProjects);
+        
+        $this->renderAdmin('projects', 'all', $allProjects);
     }
 
-    public function createPost(array $post)
+    public function createProject(string $post)
     {
+        $this->renderAdmin('projects', 'create', []);
+        echo 'Je suis dans la fonction';
         // create the user in the manager
         
-        if(isset($_POST['formCreatePost']) === true){
+        $error = "";
+
+        if(isset($post) && !empty($post)){
+
+            foreach($post as $field){
+
+                if(empty($field)){
+    
+                    $error = "Il faut remplir le champ texte";
+                }
+            }
+            if($error !== ""){
+                
+                echo $error;
+
+            }else{
             
-            $text = $_POST['text'];
-            
-            $posts = new Projects(null, $text);
+            $posts = new Projects(null, $post['text']);
             $newPosts = $this->pm->createProjects($posts);
+            
+            header('Location: /res03-projet-final/admin-projects');
+            }
+        }
+        else
+        {
+            $this->renderAdminPartial('projects' , 'create', []);
         }
         
-        
-
-        // render the created user
-        header('Location: /res03-projet-final/admin-projects');
     }
 
     public function updatePost(string $get)

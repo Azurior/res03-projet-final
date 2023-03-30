@@ -15,20 +15,29 @@ class ArticleController extends AbstractController{
     public function articleId(int $id){
         
         
-        $articles = $this->pm->getArticleById($id);
+        $articles = $this->am->getArticleById($id);
         
         $this->renderPartial('article', $articles);
+        
+    }
+    
+    public function articleAdminId(int $id){
+        
+        
+        $articles = $this->am->getArticleById($id);
+        
+        $this->renderAdmin('article', 'id', $articles);
         
     }
     
     public function getAllArticles()
     {
         // get all the users from the manager
-        $allArticle = $this->pm->getAllArticles();
+        $allArticle = $this->am->getAllArticles();
         
         // render
         //$this->renderAdminPartial('users', []);
-        $this->renderAdminPartial('article', $allArticle);
+        $this->renderAdmin('article', 'all', $allArticle);
     }
 
     public function createArticle()
@@ -44,7 +53,7 @@ class ArticleController extends AbstractController{
             $media = $uploader->upload($_FILES, "image");
             
             $artiicle = new Article(null, $title, $text, $description, $media);
-            $newArticle = $this->cm->createArticle($article);
+            $newArticle = $this->am->createArticle($article);
             
         }
 
@@ -64,7 +73,7 @@ class ArticleController extends AbstractController{
             $media = $uploader->upload($_FILES, "image");
             
             $car = new User(null, $title, $text, $description, $media);
-            $car = $this->cm->updateArticle($post);
+            $car = $this->am->updateArticle($post);
             
         }
 
@@ -75,7 +84,7 @@ class ArticleController extends AbstractController{
     public function deleteArticle(string $get)
     {
         // delete the user in the manager
-        $users = $this->cm->deleteArticle(intval($get));
+        $users = $this->am->deleteArticle(intval($get));
 
        header('Location: /res03-projet-final/admin-categories');
     }

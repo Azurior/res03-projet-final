@@ -15,7 +15,7 @@ class UserController extends AbstractController {
         
         // render
         //$this->renderAdminPartial('users', []);
-        $this->renderAdminPartial('users', $allUsers);
+        $this->renderAdmin('users', 'all', $allUsers);
     }
 
     public function getUser(string $get)
@@ -30,7 +30,7 @@ class UserController extends AbstractController {
         
         // render
         
-        $this->renderAdminPartial('user', $user);
+        $this->renderAdmin('user', 'id', $user);
 
         
     }

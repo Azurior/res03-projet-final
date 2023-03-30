@@ -9,13 +9,48 @@ class DevisController extends AbstractController{
     
     public function devis(){
         
-        $tab = [];
         
-        array_push($tab, 'test1');
         
-        $this->renderPartial('devis', [$tab]);
+        $this->renderPartial('devis', []);
         
     }
+    
+    public function getAllDevisLogo(){
+        
+    }
+    
+    public function getAllDevisWallpaper(){
+        
+    }
+    
+    public function getAllDevisScene(){
+        
+    }
+    
+    public function getAllDevisLogoEdit(){
+        
+    }
+    
+    public function getAllDevisWallpaperEdit(){
+        
+    }
+    
+    public function getAllDevisSceneEdit(){
+        
+    }
+    
+    public function getAllDevisLogoDelete(){
+        
+    }
+    
+    public function getAllDevisWallpaperDelete(){
+        
+    }
+    
+    public function getAllDevisSceneDelete(){
+        
+    }
+    
     
     
     

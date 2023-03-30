@@ -2,21 +2,22 @@
    
 abstract class AbstractController  
 {  
-    protected function renderPartial(string $template, array $values)  
+    protected function renderPublic(string $template, array $values)  
     {  
         $data = $values;
-        $page = $template;
+        
           
         require "templates/layout.phtml";  
     }
     
-    protected function renderAdminPartial(string $template, array $values)  
+    
+    protected function renderAdmin(string $template, string $page, array $values)  
     {  
         $data = $values;
-        $page = $template;
+       
           
         require "templates/admin/admin_layout.phtml";  
-    } 
+    }
       
     protected function render(array $values)  
     {  

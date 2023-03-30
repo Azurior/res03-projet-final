@@ -26,7 +26,7 @@ class CategoriesController extends AbstractController{
         
         $categories = $this->pm->getCategoriesById($id);
         
-        $this->renderAdminPartial('categories', $categories);
+        $this->renderAdmin('categories', 'id', $categories);
         
     }
     
@@ -37,7 +37,7 @@ class CategoriesController extends AbstractController{
         
         // render
         //$this->renderAdminPartial('users', []);
-        $this->renderAdminPartial('categories', $allCategories);
+        $this->renderAdminPartial('categories', 'all', $allCategories);
     }
     
     public function getAllCategoriesByProject(int $id)
