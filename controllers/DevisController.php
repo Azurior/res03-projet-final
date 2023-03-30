@@ -27,27 +27,27 @@ class DevisController extends AbstractController{
         
     }
     
-    public function getAllDevisLogoEdit(){
+    public function devisLogoEdit(){
         
     }
     
-    public function getAllDevisWallpaperEdit(){
+    public function devisWallpaperEdit(){
         
     }
     
-    public function getAllDevisSceneEdit(){
+    public function devisSceneEdit(){
         
     }
     
-    public function getAllDevisLogoDelete(){
+    public function devisLogoDelete(){
         
     }
     
-    public function getAllDevisWallpaperDelete(){
+    public function devisWallpaperDelete(){
         
     }
     
-    public function getAllDevisSceneDelete(){
+    public function devisSceneDelete(){
         
     }
     

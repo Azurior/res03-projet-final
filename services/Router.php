@@ -33,10 +33,12 @@ class Router {
         $routeAndParams = [];  
         $routeAndParams["route"] = null;  
         $routeAndParams["project-id"] = null;
-        $routeAndParams["categories-id"] = null;
+        $routeAndParams["category-id"] = null;
         $routeAndParams["article-id"] = null;
         $routeAndParams["comments-id"] = null;
-        $routeAndParams["devis-id"] = null;
+        $routeAndParams["devislogo-id"] = null;
+        $routeAndParams["deviswallpaper-id"] = null;
+        $routeAndParams["devisscene-id"] = null;
         $routeAndParams["user-id"] = null;
         $routeAndParams["sub-route"] = null; 
         $routeAndParams["sub-route-two"] = null;
@@ -77,7 +79,7 @@ class Router {
                 $routeAndParams["route"] = "projects";
                 $routeAndParams["projects-id"] = $tab[1];
                 $routeAndParams["sub-route"] = $tab[2];
-                $routeAndParams["categories-id"] = $tab[3];
+                $routeAndParams["category-id"] = $tab[3];
                 
                  
             }
@@ -221,7 +223,7 @@ class Router {
                  
                 $routeAndParams["route"] = "admin";
                 $routeAndParams["sub-route"] = $tab[1];
-                $routeAndParams["categories-id"] = $tab[2];
+                $routeAndParams["category-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
@@ -230,7 +232,7 @@ class Router {
                  
                 $routeAndParams["route"] = "admin";
                 $routeAndParams["sub-route"] = $tab[1];
-                $routeAndParams["categories-id"] = $tab[2];
+                $routeAndParams["category-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
@@ -241,6 +243,7 @@ class Router {
             {  
                  
                 $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
                 
                 
             }
@@ -272,102 +275,106 @@ class Router {
             
             // Commentaires
             
-            else if($tab[0] === "admin-comments" && !isset($tab[1])) // page de tous les commentaires
+            else if($tab[0] === "admin" && $tab[1] === 'comments' && !isset($tab[1])) // page de tous les commentaires
             {  
                  
-                $routeAndParams["route"] = "admin-comments";
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[2];
                 
             }
-            else if($tab[0] === "admin-comments" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "accept" && !isset($tab[4])) // page d'acceptation d'un commentaire
+            else if($tab[0] === "admin" && $tab[1] === 'comments' && $tab[2] !== null && $tab[3] === "accept" && !isset($tab[4])) // page d'acceptation d'un commentaire
             {  
                  
-                $routeAndParams["route"] = "admin-comments";
-                $routeAndParams["comments-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["comments-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-comments" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un commentaire
+            else if($tab[0] === "admin" && $tab[1] === 'comments' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un commentaire
             {  
                  
-                $routeAndParams["route"] = "admin-comments";
-                $routeAndParams["comments-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["comments-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
             
             // Devis
             
-            else if($tab[0] === "admin-devislogo" && !isset($tab[1])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devislogo' && !isset($tab[1])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devislogo";
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
                 
             }
-            else if($tab[0] === "admin-deviswallpaper" && !isset($tab[1])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && !isset($tab[1])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-deviswallpaper";
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
                 
             }
-            else if($tab[0] === "admin-devisscene" && !isset($tab[1])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devisscene' && !isset($tab[1])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devisscene";
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
                 
             }
-            else if($tab[0] === "admin-devislogo" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devislogo' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devislogo";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["devislogo-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-deviswallpaper" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-deviswallpaper";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["deviswallpaper-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-devisscene" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devisscene' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devisscene";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["devisscene-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin-devislogo" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+             else if($tab[0] === "admin" && $tab[1] === 'devislogo' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devislogo";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["devislogo-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin-deviswallpaper" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+             else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-deviswallpaper";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["deviswallpaper-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin-devisscene" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+             else if($tab[0] === "admin" && $tab[1] === 'devisscene' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
-                $routeAndParams["route"] = "admin-devisscene";
-                $routeAndParams["devis-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["devisscene-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
@@ -406,7 +413,7 @@ class Router {
         }
         else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories" && $routeTab["categories-id"] !== null) // condition(s) pour envoyer vers une seule catégorie  
         {  
-            $this->categoriesController->categoriesId(intval($routeTab["categories-id"]));// appeler la méthode du controlleur pour afficher une seule catégorie 
+            $this->categoriesController->categoriesId(intval($routeTab["category-id"]));// appeler la méthode du controlleur pour afficher une seule catégorie 
         }
         else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null && $routeTab["sub-route"] === "categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route-two"] === "articles") // condition(s) pour envoyer vers tous les articles de la catégorie choisis 
         {  
@@ -443,178 +450,158 @@ class Router {
         
         // Admin
         
-        // users
-        else if($routeTab["route"] === "admin-users") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
+        else if($routeTab["route"] === 'admin'){
             $this->userController->getAllUsers(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
         }
-        else if($routeTab["route"] === "admin-user" && $routeTab["user-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->userController->updateUser($routeTab["user-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] !== null && $routeTab["method"] === null){
+            
+            if($routeTab["sub-route"] === "projects"){
+                
+                $this->projectsController->getAllProjects(); // appeler la méthode du controlleur pour afficher tous les projets
+                
+            }else if($routeTab["sub-route"] === "categories"){
+                
+                $this->categoriesController->getAllCategories(); // appeler la méthode du controlleur pour toutes les categories
+                
+            }else if($routeTab["sub-route"] === "articles"){
+                
+                $this->articleController->getAllArticles(); // appeler la méthode du controlleur pour afficher tous les articles
+                
+            }else if($routeTab["sub-route"] === "comments"){
+                
+                $this->commentsController->getAllComments(); // appeler la méthode du controlleur pour afficher tous les commentaires
+                
+            }else if($routeTab["sub-route"] === "devislogo"){
+                
+                $this->devisController->getAllDevisLogo(); // appeler la méthode du controlleur pour afficher tous les devis type logo
+                
+            }else if($routeTab["sub-route"] === "deviswallpaper"){
+                
+                $this->devisController->getAllDevisWallpaper(); // appeler la méthode du controlleur pour afficher tous les devis type wallpaper
+                
+            }else if($routeTab["sub-route"] === "devisscene"){
+                
+                $this->devisController->getAllDevisScene(); // appeler la méthode du controlleur pour afficher tous les devis type scene
                 
             }
-        }
-        else if($routeTab["route"] === "admin-user" && $routeTab["user-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->userController->deleteUser($routeTab["user-id"]); // appeler la méthode du controlleur pour supprimer un utilisateur
-                
-            }
+            
         }
         
-        //projets
-        else if($routeTab["route"] === "admin-projects") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->projectsController->getAllProjects(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-        }
-        else if($routeTab["route"] === "admin-projects" && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {
-            if($routeTab["sub-route"] === 'create'){
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] !== null && $routeTab["method"] === "create"){
+            
+            if($routeTab["sub-route"] === 'projects'){
+                
                 $this->projectController->createProject($post); // appeler la méthode du controlleur pour créer un post
+                
+            }else if ($routeTab["sub-route"] === 'categories'){
+                
+                $this->categoriesController->createCategories($post); // appeler la méthode du controlleur pour créer une catégorie
+                
+            }else if ($routeTab["sub-route"] === 'articles'){
+                
+                $this->articlesController->createArticles($post); // appeler la méthode du controlleur pour créer un article
+                
             }
             
-        }
-        else if($routeTab["route"] === "admin-projects" && $routeTab["projects-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->projectController->updateProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour édit un projet
-            }
             
-        }
-        else if($routeTab["route"] === "admin-projects" && $routeTab["projects-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->projectController->deleteProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour supprimer un projet
-            }
             
         }
         
-        //categories
-        else if($routeTab["route"] === "admin-categories") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->categoriesController->getAllCategories(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-        }
-        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'create'){
-                $this->categoriesController->createCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour créer une catégorie
-            }
-        }
-        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->categoriesController->updateCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour éditer une categorie
-            }
-        }
-        else if($routeTab["route"] === "admin-categories" && $routeTab["categories-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->categoriesController->deleteCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour supprimer une catégorie
-            }
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->userController->updateUser($routeTab["user-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
+            
         }
         
-        //articles
-        else if($routeTab["route"] === "admin-articles") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->articleController->getAllArticles(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-        }
-        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'create'){
-                $this->articlesController->createArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour créer un article
-                
-            }
-        }
-        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->articlesController->updateArticles($routeTab["articles-id"]); // appeler la méthode du controlleur pour modifier un article
-                
-            }
-        }
-        else if($routeTab["route"] === "admin-articles" && $routeTab["articles-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->articlesController->deleteArticle($routeTab["articles-id"]); // appeler la méthode du controlleur pour supprimer une article
-                
-            }
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'projects' && $routeTab["project-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->projectController->updateProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour édit un projet
+            
         }
         
-        //commentaires
-        else if($routeTab["route"] === "admin-comments") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->commentsController->getAllComments(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-        }
-        else if($routeTab["route"] === "admin-comments" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "create") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->commentsController->createComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
-                
-            }
-        }
-        else if($routeTab["route"] === "admin-comments" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->commentsController->updateComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour supprimer un commentaire
-                
-            }
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'categories' && $routeTab["category-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->categoriesController->updateCategories($routeTab["category-id"]); // appeler la méthode du controlleur pour éditer une categorie
+            
         }
         
-        //devis
-        else if($routeTab["route"] === "admin-devislogo") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->devisController->getAllDevisLogo(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'articles' && $routeTab["article-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->articlesController->updateArticles($routeTab["article-id"]); // appeler la méthode du controlleur pour modifier un article
+            
         }
-        else if($routeTab["route"] === "admin-deviswallpaper") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->devisController->getAllDevisWallpaper(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'comments' && $routeTab["comments-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->commentsController->updateComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
+            
         }
-        else if($routeTab["route"] === "admin-devisscene") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            $this->devisController->getAllDevisScene(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devislogo' && $routeTab["devislogo-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->devisController->devisLogoEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
         }
-        else if($routeTab["route"] === "admin-devislogo" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->devisController->getAllDevisLogoEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'deviswallpaper' && $routeTab["deviswallpaper-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->devisController->devisWallpaperEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
         }
-        else if($routeTab["route"] === "admin-deviswallpaper" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->devisController->getAllDevisWallpaperEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devisscene' && $routeTab["devisscene-id"] !== null && $routeTab["method"] === "edit"){
+            
+            $this->devisController->devisSceneEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
         }
-        else if($routeTab["route"] === "admin-devisscene" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "edit") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'edit'){
-                $this->devisController->getAllDevisSceneEdit(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->userController->deleteUser($routeTab["user-id"]); // appeler la méthode du controlleur pour supprimer un utilisateur
+            
         }
-        else if($routeTab["route"] === "admin-devislogo" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->devisController->getAllDevisLogoDelete(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'projects' && $routeTab["project-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->projectController->deleteProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour supprimer un projet
+            
         }
-        else if($routeTab["route"] === "admin-deviswallpaper" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->devisController->getAllDevisWallpaperDelete(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'categories' && $routeTab["category-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->categoriesController->deleteCategories($routeTab["categories-id"]); // appeler la méthode du controlleur pour supprimer une catégorie
+            
         }
-        else if($routeTab["route"] === "admin-devisscene" && $routeTab["comments-id"] !== null && $routeTab["sub-route"] !== null && $routeTab["methode"] === "delete") // condition(s) pour envoyer vers la page administrateur de tous les utilisateurs
-        {  
-            if($routeTab["sub-route"] === 'delete'){
-                $this->devisController->getAllDevisSceneDelete(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
-                
-            }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'articles' && $routeTab["article-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->articlesController->deleteArticle($routeTab["articles-id"]); // appeler la méthode du controlleur pour supprimer une article
+            
+        }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'comments' && $routeTab["comments-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->commentsController->deleteComments($routeTab["comments-id"]); // appeler la méthode du controlleur pour supprimer un commentaire
+            
+        }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devislogo' && $routeTab["devislogo-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->devisController->devisLogoDelete($routeTab["devislogo-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
+        }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'deviswallpaper' && $routeTab["deviswallpaper-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->devisController->devisWallpaperDelete($routeTab["deviswallpaper-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
+        }
+        
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devisscene' && $routeTab["devisscene-id"] !== null && $routeTab["method"] === "delete"){
+            
+            $this->devisController->getAllDevisSceneDelete($routeTab["devisscene-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+            
         }
         
     }
