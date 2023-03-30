@@ -31,7 +31,7 @@ class ProjectsController extends AbstractController{
 
     public function createProject(string $post)
     {
-        $this->renderAdmin('projects', 'create', []);
+        
         echo 'Je suis dans la fonction';
         // create the user in the manager
         

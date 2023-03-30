@@ -139,130 +139,133 @@ class Router {
             
             
             // User
-            else if($tab[0] === "admin-users" && !isset($tab[1])) // page Admin Tout Utilisateurs  
+            else if($tab[0] === "admin" && !isset($tab[1])) // page Admin Tout Utilisateurs  
             {  
                  
                 $routeAndParams["route"] = "admin-users";  
                  
             }
-            else if($tab[0] === "admin-user" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édition d'un utilisateur 
+            else if($tab[0] === "admin" && $tab[1] === 'user' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édition d'un utilisateur 
             {  
                  
-                $routeAndParams["route"] = "admin-user"; 
-                $routeAndParams["user-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["user-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-user" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un utilisateur  
+            else if($tab[0] === "admin" && $tab[1] === 'user' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un utilisateur  
             {  
                  
-                $routeAndParams["route"] = "admin-user"; 
-                $routeAndParams["user-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin"; 
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["user-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
             
             // Projet
-            else if($tab[0] === "admin-projects" && !isset($tab[1])) // page de tous les projets 
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && !isset($tab[2])) // page de tous les projets 
             {  
                  
-                $routeAndParams["route"] = "admin-projects"; 
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                
                 
             }
-            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] === "create" && !isset($tab[3])) // page de création de projet
             {  
                  
-                $routeAndParams["route"] = "admin-projects";
+                $routeAndParams["route"] = "admin";
                 $routeAndParams["sub-route"] = $tab[1];
                 $routeAndParams["methode"] = $tab[2];
-                
+        
             }
-            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit de projet
             {  
                  
-                $routeAndParams["route"] = "admin-projects";
-                $routeAndParams["project-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["project-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-projects" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
+            else if($tab[0] === "admin-projects" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
             {  
                  
-                $routeAndParams["route"] = "admin-projects";
-                $routeAndParams["project-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["project-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
             
             // Categorie
-            else if($tab[0] === "admin-categories" && !isset($tab[1])) // page de toutes les categories
+            else if($tab[0] === "admin" && $tab[1] === 'categories' && !isset($tab[2])) // page de toutes les categories
             {  
                  
-                $routeAndParams["route"] = "admin-categories";
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
                 
             }
-            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création d'une catégorie
+            else if($tab[0] === "admin" && $tab[1] === 'categories' && $tab[2] === "create" && !isset($tab[3])) // page de création d'une catégorie
             {  
                  
-                $routeAndParams["route"] = "admin-categories";
+                $routeAndParams["route"] = "admin";
                 $routeAndParams["sub-route"] = $tab[1];
                 $routeAndParams["methode"] = $tab[2];
                 
             }
-            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'une catégorie
+            else if($tab[0] === "admin" && $tab[1] === 'categories' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'une catégorie
             {  
                  
-                $routeAndParams["route"] = "admin-categories";
-                $routeAndParams["categories-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["categories-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-categories" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'une catégorie
+            else if($tab[0] === "admin" && $tab[1] === 'categories' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'une catégorie
             {  
                  
-                $routeAndParams["route"] = "admin-categories";
-                $routeAndParams["categories-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["categories-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
             
             // Article
             
-            else if($tab[0] === "admin-articles" && !isset($tab[1])) // page de tous les articles
+            else if($tab[0] === "admin" && $tab[1] === 'articles' && !isset($tab[1])) // page de tous les articles
             {  
                  
-                $routeAndParams["route"] = "admin-articles";
+                $routeAndParams["route"] = "admin";
                 
                 
             }
-            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création d'un article
+            else if($tab[0] === "admin" && $tab[1] === 'articles' && $tab[2] === "create" && !isset($tab[3])) // page de création d'un article
             {  
-                $routeAndParams["route"] = "admin-articles";
+                $routeAndParams["route"] = "admin";
                 $routeAndParams["sub-route"] = $tab[1];
                 $routeAndParams["methode"] = $tab[2];
                 
             }
-            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'un article
+            else if($tab[0] === "admin-articles" && $tab[1] === 'articles' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'un article
             {  
                  
-                $routeAndParams["route"] = "admin-articles";
-                $routeAndParams["articles-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["articles-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-articles" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un article
+            else if($tab[0] === "admin" && $tab[1] === 'articles' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression d'un article
             {  
                  
-                $routeAndParams["route"] = "admin-articles";
-                $routeAndParams["articles-id"] = $tab[1];
-                $routeAndParams["sub-route"] = $tab[2];
+                $routeAndParams["route"] = "admin";
+                $routeAndParams["sub-route"] = $tab[1];
+                $routeAndParams["articles-id"] = $tab[2];
                 $routeAndParams["methode"] = $tab[3];
                 
             }
