@@ -60,7 +60,7 @@ class ProjectsController extends AbstractController{
         }
         else
         {
-            $this->renderAdminPartial('projects' , 'create', []);
+            $this->renderAdmin('projects' , 'create', []);
         }
         
     }

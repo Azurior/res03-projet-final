@@ -15,7 +15,7 @@ class UserController extends AbstractController {
         
         // render
         //$this->renderAdminPartial('users', []);
-        $this->renderAdmin('users', 'all', $allUsers);
+        $this->renderAdmin('user', 'all', $allUsers);
     }
 
     public function getUser(string $get)

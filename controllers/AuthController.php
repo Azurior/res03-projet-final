@@ -12,7 +12,7 @@ class AuthController extends AbstractController {
     /* Pour la page d'inscription */  
     public function authentificator() : void  
     {  
-        $this->renderPartial("authentificator", []);// render la page avec le formulaire d'inscription  
+        $this->renderPublic("authentificator", []);// render la page avec le formulaire d'inscription  
     }  
       
     /* Pour vérifier l'inscription */  

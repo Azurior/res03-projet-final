@@ -11,13 +11,10 @@ class AdminController extends AbstractController{
         $this->um = new UserManager();
     }
     
-    public function allUsers(){
+    public function indexAdmin(){
         
-        $tab = [];
         
-        array_push($tab, 'test1');
-        
-        $this->renderAdminPartial('users', [$tab]);
+        $this->renderAdmin('index', 'admin', []);
         
     }
     

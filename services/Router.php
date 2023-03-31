@@ -15,6 +15,7 @@ class Router {
     private DevisController $devisController;
     private ProjectsController $projectsController;
     private AuthController $authController;
+    private AdminController $adminController;
     
     public function __construct(){
         
@@ -26,6 +27,7 @@ class Router {
         $this->devisController = new DevisController();
         $this->projectsController = new ProjectsController();
         $this->authController = new AuthController();
+        $this->adminController = new AdminController();
     }
     
     private function splitRouteAndParameters(string $route) : array  
@@ -42,7 +44,6 @@ class Router {
         $routeAndParams["user-id"] = null;
         $routeAndParams["sub-route"] = null; 
         $routeAndParams["sub-route-two"] = null;
-        $routeAndParams["sub-route-three"] = null;
         $routeAndParams["methode"] = null; 
         
         
@@ -137,15 +138,21 @@ class Router {
                  
             }
             
-            // Admin
+            
+            //----------------------------------------------------- Admin -----------------------------------------------------\\
             
             
             // User
-            else if($tab[0] === "admin" && !isset($tab[1])) // page Admin Tout Utilisateurs  
+            else if($tab[0] === "admin" && !isset($tab[1])) // page Admin   
             {  
                  
-                $routeAndParams["route"] = "admin-users";  
+                $routeAndParams["route"] = "admin";  
                  
+            }
+            else if($tab[0] === 'admin' && $tab[1] !== null && !isset($tab[2])) // route vers l'index d'un type de modèle pour l'administrateur 
+            {    
+                $routeAndParams["route"] = "admin";  
+                $routeAndParams["sub-route"] = $tab[1];
             }
             else if($tab[0] === "admin" && $tab[1] === 'user' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édition d'un utilisateur 
             {  
@@ -167,14 +174,6 @@ class Router {
             }
             
             // Projet
-            else if($tab[0] === "admin" && $tab[1] === 'projects' && !isset($tab[2])) // page de tous les projets 
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-                
-            }
             else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] === "create" && !isset($tab[3])) // page de création de projet
             {  
                  
@@ -192,7 +191,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin-projects" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -203,13 +202,6 @@ class Router {
             }
             
             // Categorie
-            else if($tab[0] === "admin" && $tab[1] === 'categories' && !isset($tab[2])) // page de toutes les categories
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-            }
             else if($tab[0] === "admin" && $tab[1] === 'categories' && $tab[2] === "create" && !isset($tab[3])) // page de création d'une catégorie
             {  
                  
@@ -239,14 +231,6 @@ class Router {
             
             // Article
             
-            else if($tab[0] === "admin" && $tab[1] === 'articles' && !isset($tab[1])) // page de tous les articles
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-                
-            }
             else if($tab[0] === "admin" && $tab[1] === 'articles' && $tab[2] === "create" && !isset($tab[3])) // page de création d'un article
             {  
                 $routeAndParams["route"] = "admin";
@@ -254,7 +238,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[2];
                 
             }
-            else if($tab[0] === "admin-articles" && $tab[1] === 'articles' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'un article
+            else if($tab[0] === "admin" && $tab[1] === 'articles' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit d'un article
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -275,13 +259,6 @@ class Router {
             
             // Commentaires
             
-            else if($tab[0] === "admin" && $tab[1] === 'comments' && !isset($tab[1])) // page de tous les commentaires
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[2];
-                
-            }
             else if($tab[0] === "admin" && $tab[1] === 'comments' && $tab[2] !== null && $tab[3] === "accept" && !isset($tab[4])) // page d'acceptation d'un commentaire
             {  
                  
@@ -303,27 +280,6 @@ class Router {
             
             // Devis
             
-            else if($tab[0] === "admin" && $tab[1] === 'devislogo' && !isset($tab[1])) // Liste de tous les devis
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-            }
-            else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && !isset($tab[1])) // Liste de tous les devis
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-            }
-            else if($tab[0] === "admin" && $tab[1] === 'devisscene' && !isset($tab[1])) // Liste de tous les devis
-            {  
-                 
-                $routeAndParams["route"] = "admin";
-                $routeAndParams["sub-route"] = $tab[1];
-                
-            }
             else if($tab[0] === "admin" && $tab[1] === 'devislogo' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
@@ -351,7 +307,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin" && $tab[1] === 'devislogo' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devislogo' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -360,7 +316,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'deviswallpaper' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -369,7 +325,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-             else if($tab[0] === "admin" && $tab[1] === 'devisscene' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
+            else if($tab[0] === "admin" && $tab[1] === 'devisscene' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // Liste de tous les devis
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -391,7 +347,9 @@ class Router {
     
     public function checkRoute(string $route) : void  
     {  
-        $routeTab = $this->splitRouteAndParameters($route);  
+        $routeTab = $this->splitRouteAndParameters($route); 
+        var_dump($routeTab);
+        $post = $_POST;
       
         // Public 
     
@@ -399,9 +357,9 @@ class Router {
         {  
             $this->homeController->home(); // appeler la méthode du controlleur pour afficher la home  
         }  
-        else if($routeTab["route"] === "projects" && $routeTab["project-id"] === null) // condition(s) pour envoyer vers les projets
+        else if($routeTab["route"] === "projects") // condition(s) pour envoyer vers les projets
         {  
-            $this->projectsController->getAllProjects(); // appeler la méthode du controlleur pour les projects en fonction de leurs ID
+            $this->projectsController->getAllProjects(); // appeler la méthode du controlleur pour tous les projects
         }  
         else if($routeTab["route"] === "projects" && $routeTab["project-id"] !== null) // condition(s) pour envoyer vers un projet par rapport à son ID
         {  
@@ -448,15 +406,21 @@ class Router {
             $this->userController->getUser(intval($routeTab["user-id"])); // appeler la méthode du controlleur pour s'inscrire
         }
         
-        // Admin
+        //----------------------------------------------------- Admin -----------------------------------------------------\\
         
-        else if($routeTab["route"] === 'admin'){
-            $this->userController->getAllUsers(); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === null){
+            
+            $this->adminController->indexAdmin(); // appeler la méthode du controlleur pour afficher la page d'accueil de l'admininistrateur
+            
         }
         
-        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] !== null && $routeTab["method"] === null){
+        else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] !== null){
             
-            if($routeTab["sub-route"] === "projects"){
+            if($routeTab["sub-route"] === "user"){
+                
+                $this->userController->getAllUsers(); // appeler la méthode du controlleur pour afficher tous les projets
+                
+            }else if($routeTab["sub-route"] === "projects"){
                 
                 $this->projectsController->getAllProjects(); // appeler la méthode du controlleur pour afficher tous les projets
                 
@@ -492,6 +456,7 @@ class Router {
             
             if($routeTab["sub-route"] === 'projects'){
                 
+                echo 'createProjects';
                 $this->projectController->createProject($post); // appeler la méthode du controlleur pour créer un post
                 
             }else if ($routeTab["sub-route"] === 'categories'){
