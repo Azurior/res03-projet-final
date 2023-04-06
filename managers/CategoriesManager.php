@@ -6,8 +6,8 @@ class CategoriesManager extends AbstractManager {
     {
         // get all the users from the database
         $query = $this->db->prepare('SELECT projects.*, categories.* FROM projects_categories 
-                                    JOIN projects ON projects_categories.projects_id = projects.id 
-                                    JOIN categories ON projects_categories.category_id = categories.id');
+                                    JOIN projects ON projects_categories.id_projects = projects.id 
+                                    JOIN categories ON projects_categories.id_categories = categories.id');
         $query->execute();
         $items = $query->fetchAll(PDO::FETCH_ASSOC);
         
@@ -71,10 +71,12 @@ class CategoriesManager extends AbstractManager {
     {
         // create the user from the database
         // get the user with $id from the database
-        $query = $this->db->prepare('INSERT INTO categories VALUES(:id, :title)');
+        $query = $this->db->prepare('INSERT INTO categories VALUES(:id, :title, :idMedia, :idArticle)');
         $parameters = [
             'id' => null,
             'title' => $categories->getTitle(),
+            'idMedia' => $categories->getIdMedia(),
+            'idArticle' => null
         ];
         $query->execute($parameters);
         

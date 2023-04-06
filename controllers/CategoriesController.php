@@ -15,7 +15,7 @@ class CategoriesController extends AbstractController{
     public function categoriesId(int $id){
         
        
-        $categories = $this->pm->getCategoriesById($id);
+        $categories = $this->cm->getCategoriesById($id);
         
         $this->renderPartial('categories', $categories);
         
@@ -24,7 +24,7 @@ class CategoriesController extends AbstractController{
      public function categoriesAdminId(int $id){
         
         
-        $categories = $this->pm->getCategoriesById($id);
+        $categories = $this->cm->getCategoriesById($id);
         
         $this->renderAdmin('categories', 'id', $categories);
         
@@ -37,7 +37,7 @@ class CategoriesController extends AbstractController{
         
         // render
         //$this->renderAdminPartial('users', []);
-        $this->renderAdminPartial('categories', 'all', $allCategories);
+        $this->renderAdmin('categories', 'all', $allCategories);
     }
     
     public function getAllCategoriesByProject(int $id)
@@ -50,28 +50,46 @@ class CategoriesController extends AbstractController{
         $this->renderPartial('categories', $allCategories);
     }
 
-    public function createCategory()
+    public function create(array $post)
     {
         // create the user in the manager
         
-        if(isset($_POST['formCreateCat']) === true){
-            
-            $title = $_POST['title'];
-            $uploader = new Uploader();
-            $media = $uploader->upload($_FILES, "image");
-            
-            $category = new Categories(null, $title, $media);
-            $newCategories = $this->cm->createCategories($category);
-            
-            
-            
+        $error = "";
+
+        if(isset($post) && !empty($post)){
+
+            foreach($post as $field){
+
+                if(empty($field)){
+    
+                    $error = "Il faut remplir tous les champs !";
+                }
+            }
+            if($error !== ""){
+                
+                echo $error;
+
+            }else{
+                
+                $title = $_POST['title'];
+                $uploader = new Uploader();
+                $media = $uploader->upload($_FILES, "image");
+                
+                
+                $category = new Categories($title, $media);
+                $newCategories = $this->cm->createCategories($category);
+                
+                header('Location: /res03-projet-final/admin/categories');
+            }
+        }
+        else
+        {
+            $this->renderAdmin('categories', 'create', []);
         }
 
-        // render the created user
-        header('Location: /res03-projet-final/admin-categories');
     }
 
-    public function updateCategory()
+    public function update(int $id)
     {
         
         if(isset($_POST['formUpdateCat']) === true){

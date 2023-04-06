@@ -29,11 +29,10 @@ class ProjectsController extends AbstractController{
         $this->renderAdmin('projects', 'all', $allProjects);
     }
 
-    public function createProject(string $post)
+    public function create(array $post)
     {
-        
-        echo 'Je suis dans la fonction';
         // create the user in the manager
+        
         
         $error = "";
 
@@ -43,7 +42,7 @@ class ProjectsController extends AbstractController{
 
                 if(empty($field)){
     
-                    $error = "Il faut remplir le champ texte";
+                    $error = "Il faut remplir le champ titre";
                 }
             }
             if($error !== ""){
@@ -51,21 +50,21 @@ class ProjectsController extends AbstractController{
                 echo $error;
 
             }else{
-            
-            $posts = new Projects(null, $post['text']);
-            $newPosts = $this->pm->createProjects($posts);
-            
-            header('Location: /res03-projet-final/admin-projects');
+        
+                $projet = new Projects($post['text']);
+                $newProjet = $this->pm->createProjects($projet);
+                
+                header('Location: /res03-projet-final/admin/projects');
             }
         }
         else
         {
-            $this->renderAdmin('projects' , 'create', []);
+            $this->renderAdmin('projects', 'create', []);
         }
         
     }
 
-    public function updatePost(string $get)
+    public function update(string $get)
     {
         if(isset($_POST['formUpdatePost']) === true){
             
@@ -79,7 +78,7 @@ class ProjectsController extends AbstractController{
         header('Location: /res03-projet-final/admin-projects');
     }
 
-    public function deletePost(string $get)
+    public function deleteProject(string $get)
     {
         // delete the user in the manager
         $users = $this->pm->deletePost(intval($get));

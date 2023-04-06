@@ -21,7 +21,7 @@ class ProjectsManager extends AbstractManager {
         return $projects;
     }
 
-    public function getProjectsById(int $id) : User
+    public function getProjectsById(int $id) : Projects
     {
         // get the user with $id from the database
         $query = $this->db->prepare('SELECT * FROM projects WHERE :id');
@@ -39,7 +39,7 @@ class ProjectsManager extends AbstractManager {
     }
     
 
-    public function createProjects(Projects $projects) : User
+    public function createProjects(Projects $projects) : Projects
     {
         // create the user from the database
         // get the user with $id from the database
