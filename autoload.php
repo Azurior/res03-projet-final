@@ -21,6 +21,7 @@ require "managers/CommentsManager.php";
 require "managers/DevisManager.php";
 require "managers/ProjectsManager.php";
 require "managers/ArticleManager.php";
+require "managers/MediaManager.php";
 
 //upload
 

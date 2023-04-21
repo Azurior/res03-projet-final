@@ -19,7 +19,7 @@ class ProjectsController extends AbstractController{
         
     }
     
-    public function getAllProjects()
+    public function getAllProjectsAdmin()
     {
         // get all the users from the manager
         $allProjects = $this->pm->getAllProjects();
@@ -27,6 +27,16 @@ class ProjectsController extends AbstractController{
         // render
         
         $this->renderAdmin('projects', 'all', $allProjects);
+    }
+    
+    public function getAllProjectsPublic()
+    {
+        // get all the users from the manager
+        $allProjects = $this->pm->getAllProjects();
+        
+        // render
+        
+        $this->renderPublic('projects', 'all', $allProjects);
     }
 
     public function create(array $post)

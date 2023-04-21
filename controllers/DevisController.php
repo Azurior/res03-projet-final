@@ -11,7 +11,7 @@ class DevisController extends AbstractController{
         
         
         
-        $this->renderPartial('devis', []);
+        $this->renderPublic('devis', 'all', []);
         
     }
     

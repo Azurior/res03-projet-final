@@ -1,0 +1,157 @@
+<main id="devis">
+    <h1>Demande de devis</h1>
+    <p>Vous ne pouvez remplir qu'un seul formulaire à la fois</p>
+    <p>Sacher qu'il vous faut être <strong><a href="/res03-projet-final/authentificator">connecté</a></strong> pour pouvoir envoyer une demmande de devis !</p>
+    <section>
+        <h2 class="sr-only">Les différents devis</h2>
+        <section id="deivs-wallpaper">
+            <h3>Demande de devis pour un fond d'écran :</h3>
+            <form action="" method="POST">
+                <input type="hidden" name="formWallpaper" id="formWallpaper" value="formWallpaper" />
+                <fieldset>
+                    <label for="themeWallpaper">Le thème de votre fond d'écran :</label>
+                    <input type="text" name="themeWallpaper"/>
+                </fieldset>
+                <p>Pour la partie qui suit, vous allez devoir choisir votre couleur princpal et secondaire (et les optionnels). Je vous conseil ce : <a href="https://htmlcolorcodes.com/fr/selecteur-de-couleur/">site</a></p> 
+                <p>Choisissez vos couleurs, et remplissez le champ de chaque couleur que vous voulez (en valeur hexadécimal, donc avec le " # ")</p>
+                <fieldset>
+                    <label for="primaryColor">Votre couleur principal :</label>
+                    <input type="text" name="primaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="secondaryColor">Votre couleur secondaire :</label>
+                    <input type="text" name="secondaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option1Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option1Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option2Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option2Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option3Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option3Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="text">Votre texte / Pseudo / Autre (pas obligatoire) :</label>
+                    <input type="text" name="text"/>
+                </fieldset>
+                <fieldset>
+                    <label for="file">Une image (pas obligatoire) :</label>
+                    <input type="file" name="file" class="inputFile"/>
+                </fieldset>
+                <fieldset>
+                    <label for="sizeProject">La taille de votre image :</label>
+                    <input type="text" name="sizeProject"/>
+                </fieldset>
+                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] === 'user' || $_SESSION['role'] === 'admin')){ ?>
+                    <input type="submit" name="submit" value="Envoyer"/>
+                <?php } ?>
+        </form>
+        </section>
+        <section id="devis-logo">
+            <h3>Demande de devis pour un logo :</h3>
+            <form action="" method="POST">
+                <input type="hidden" name="formLogo" id="formLogo" value="formLogo" />
+                <fieldset>
+                    <label for="themeLogo">Le thème de votre fond d'écran :</label>
+                    <input type="text" name="themeLogo"/>
+                </fieldset>
+                <p>Pour la partie qui suit, vous allez devoir choisir votre couleur princpal et secondaire (et les optionnels). Je vous conseil ce : <a href="https://htmlcolorcodes.com/fr/selecteur-de-couleur/">site</a></p> 
+                <p>Choisissez vos couleurs, et remplissez le champ de chaque couleur que vous voulez (en valeur hexadécimal, donc avec le " # ")</p>
+                <fieldset>
+                    <label for="primaryColor">Votre couleur principal :</label>
+                    <input type="text" name="primaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="secondaryColor">Votre couleur secondaire :</label>
+                    <input type="text" name="secondaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option1Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option1Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option2Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option2Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option3Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option3Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="text">Votre texte / Pseudo / Autre : (pas obligatoire)</label>
+                    <input type="text" name="text"/>
+                </fieldset>
+                <fieldset>
+                    <label for="file">Une image (pas obligatoire)</label>
+                    <input type="file" name="file" class="inputFile"/>
+                </fieldset>
+                <fieldset>
+                    <label for="sizeProject">La taille de votre logo :</label>
+                    <input type="text" name="sizeProject"/>
+                </fieldset>
+                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] === 'user' || $_SESSION['role'] === 'admin')){ ?>
+                    <input type="submit" name="submit" value="Envoyer"/>
+                <?php } ?>
+        </form>
+        </section>
+        <section id="devis-scene">
+            <h3>Demande de devis pour des scènes twitch :</h3>
+            <form action="" method="POST">
+                <input type="hidden" name="formScene" id="formScene" value="formScene" />
+                <fieldset>
+                    <label for="numberScene">Nombre de scènes que vous voulez : (minimum 1, maximum 15)</label>
+                    <input type="number" id="numberScene" name="numberScene" min="1" max="15">
+                </fieldset>
+                <fieldset>
+                    <label for="description">Une description de ce que vous voulez :</label>
+                    <textarea id="description" name="description" rows="5" cols="33">Expliquer votre projet en quelques mots, ce que doivent faire les scènes</textarea>
+                </fieldset>
+                <fieldset>
+                    <label for="themeScene">Le thème de votre fond d'écran :</label>
+                    <input type="text" name="themeScene"/>
+                </fieldset>
+                <p>Pour la partie qui suit, vous allez devoir choisir votre couleur princpal et secondaire (et les optionnels). Je vous conseil ce : <a href="https://htmlcolorcodes.com/fr/selecteur-de-couleur/">site</a></p> 
+                <p>Choisissez vos couleurs, et remplissez le champ de chaque couleur que vous voulez (en valeur hexadécimal, donc avec le " # ")</p>
+                <fieldset>
+                    <label for="primaryColor">Votre couleur principal :</label>
+                    <input type="text" name="primaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="secondaryColor">Votre couleur secondaire :</label>
+                    <input type="text" name="secondaryColor"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option1Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option1Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option2Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option2Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="option3Color">Ajouter une couleur optionnelle :</label>
+                    <input type="text" name="option3Color"/>
+                </fieldset>
+                <fieldset>
+                    <label for="text">Votre texte / Pseudo / Autre : (pas obligatoire)</label>
+                    <input type="text" name="text"/>
+                </fieldset>
+                <fieldset>
+                    <label for="file">Une image (pas obligatoire)</label>
+                    <input type="file" name="file" class="inputFile"/>
+                </fieldset>
+                <fieldset>
+                    <label for="sizeProject">La taille de vos scènes :</label>
+                    <input type="text" name="sizeProject"/>
+                </fieldset>
+                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] === 'user' || $_SESSION['role'] === 'admin')){ ?>
+                    <input type="submit" name="submit" value="Envoyer"/>
+                <?php } ?>
+        </form>
+        </section>
+    </section>
+</main>

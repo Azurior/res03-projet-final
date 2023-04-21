@@ -30,6 +30,24 @@ class MediaManager extends AbstractManager{
         return $newMedia;
     }
     
+    public function getLastIdMedia(Media $media) : Media
+    {
+        $query = $this->db->prepare('SELECT * FROM media WHERE :id, :type, :filename, :url');
+        
+        $parameters = [
+        'id' => null,
+        'type' => $media->getType(),
+        'filename' => $media->getName(),
+        'url' => $media->getUrl()
+        ];
+        
+        $query->execute($parameters);
+        
+        $id= $this->db->lastInsertId();
+        
+        return $id;
+    }
+    
     public function insertMedia(Media $media) : Media
     {
         $query = $this->db->prepare('INSERT INTO media VALUES(:id, :type, :filename, :url)');

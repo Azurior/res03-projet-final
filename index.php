@@ -13,5 +13,5 @@ if(isset($_GET["path"]))
 }  
 else  
 {  
-    $router->checkRoute("");  
+    $router->checkRoute("home");  
 }

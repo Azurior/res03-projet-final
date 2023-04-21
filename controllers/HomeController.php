@@ -11,7 +11,7 @@ class HomeController extends AbstractController{
         
         
         
-        $this->renderPublic('home', []);
+        $this->renderPublic('home', 'page', []);
         
     }
     

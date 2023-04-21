@@ -3,18 +3,33 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Page d'accueil du site Portfolio Azurior" />
+      <meta name="keywords" content="Design, Projets, Photoshop, Demande de logo, Demande de fond d'écran" />
+      <meta name="author" content="Azurior" />
+      <meta name="referrer" content="origin" />
+      <meta property="og:title" content="Portfolio d'Azurior" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="http://tonygohin.sites.3wa.io/res03-projet-final/" />
+      <meta property="og:image" content="https://bit.ly/3KSwp9z" />
+      <meta property="og:description" content="Site de partage de création sur photoshop avec demande de devis pour un logo, un fond d'écran ou encore des scènes twitchs" />
+      <meta property="og:locale" content="fr_FR" />
+      <meta property="og:site_name" content="Portfolio d'Azurior" />
       <title>Portfolio Azurior</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Satisfy&display=swap" rel="stylesheet"> 
       <link rel="stylesheet" href="assets/style/css/style.css">
     </head>
-    <body>
+    <body id="public">
         <?php
         require 'partials/_header.phtml';
         
-        var_dump($template);
-        
-        require $template.'/'.$template.'.phtml';
+        require $template.'/'.$template.'_'.$page.'.phtml';
         
         require 'partials/_footer.phtml'; 
         ?>
+        
     </body>
 </html>

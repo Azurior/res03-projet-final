@@ -9,6 +9,8 @@ class CategoriesController extends AbstractController{
     public function __construct()
     {
         $this->cm = new CategoriesManager();
+        $this->mediaManager = new MediaManager();
+        $this->uploader = new Uploader();
     }
     
     
@@ -55,6 +57,7 @@ class CategoriesController extends AbstractController{
         // create the user in the manager
         
         $error = "";
+        var_dump($post);
 
         if(isset($post) && !empty($post)){
 
@@ -72,11 +75,10 @@ class CategoriesController extends AbstractController{
             }else{
                 
                 $title = $_POST['title'];
-                $uploader = new Uploader();
-                $media = $uploader->upload($_FILES, "image");
+                $media = $this->mediaManager->insertMedia($this->uploader->upload($_FILES, "category-image"));
+                $idMedia = $this-mediaManager->getLastIdMedia($media);
                 
-                
-                $category = new Categories($title, $media);
+                $category = new Categories($title, $media, $idMedia);
                 $newCategories = $this->cm->createCategories($category);
                 
                 header('Location: /res03-projet-final/admin/categories');
@@ -84,6 +86,7 @@ class CategoriesController extends AbstractController{
         }
         else
         {
+            echo "ce n'est pas créé";
             $this->renderAdmin('categories', 'create', []);
         }
 

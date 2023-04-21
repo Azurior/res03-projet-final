@@ -1,37 +1,38 @@
-<nav>
-    <ul>
-        <li><a href="">Accueil</a></li>
-        <li><a href="projects">Mes Projets</a></li>
-        <li><a href="devis">Devis</a></li>
-        <li>
-            <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
-                Vous êtes connecté en tant que : 
-                
-                    <?= $_SESSION['user'] ?>
-                
-                /
-                <a href="logout">
-                    Deconnexion
-                </a>
-            <?php }else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){ ?>
-                Vous êtes connecté en tant que : 
-                
-                    <?= $_SESSION['user'] ?>
-                
-                | 
-                <a href="admin">
-                    Admin
-                </a>
-                / 
-                <a href="logout">
-                    Deconnexion
-                </a>
-            <?php }else if(!isset($_SESSION['role'])){ ?>
-                <a href="authentificator">
-                    Connexion / S'inscrire
-                </a>
-            <?php }?>
-        </li>
-    </ul>
-    
-</nav>
+<header>
+    <nav>
+        <ul>
+            <li><a href="home">Accueil</a></li>
+            <li><a href="projects">Mes Projets</a></li>
+            <li><a href="devis">Devis</a></li>
+            <li>
+                <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
+                    Vous êtes connecté en tant que : 
+                    
+                        <?= $_SESSION['user'] ?>
+                    
+                    /
+                    <a href="logout">
+                        Deconnexion
+                    </a>
+                <?php }else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){ ?>
+                    Vous êtes connecté en tant que : 
+                    
+                        <?= $_SESSION['user'] ?>
+                    
+                    | 
+                    <a href="admin">
+                        Admin
+                    </a>
+                    / 
+                    <a href="logout">
+                        Deconnexion
+                    </a>
+                <?php }else if(!isset($_SESSION['role'])){ ?>
+                    <a href="authentificator">
+                        Connexion / S'inscrire
+                    </a>
+                <?php }?>
+            </li>
+        </ul>
+    </nav>
+</header>

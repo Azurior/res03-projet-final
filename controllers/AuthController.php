@@ -12,7 +12,7 @@ class AuthController extends AbstractController {
     /* Pour la page d'inscription */  
     public function authentificator() : void  
     {  
-        $this->renderPublic("authentificator", []);// render la page avec le formulaire d'inscription  
+        $this->renderPublic("authentificator", "all", []);// render la page avec le formulaire d'inscription  
     }  
       
     /* Pour vérifier l'inscription */  
@@ -43,7 +43,7 @@ class AuthController extends AbstractController {
                 $_SESSION["user"] = $user;
                 
                 // le renvoyer vers l'accueil
-                header("Location: /res03-projet-final");
+                header("Location: /res03-projet-final/home");
             }
             else
             {
@@ -72,7 +72,6 @@ class AuthController extends AbstractController {
             
             // utiliser le manager pour vérifier si un utilisateur avec cet email existe
             $user = $this->um->getUserByEmail($email);
-            var_dump($user);
             
             if($user->getEmail() === $email) // si il existe, vérifier son mot de passe 
             {
@@ -80,7 +79,7 @@ class AuthController extends AbstractController {
                 {
                     $_SESSION["user"] = $user->getUser();
                     $_SESSION["role"] = $user->getRole();
-                    header("Location: /res03-projet-final");
+                    header("Location: /res03-projet-final/home");
                 }
                 else // si il n'est pas bon renvoyer sur la page de connexion 
                 {
@@ -105,7 +104,7 @@ class AuthController extends AbstractController {
     {
         session_destroy();
         
-        header("Location: /res03-projet-final");
+        header("Location: /res03-projet-final/home");
     }
     
 }
