@@ -6,7 +6,7 @@
         <h2 class="sr-only">Les différents devis</h2>
         <section id="deivs-wallpaper">
             <h3>Demande de devis pour un fond d'écran :</h3>
-            <form action="" method="POST">
+            <form action="/res03-projet-final/check-wallpaper" method="POST">
                 <input type="hidden" name="formWallpaper" id="formWallpaper" value="formWallpaper" />
                 <fieldset>
                     <label for="themeWallpaper">Le thème de votre fond d'écran :</label>
@@ -39,21 +39,17 @@
                     <input type="text" name="text"/>
                 </fieldset>
                 <fieldset>
-                    <label for="file">Une image (pas obligatoire) :</label>
-                    <input type="file" name="file" class="inputFile"/>
-                </fieldset>
-                <fieldset>
                     <label for="sizeProject">La taille de votre image :</label>
                     <input type="text" name="sizeProject"/>
                 </fieldset>
                 <?php if(isset($_SESSION['role']) && ($_SESSION['role'] === 'user' || $_SESSION['role'] === 'admin')){ ?>
                     <input type="submit" name="submit" value="Envoyer"/>
                 <?php } ?>
-        </form>
+            </form>
         </section>
         <section id="devis-logo">
             <h3>Demande de devis pour un logo :</h3>
-            <form action="" method="POST">
+            <form action="/res03-projet-final/check-logo" method="POST">
                 <input type="hidden" name="formLogo" id="formLogo" value="formLogo" />
                 <fieldset>
                     <label for="themeLogo">Le thème de votre fond d'écran :</label>
@@ -86,10 +82,6 @@
                     <input type="text" name="text"/>
                 </fieldset>
                 <fieldset>
-                    <label for="file">Une image (pas obligatoire)</label>
-                    <input type="file" name="file" class="inputFile"/>
-                </fieldset>
-                <fieldset>
                     <label for="sizeProject">La taille de votre logo :</label>
                     <input type="text" name="sizeProject"/>
                 </fieldset>
@@ -100,7 +92,7 @@
         </section>
         <section id="devis-scene">
             <h3>Demande de devis pour des scènes twitch :</h3>
-            <form action="" method="POST">
+            <form action="/res03-projet-final/check-scene" method="POST">
                 <input type="hidden" name="formScene" id="formScene" value="formScene" />
                 <fieldset>
                     <label for="numberScene">Nombre de scènes que vous voulez : (minimum 1, maximum 15)</label>
@@ -139,10 +131,6 @@
                 <fieldset>
                     <label for="text">Votre texte / Pseudo / Autre : (pas obligatoire)</label>
                     <input type="text" name="text"/>
-                </fieldset>
-                <fieldset>
-                    <label for="file">Une image (pas obligatoire)</label>
-                    <input type="file" name="file" class="inputFile"/>
                 </fieldset>
                 <fieldset>
                     <label for="sizeProject">La taille de vos scènes :</label>

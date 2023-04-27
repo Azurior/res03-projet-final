@@ -10,21 +10,19 @@ class Devis{
     private string $option2_color;
     private string $option3_color;
     private string $text;
-    private string $image;
     private string $size_project;
     private int $id_user;
     
-    public function __construct(string $theme, string $primary_color, string $second_color, string $text, string $image, string $size_project, int $id_user){
+    public function __construct(string $theme, string $primary_color, string $second_color, string $option1_color, string $option2_color, string $option3_color, string $text, string $size_project, int $id_user){
         
         $this->id = null;
         $this->theme = $theme;
         $this->primary_color = $primary_color;
         $this->second_color = $second_color;
-        $this->option1_color = null;
-        $this->option2_color = null;
-        $this->option3_color = null;
+        $this->option1_color = $option1_color;
+        $this->option2_color = $option2_color;
+        $this->option3_color = $option3_color;
         $this->text = $text;
-        $this->image = $image;
         $this->size_project = $size_project;
         $this->id_user = $id_user;
     }
@@ -110,16 +108,6 @@ class Devis{
         $this->text = $text;
     }
     
-    public function getImage() : string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image) : void
-    {
-        $this->image = $image;
-    }
-    
     public function getSizeProject() : string
     {
         return $this->size_project;
@@ -140,7 +128,6 @@ class Devis{
         $this->id_user = $id_user;
     }
     
-
 }
 
 ?>

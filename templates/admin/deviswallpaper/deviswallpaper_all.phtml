@@ -1,0 +1,64 @@
+<h1>Les devis Wallpaper :</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Theme
+            </th>
+            <th>
+                1ère couleur
+            </th>
+            <th>
+                2ème couleur
+            </th>
+            <th>
+                Couleur en option 1
+            </th>
+            <th>
+                Couleur en option 2
+            </th>
+            <th>
+                Couleur en option 3
+            </th>
+            <th>
+                Texte
+            </th>
+            <th>
+                Taille du projet
+            </th>
+            <th>
+                Utilisateur
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        foreach($data as $devis){ 
+        ?>
+        <tr>
+            <td><?= $devis->getId(); ?></td>
+            <td><?= $devis->getTheme(); ?></td>
+            <td><?= $devis->getPrimaryColor(); ?></td>
+            <td><?= $devis->getSecondColor(); ?></td>
+            <td><?= $devis->getOption1Color(); ?></td>
+            <td><?= $devis->getOption2Color(); ?></td>
+            <td><?= $devis->getOption3Color(); ?></td>
+            <td><?= $devis->getText(); ?></td>
+            <td><?= $devis->getSizeProject(); ?></td>
+            <td><?= $devis->getIdUser(); ?></td>
+            <td>
+                <a class="btn btn-primary" href="/res03-projet-final/admin/deviswallpaper/<?= $devis->getId(); ?>/edit" role="button">Éditer</a>
+                <a class="btn btn-danger" href="/res03-projet-final/admin/deviswallpaper/<?= $devis->getId(); ?>/delete" role="button">Supprimer</a>
+            </td>
+        </tr>
+        <?php }?>
+    </tbody>
+</table>

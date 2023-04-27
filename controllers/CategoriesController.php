@@ -52,14 +52,11 @@ class CategoriesController extends AbstractController{
         $this->renderPartial('categories', $allCategories);
     }
 
-    public function create(array $post)
+    public function create()
     {
-        // create the user in the manager
         
         $error = "";
-        var_dump($post);
-
-        if(isset($post) && !empty($post)){
+        if(isset($post["formName"]) && !empty($post["formName"])){
 
             foreach($post as $field){
 

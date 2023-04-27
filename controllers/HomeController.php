@@ -15,6 +15,11 @@ class HomeController extends AbstractController{
         
     }
     
+    public function page404(){
+        
+        $this->renderPubic('404', 'page', []);
+    }
+    
     
     
 }

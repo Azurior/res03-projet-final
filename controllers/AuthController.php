@@ -77,6 +77,7 @@ class AuthController extends AbstractController {
             {
                 if(password_verify($password, $user->getPassword())) // si il est bon, connecter l'utilisateur 
                 {
+                    $_SESSION['id'] = $user->getId();
                     $_SESSION["user"] = $user->getUser();
                     $_SESSION["role"] = $user->getRole();
                     header("Location: /res03-projet-final/home");

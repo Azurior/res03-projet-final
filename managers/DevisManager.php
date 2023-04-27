@@ -14,11 +14,8 @@ class DevisManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
             $newDevis->setId($item['id']);
-            $newDevis->setOption1($item['option1_color']);
-            $newDevis->setOption2($item['option2_color']);
-            $newDevis->setOption3($item['option3_color']);
             $devis[] = $newDevis;
         }
         
@@ -36,11 +33,8 @@ class DevisManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+            $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
             $newDevis->setId($item['id']);
-            $newDevis->setOption1($item['option1_color']);
-            $newDevis->setOption2($item['option2_color']);
-            $newDevis->setOption3($item['option3_color']);
             $devis[] = $newDevis;
         }
         
@@ -58,11 +52,8 @@ class DevisManager extends AbstractManager {
         
         foreach($items as $item)
         {
-            $newDevis = new DevisScene($item['number_scene'], $item["description"], $item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+            $newDevis = new DevisScene($item['number_scene'], $item["description"], $item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
             $newDevis->setId($item['id']);
-            $newDevis->setOption1($item['option1_color']);
-            $newDevis->setOption2($item['option2_color']);
-            $newDevis->setOption3($item['option3_color']);
             $devis[] = $newDevis;
         }
         
@@ -79,14 +70,11 @@ class DevisManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+        $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
         $newDevis->setId($item['id']);
-        $newDevis->setOption1($item['option1_color']);
-        $newDevis->setOption2($item['option2_color']);
-        $newDevis->setOption3($item['option3_color']);
         
         
-        return $newArticle;
+        return $newDevis;
     }
     
     public function getDevisWallpaperById(int $id) : Devis
@@ -99,14 +87,11 @@ class DevisManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+        $newDevis = new Devis($item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
         $newDevis->setId($item['id']);
-        $newDevis->setOption1($item['option1_color']);
-        $newDevis->setOption2($item['option2_color']);
-        $newDevis->setOption3($item['option3_color']);
         
         
-        return $newArticle;
+        return $newDevis;
     }
     
     public function getDevisSceneById(int $id) : Devis
@@ -119,11 +104,8 @@ class DevisManager extends AbstractManager {
         $query->execute($parameters);
         $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newDevis = new DevisScene($item['number_scene'], $item["description"], $item["theme"], $item["primary_color"], $item["second_color"], $item["text"], $item["image"], $item["size_project"], $item["id_user"]);
+        $newDevis = new DevisScene($item['number_scene'], $item["description"], $item["theme"], $item["primary_color"], $item["second_color"], $item['option1_color'], $item['option2_color'], $item['option3_color'], $item["text"], $item["size_project"], $item["id_user"]);
         $newDevis->setId($item['id']);
-        $newDevis->setOption1($item['option1_color']);
-        $newDevis->setOption2($item['option2_color']);
-        $newDevis->setOption3($item['option3_color']);
         
         
         return $newDevis;
@@ -140,11 +122,10 @@ class DevisManager extends AbstractManager {
             'theme' => $devis->getTheme(),
             'primary_color' => $devis->getPrimaryColor(),
             'second_color' => $devis->getSecondColor(),
-            'option1_color' => null,
-            'option2_color' => null,
-            'option3_color' => null,
+            'option1_color' => $devis->getOption1Color(),
+            'option2_color' => $devis->getOption2Color(),
+            'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];
@@ -171,11 +152,10 @@ class DevisManager extends AbstractManager {
             'theme' => $devis->getTheme(),
             'primary_color' => $devis->getPrimaryColor(),
             'second_color' => $devis->getSecondColor(),
-            'option1_color' => null,
-            'option2_color' => null,
-            'option3_color' => null,
+            'option1_color' => $devis->getOption1Color(),
+            'option2_color' => $devis->getOption2Color(),
+            'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];
@@ -204,11 +184,10 @@ class DevisManager extends AbstractManager {
             'theme' => $devis->getTheme(),
             'primary_color' => $devis->getPrimaryColor(),
             'second_color' => $devis->getSecondColor(),
-            'option1_color' => null,
-            'option2_color' => null,
-            'option3_color' => null,
+            'option1_color' => $devis->getOption1Color(),
+            'option2_color' => $devis->getOption2Color(),
+            'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];
@@ -238,7 +217,6 @@ class DevisManager extends AbstractManager {
             'option2_color' => $devis->getOption2Color(),
             'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];
@@ -271,7 +249,6 @@ class DevisManager extends AbstractManager {
             'option2_color' => $devis->getOption2Color(),
             'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];
@@ -306,7 +283,6 @@ class DevisManager extends AbstractManager {
             'option2_color' => $devis->getOption2Color(),
             'option3_color' => $devis->getOption3Color(),
             'text' => $devis->getText(),
-            'image' => $devis->getImage(),
             'size_project' => $devis->getSizeProject(),
             'id_user' => $devis->getIdUser()
         ];

@@ -62,6 +62,7 @@ table {
   box-sizing: border-box;
 }
 
+/* Partie Public */
 #public {
   font-family: "Roboto", sans-serif;
   background: rgb(0, 18, 36);
@@ -333,6 +334,21 @@ table {
   text-align: center;
   margin-bottom: 3rem;
 }
+#public > #devis > p:first-of-type {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#public > #devis > p:nth-of-type(2) {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+#public > #devis > p:nth-of-type(2) > strong {
+  font-weight: bold;
+  color: red;
+}
+#public > #devis > p:nth-of-type(2) > strong > a:visited {
+  color: red;
+}
 #public > #devis > section {
   display: flex;
   justify-content: center;
@@ -540,20 +556,7 @@ table {
   border: none;
   color: white;
 }
-#public > #devis > p:first-of-type {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-#public > #devis > p:nth-of-type(2) {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-#public > #devis > p:nth-of-type(2) > strong {
-  font-weight: bold;
-  color: red;
-}
-#public > #devis > p:nth-of-type(2) > strong > a:visited {
-  color: red;
-}
+
+/* Partie Admin */
 
 /*# sourceMappingURL=style.css.map */

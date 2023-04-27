@@ -119,6 +119,24 @@ class Router {
                 $routeAndParams["route"] = "devis";  
                  
             }
+            else if($tab[0] === "check-wallpaper" && !isset($tab[1])) // page Devis  
+            {  
+                 
+                $routeAndParams["route"] = "check-wallpaper";  
+                 
+            }
+            else if($tab[0] === "check-logo" && !isset($tab[1])) // page Devis  
+            {  
+                 
+                $routeAndParams["route"] = "check-logo";  
+                 
+            }
+            else if($tab[0] === "check-scene" && !isset($tab[1])) // page Devis  
+            {  
+                 
+                $routeAndParams["route"] = "check-scene";  
+                 
+            }
             else if($tab[0] === "authentificator" && !isset($tab[1])) // page de création d'un utilisateur 
             {  
                  
@@ -390,7 +408,26 @@ class Router {
         } 
         else if($routeTab["route"] === "devis") // condition(s) pour envoyer vers la page devis 
         {  
-            $this->devisController->devis(); // appeler la méthode du controlleur pour récupérer le formulaire du devis
+            $this->devisController->devis(); // appeler la méthode du controlleur pour récupérer les formulaires des devis
+
+        }
+        else if($routeTab["route"] === "check-wallpaper") // condition(s) pour envoyer vers la page devis 
+        {  
+           
+            $this->devisController->devisWallpaperCreate();
+            
+        }
+        else if($routeTab["route"] === "check-logo") // condition(s) pour envoyer vers la page devis 
+        {  
+            
+            $this->devisController->devisLogoCreate();
+
+        }
+        else if($routeTab["route"] === "check-scene") // condition(s) pour envoyer vers la page devis 
+        {  
+
+            $this->devisController->devisSceneCreate();
+            
         }
         else if($routeTab["route"] === "authentificator") // condition(s) pour envoyer vers la page de connexion/inscription 
         {  
@@ -464,16 +501,16 @@ class Router {
                 
                 if($routeTab["sub-route"] === 'projects'){
                     
-                    $this->projectsController->create($post); // appeler la méthode du controlleur pour créer un post
+                    $this->projectsController->create(); // appeler la méthode du controlleur pour créer un post
                     
                 }else if ($routeTab["sub-route"] === 'categories'){
                     
-                    $this->categoriesController->create($post); // appeler la méthode du controlleur pour créer une catégorie
+                    $this->categoriesController->create(); // appeler la méthode du controlleur pour créer une catégorie
                     
                     
                 }else if ($routeTab["sub-route"] === 'articles'){
                     
-                    $this->articlesController->create($post); // appeler la méthode du controlleur pour créer un article
+                    $this->articlesController->create(); // appeler la méthode du controlleur pour créer un article
                     
                 }
                 
@@ -578,8 +615,9 @@ class Router {
             }
             
         }
-        else if($routeTab["route"] === "404"){
+        else{
             
+            $this->homeController->page404();
         }
         
         
