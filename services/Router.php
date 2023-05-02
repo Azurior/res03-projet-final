@@ -451,7 +451,7 @@ class Router {
         }
         
         //----------------------------------------------------- Admin -----------------------------------------------------\\
-        else if($_SESSION['role'] === 'admin'){
+        else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
             
             if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === null){
             

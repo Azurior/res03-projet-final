@@ -652,6 +652,20 @@ table {
     font-size: 1.5rem;
     font-weight: bold;
   }
+  #public > #page404 {
+    height: 60vh;
+  }
+  #public > #page404 > h1 {
+    margin-top: 15rem;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+  #public > #page404 > p {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+  }
   #public > footer {
     margin-top: 1.5rem;
   }
@@ -1254,6 +1268,20 @@ table {
   #public > #construct > h1 {
     font-size: 1.5rem;
     font-weight: bold;
+  }
+  #public > #page404 {
+    height: 60vh;
+  }
+  #public > #page404 > h1 {
+    margin-top: 15rem;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+  #public > #page404 > p {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
   }
   #public > footer {
     margin-top: 1.5rem;
@@ -1913,8 +1941,23 @@ table {
     font-size: 1.5rem;
     font-weight: bold;
   }
+  #public > #page404 {
+    height: 65vh;
+  }
+  #public > #page404 > h1 {
+    margin-top: 7rem;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+  }
+  #public > #page404 > p {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 2rem;
+  }
   #public > footer {
     margin-top: 1.5rem;
+    height: 15vh;
   }
   #public > footer > section {
     border-top: 1px solid #00c9ff;
