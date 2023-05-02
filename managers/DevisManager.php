@@ -172,24 +172,24 @@ class DevisManager extends AbstractManager {
         // return it with its id
     }
     
-    public function createDevisScene(DevisScene $devis) : DevisScene
+    public function createDevisScene(DevisScene $devisScene) : void
     {
         // create the user from the database
         // get the user with $id from the database
-        $query = $this->db->prepare('INSERT INTO devis_devis VALUES(:id, :number_scene, :description, :theme, :primary_color, :second_color, :option1_color, :option2_color, :option3_color, :text, :size_project, :id_user)');
+        $query = $this->db->prepare('INSERT INTO devis_scene VALUES(:id, :number_scene, :description, :theme, :primary_color, :second_color, :option1_color, :option2_color, :option3_color, :text, :size_project, :id_user)');
         $parameters = [
             'id' => null,
-            'number_scene' => $devis->getNumberScene(),
-            'description' => $devis->getDescription(),
-            'theme' => $devis->getTheme(),
-            'primary_color' => $devis->getPrimaryColor(),
-            'second_color' => $devis->getSecondColor(),
-            'option1_color' => $devis->getOption1Color(),
-            'option2_color' => $devis->getOption2Color(),
-            'option3_color' => $devis->getOption3Color(),
-            'text' => $devis->getText(),
-            'size_project' => $devis->getSizeProject(),
-            'id_user' => $devis->getIdUser()
+            'number_scene' => $devisScene->getNumberScene(),
+            'description' => $devisScene->getDescription(),
+            'theme' => $devisScene->getTheme(),
+            'primary_color' => $devisScene->getPrimaryColor(),
+            'second_color' => $devisScene->getSecondColor(),
+            'option1_color' => $devisScene->getOption1Color(),
+            'option2_color' => $devisScene->getOption2Color(),
+            'option3_color' => $devisScene->getOption3Color(),
+            'text' => $devisScene->getText(),
+            'size_project' => $devisScene->getSizeProject(),
+            'id_user' => $devisScene->getIdUser()
         ];
         $query->execute($parameters);
         
@@ -199,9 +199,6 @@ class DevisManager extends AbstractManager {
         
         $id = $this->db->lastInsertId();
         
-        return $this->getDevisSceneById($id);
-
-        // return it with its id
     }
 
     public function updateDevisLogo(Devis $devis) : Devis
@@ -308,7 +305,7 @@ class DevisManager extends AbstractManager {
     public function deleteDevisLogo(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM devis_logo WHERE :id');
+        $query = $this->db->prepare('DELETE FROM devis_logo WHERE id=:id');
         $parameters = [
             'id' => $id
         ];
@@ -321,7 +318,7 @@ class DevisManager extends AbstractManager {
     public function deleteDevisWallpaper(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM devis_wallpaper WHERE :id');
+        $query = $this->db->prepare('DELETE FROM devis_wallpaper WHERE id=:id');
         $parameters = [
             'id' => $id
         ];
@@ -334,7 +331,7 @@ class DevisManager extends AbstractManager {
     public function deleteDevisScene(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM devis_scene WHERE :id');
+        $query = $this->db->prepare('DELETE FROM devis_scene WHERE id=:id');
         $parameters = [
             'id' => $id
         ];

@@ -95,6 +95,7 @@ for (let i = 1; i <= slides.length - 2; i++) {
 }
 dots = dotDiv.querySelectorAll("span");
 dots[0].classList.add("clicked");
+
 function dotClick(c) {
   counter = c;
   slider.style.transition = "transform 0.4s ease-in-out";
@@ -104,9 +105,7 @@ function dotClick(c) {
   });
   dots[c - 1].classList.add("clicked");
 }
-window.oncontextmenu = (e) => {
-  e.preventDefault();
-};
+
 window.onkeyup = (e) => {
   if (e.keyCode == 37) navigator[0].click();
   else if (e.keyCode == 39) navigator[1].click();
@@ -114,5 +113,3 @@ window.onkeyup = (e) => {
 
 
 /* -------------------------- Carousel -------------------------- */
-
-

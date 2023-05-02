@@ -85,15 +85,15 @@ class ProjectsController extends AbstractController{
         }
 
         // render the updated user
-        header('Location: /res03-projet-final/admin-projects');
+        header('Location: /res03-projet-final/admin/projects');
     }
 
-    public function deleteProject(string $get)
+    public function deleteProject(int $id)
     {
-        // delete the user in the manager
-        $users = $this->pm->deletePost(intval($get));
+        
+        $this->pm->deleteProject($id);
 
-       header('Location: /res03-projet-final/admin-projects');
+       header('Location: /res03-projet-final/admin/projects');
     }
     
     

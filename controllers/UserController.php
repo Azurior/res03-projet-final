@@ -63,18 +63,23 @@ class UserController extends AbstractController {
             $user = $this->um->updateUser($user);
     
             // render the updated user
-            header('Location: /res03-projet-final/admin-users');
+            header('Location: /res03-projet-final/admin/users');
             
+        }
+        else
+        {
+            header('Location: /res03-projet-final/admin/users/<?= $user->getId(); ?>/edit');
         }
         
     }
 
-    public function deleteUser(string $get)
+    public function deleteUser(int $id)
     {
+        echo 'fonction deleteUser du controller';
         // delete the user in the manager
-        $user = $this->um->deleteUser(intval($get));
+        $this->um->deleteUser($id);
 
         // render the list of all users
-        header('Location: /res03-projet-final/admin-users');
+        header('Location: /res03-projet-final/admin/users');
     }
 }

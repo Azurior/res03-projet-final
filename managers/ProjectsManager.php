@@ -85,10 +85,10 @@ class ProjectsManager extends AbstractManager {
         // return it
     }
 
-    public function deleteUser(int $id) : array
+    public function deleteProject(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM projects WHERE :id');
+        $query = $this->db->prepare('DELETE FROM projects WHERE id=:id');
         $parameters = [
             'id' => $id
         ];

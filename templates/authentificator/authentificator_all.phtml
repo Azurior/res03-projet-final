@@ -2,22 +2,28 @@
 <h1>Page de connexion et d'inscription</h1>
 <section>
     <h2 class="sr-only">Authentification</h2>
-    <section>
+    <section id="loginForm">
     <h3>Connexion</h3>
     <form action="/res03-projet-final/check-login" method="POST">
         <input type="hidden" name="formLogin" id="formLogin" value="formLogin" /> 
         <fieldset>
-            <label for="login-email">Email :</label>
-            <input type="email" name="login-email"/>
+            <label for="loginEmail">Email :</label>
+            <input type="email" name="loginEmail" id="loginEmail"/>
+            <?php if(isset($_SESSION['formErrorMail'])){ ?>
+            <p><?= $_SESSION['formErrorMail']?></p>
+            <?php } ?>
         </fieldset>
         <fieldset>
-            <label for="login-password">Mot de passe :</label>
-            <input type="password" name="login-password"/>
+            <label for="loginPassword">Mot de passe :</label>
+            <input type="password" name="loginPassword" id="loginPassword"/>
+            <?php if(isset($_SESSION['formErrorPassword'])){ ?>
+            <p><?= $_SESSION['formErrorPassword']?></p>
+            <?php } ?>
         </fieldset>
         <input type="submit" name="submit" value="Connexion"/>
     </form>
 </section>
-<section>
+<section id="registerForm">
     <h3>S'inscrire</h3>
     <form action="/res03-projet-final/check-register" method="POST">
         <input type="hidden" name="formRegister" id="formRegister" value="formRegister" /> 
@@ -42,3 +48,4 @@
 </section>
 </section>
 </main>
+<script src="../res03-projet-final/assets/js/validFormAuthentificator.js"></script>

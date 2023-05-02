@@ -2,16 +2,16 @@
 
 class Devis{
     
-    private ?int $id;
-    private string $theme;
-    private string $primary_color;
-    private string $second_color;
-    private string $option1_color;
-    private string $option2_color;
-    private string $option3_color;
-    private string $text;
-    private string $size_project;
-    private int $id_user;
+    protected ?int $id;
+    protected string $theme;
+    protected string $primary_color;
+    protected string $second_color;
+    protected string $option1_color;
+    protected string $option2_color;
+    protected string $option3_color;
+    protected string $text;
+    protected string $size_project;
+    protected int $id_user;
     
     public function __construct(string $theme, string $primary_color, string $second_color, string $option1_color, string $option2_color, string $option3_color, string $text, string $size_project, int $id_user){
         

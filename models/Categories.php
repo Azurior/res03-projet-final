@@ -48,7 +48,7 @@ class Categories{
         $this->idMedia = $idMedia;
     }
     
-    public function getIdArticles() : int
+    public function getIdArticles() : ?int
     {
         return $this->idArticles;
     }

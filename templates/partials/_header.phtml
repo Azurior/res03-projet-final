@@ -1,21 +1,22 @@
-<header>
-    <nav>
-        <ul>
+<header class="header">
+    <input type="checkbox" class="side-menu" id="side-menu"/>
+    <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+    <nav class="nav">
+        <ul class="menu">
             <li><a href="home">Accueil</a></li>
             <li><a href="projects">Mes Projets</a></li>
             <li><a href="devis">Devis</a></li>
-            <li>
-                <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
-                    Vous êtes connecté en tant que : 
+        </ul>
+        <p>
+            <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
                     
                         <?= $_SESSION['user'] ?>
                     
                     /
-                    <a href="logout">
+                    <a href="logout" id="logout">
                         Deconnexion
                     </a>
                 <?php }else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){ ?>
-                    Vous êtes connecté en tant que : 
                     
                         <?= $_SESSION['user'] ?>
                     
@@ -23,8 +24,8 @@
                     <a href="admin">
                         Admin
                     </a>
-                    / 
-                    <a href="logout">
+                     · 
+                    <a href="logout" id="logout">
                         Deconnexion
                     </a>
                 <?php }else if(!isset($_SESSION['role'])){ ?>
@@ -32,7 +33,6 @@
                         Connexion / S'inscrire
                     </a>
                 <?php }?>
-            </li>
-        </ul>
+        </p>
     </nav>
 </header>

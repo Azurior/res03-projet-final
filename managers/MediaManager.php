@@ -23,26 +23,23 @@ class MediaManager extends AbstractManager{
         
         $media = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newMedia= new Media($media['type'], $media['filename'], $media['url']);
+        $newMedia= new Media($media['name'], $media['url']);
         
         $newMedia->setId($media['id']);
         
         return $newMedia;
     }
     
-    public function getLastIdMedia(Media $media) : Media
+    public function getLastIdMedia(Media $media) : int
     {
-        $query = $this->db->prepare('SELECT * FROM media WHERE :id, :type, :filename, :url');
+        $query = $this->db->prepare('SELECT * FROM media WHERE id = :id');
         
         $parameters = [
-        'id' => null,
-        'type' => $media->getType(),
-        'filename' => $media->getName(),
-        'url' => $media->getUrl()
+        'id' => $media->getId()
         ];
         
         $query->execute($parameters);
-        
+        $newMedia = $query->fetch(PDO::FETCH_ASSOC);
         $id= $this->db->lastInsertId();
         
         return $id;
@@ -50,33 +47,32 @@ class MediaManager extends AbstractManager{
     
     public function insertMedia(Media $media) : Media
     {
-        $query = $this->db->prepare('INSERT INTO media VALUES(:id, :type, :filename, :url)');
+        $query = $this->db->prepare('INSERT INTO media VALUES(:id, :name, :url)');
         
         $parameters = [
         'id' => null,
-        'type' => $media->getType(),
-        'filename' => $media->getName(),
+        'name' => $media->getName(),
         'url' => $media->getUrl()
         ];
         
         $query->execute($parameters);
+        $newMedia = $query->fetch(PDO::FETCH_ASSOC);
         
         $id = $this->db->LastInsertId();
         $media->setId($id);
 
-        $newMedia = $query->fetch(PDO::FETCH_ASSOC);
+        
         return $this->getMediaById($id);
         
     }
     
     public function updateMedia(Media $media) : Media
     {
-        $query = $this->db->prepare('UPDATE media SET type = :newType, name = :newName, url = :newUrl WHERE id = :id');
+        $query = $this->db->prepare('UPDATE media SET name = :newName, url = :newUrl WHERE id = :id');
         
         $parameters = [
         'id' => $media->getId(),
-        'newType' => $media->getType(),
-        'newFormat' => $media->getName(),
+        'newName' => $media->getName(),
         'newUrl' => $media->getUrl()
         ];
         

@@ -38,7 +38,7 @@ class UserManager extends AbstractManager {
         return $newUser;
     }
     
-    public function getUserByEmail(string $email) : User
+    public function getUserByEmail(string $email) : ?User
     {
         // get the user with $email from the database
         $query = $this->db->prepare('SELECT * FROM users WHERE email = :email');
@@ -48,10 +48,17 @@ class UserManager extends AbstractManager {
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
-        $newUser->setId($user['id']);
+        if($user === false){
+            
+            return null;
+        }
+        else{
+            
+            $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
+            $newUser->setId($user['id']);
         
-        return $newUser;
+            return $newUser;
+        }
     }
 
     public function createUser(User $user) : User
@@ -109,7 +116,7 @@ class UserManager extends AbstractManager {
     public function deleteUser(int $id) : array
     {
         // delete the user from the database
-        $query = $this->db->prepare('DELETE FROM users WHERE :id');
+        $query = $this->db->prepare('DELETE FROM users WHERE id=:id');
         $parameters = [
             'id' => $id
         ];

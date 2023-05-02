@@ -1,3 +1,10 @@
+@charset "UTF-8";
+:root {
+  --white: #f9f9f9;
+  --black: #36383F;
+  --gray: #85888C;
+  --neonblue: #3e9bde;
+} /* variables*/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -63,500 +70,1876 @@ table {
 }
 
 /* Partie Public */
-#public {
-  font-family: "Roboto", sans-serif;
-  background: rgb(0, 18, 36);
-  background: linear-gradient(180deg, rgb(0, 18, 36) 0%, rgb(0, 67, 158) 100%);
-  color: #c5c6c7;
+/* Media Query pour écran d'ordinateur */
+@media (min-width: 1024px) {
+  #public {
+    font-family: "Roboto", sans-serif;
+    background: rgb(0, 18, 36);
+    background: linear-gradient(180deg, rgb(0, 18, 36) 0%, rgb(0, 67, 158) 100%);
+    color: #c5c6c7;
+    overflow-x: hidden;
+  }
+  #public > header {
+    color: white;
+    text-align: center;
+  }
+  #public > header > nav {
+    text-align: center;
+    display: flex;
+    color: white;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+  }
+  #public > header > nav > ul {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > header > nav > ul > li {
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  #public > header > nav > ul > li > a {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > ul > li > a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+  #public > header > nav > p > a {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > #logout:hover {
+    color: red;
+  }
+  #public > header > input {
+    display: none;
+  }
+  #public > header > label {
+    display: none;
+  }
+  #public > #home {
+    min-height: 110vh;
+    margin-top: 5rem;
+  }
+  #public > #home > h1 {
+    color: #0595b5;
+    font-family: "Lobster", cursive;
+    font-size: 7rem;
+    text-align: center;
+  }
+  #public > #home > section:first-of-type {
+    margin-top: 5rem;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #public > #home > section:first-of-type > .wrapper {
+    position: relative;
+    max-width: calc(100vw - 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #public > #home > section:first-of-type > .wrapper > button {
+    display: none;
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #000;
+    box-shadow: 0 0 7px 7px rgba(129, 129, 129, 0.2745098039);
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator1 {
+    left: 0;
+    translate: -50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator2 {
+    right: 0;
+    translate: 50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > i {
+    font-size: 2.3rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > button:hover {
+    filter: brightness(1.2);
+  }
+  #public > #home > section:first-of-type > .wrapper > button:active {
+    filter: brightness(0.8);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container {
+    position: relative;
+    width: 70vw;
+    max-width: 100%;
+    height: 55vh;
+    border: 4px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.25);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    background-color: #ddd;
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider > img {
+    width: 75vw;
+    height: 100%;
+    object-fit: cover;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span {
+    width: 14px;
+    height: 14px;
+    border: 2px solid crimson;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: border 0.3s ease-in-out;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span > .clicked {
+    border-width: 7px;
+  }
+  #public > #home > section:nth-of-type(2) {
+    margin-top: 3rem;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  #public > #home > section:nth-of-type(2) > h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  #public > #home > section:nth-of-type(2) > p {
+    font-size: 1.2rem;
+  }
+  #public > #home > section:nth-of-type(2) > p:first-of-type {
+    margin-top: 2rem;
+  }
+  #public > #authentification {
+    min-height: 100vh;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #authentification > section {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:first-of-type {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-right: 5rem;
+    width: 30vw;
+    height: 60vh;
+  }
+  #public > #authentification > section > section:first-of-type > h3 {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:first-of-type > form {
+    margin-top: 3rem;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input {
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:first-of-type > form > input {
+    margin-top: 2rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-left: 5rem;
+    width: 30vw;
+    height: 60vh;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > h3 {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form {
+    margin-top: 1.5rem;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input {
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #projet {
+    min-height: 80vh;
+    margin-top: 3rem;
+  }
+  #public > #projet > h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #projet > section {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #projet > section > section:first-of-type {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: 2rem;
+    margin-left: auto;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:first-of-type > h3 {
+    margin-top: 10rem;
+    margin-left: 9rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(2) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: 2rem;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:nth-of-type(2) > h3 {
+    margin-top: 10rem;
+    margin-left: 9rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(3) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: auto;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:nth-of-type(3) > h3 {
+    margin-top: 10rem;
+    margin-left: 9rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #devis {
+    min-height: 100vh;
+    margin-top: 5rem;
+  }
+  #public > #devis > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:first-of-type {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  #public > #devis > p:nth-of-type(2) {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:nth-of-type(2) > strong {
+    font-weight: bold;
+    color: red;
+  }
+  #public > #devis > p:nth-of-type(2) > strong > a:visited {
+    color: red;
+  }
+  #public > #devis > section {
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:first-of-type {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+  }
+  #public > #devis > section > section:first-of-type > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:first-of-type > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:first-of-type > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:first-of-type > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(2) {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(3) {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea {
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #construct > h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > footer {
+    margin-top: 1.5rem;
+  }
+  #public > footer > section {
+    border-top: 1px solid #00c9ff;
+  }
+  #public > footer > section > ul {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+  #public > footer > section > ul > li {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+  #public > footer > section > ul > li > a {
+    color: black;
+  }
+  #public > footer > section > p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+/* Media Query pour tablettte */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #public {
+    font-family: "Roboto", sans-serif;
+    background: rgb(0, 18, 36);
+    background: linear-gradient(180deg, rgb(0, 18, 36) 0%, rgb(0, 67, 158) 100%);
+    color: #c5c6c7;
+  }
+  #public > header {
+    color: white;
+    text-align: center;
+  }
+  #public > header > nav {
+    text-align: center;
+    display: flex;
+    color: white;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+  }
+  #public > header > nav > ul {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > header > nav > ul > li {
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  #public > header > nav > ul > li > a {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > ul > li > a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+  #public > header > nav > p > a {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > #logout:hover {
+    color: red;
+  }
+  #public > header > input {
+    display: none;
+  }
+  #public > header > label {
+    display: none;
+  }
+  #public > #home {
+    min-height: 110vh;
+    margin-top: 5rem;
+  }
+  #public > #home > h1 {
+    color: #0595b5;
+    font-family: "Lobster", cursive;
+    font-size: 7rem;
+    text-align: center;
+  }
+  #public > #home > section:first-of-type {
+    margin-top: 5rem;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #public > #home > section:first-of-type > .wrapper {
+    position: relative;
+    max-width: calc(100vw - 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #public > #home > section:first-of-type > .wrapper > button {
+    display: none;
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #000;
+    box-shadow: 0 0 7px 7px rgba(129, 129, 129, 0.2745098039);
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator1 {
+    left: 0;
+    translate: -50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator2 {
+    right: 0;
+    translate: 50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > i {
+    font-size: 2.3rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > button:hover {
+    filter: brightness(1.2);
+  }
+  #public > #home > section:first-of-type > .wrapper > button:active {
+    filter: brightness(0.8);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container {
+    position: relative;
+    width: 70vw;
+    max-width: 100%;
+    height: 55vh;
+    border: 4px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.25);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    background-color: #ddd;
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider > img {
+    width: 75vw;
+    height: 100%;
+    object-fit: cover;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span {
+    width: 14px;
+    height: 14px;
+    border: 2px solid crimson;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: border 0.3s ease-in-out;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span > .clicked {
+    border-width: 7px;
+  }
+  #public > #home > section:nth-of-type(2) {
+    margin-top: 3rem;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  #public > #home > section:nth-of-type(2) > h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  #public > #home > section:nth-of-type(2) > p {
+    font-size: 1.2rem;
+  }
+  #public > #home > section:nth-of-type(2) > p:first-of-type {
+    margin-top: 2rem;
+  }
+  #public > #authentification {
+    min-height: 100vh;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #authentification > section {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:first-of-type {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-right: 5rem;
+    width: 30vw;
+    height: 60vh;
+  }
+  #public > #authentification > section > section:first-of-type > h3 {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:first-of-type > form {
+    margin-top: 3rem;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input {
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:first-of-type > form > input {
+    margin-top: 2rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-left: 5rem;
+    width: 30vw;
+    height: 60vh;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > h3 {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form {
+    margin-top: 1.5rem;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input {
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #projet {
+    min-height: 80vh;
+    margin-top: 3rem;
+  }
+  #public > #projet > h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #projet > section {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #projet > section > section:first-of-type {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: 2rem;
+    margin-left: auto;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:first-of-type > h3 {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(2) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: 2rem;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:nth-of-type(2) > h3 {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(3) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 40vh;
+    width: 25%;
+    margin-right: auto;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:nth-of-type(3) > h3 {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #devis {
+    min-height: 100vh;
+    margin-top: 5rem;
+  }
+  #public > #devis > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:first-of-type {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  #public > #devis > p:nth-of-type(2) {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:nth-of-type(2) > strong {
+    font-weight: bold;
+    color: red;
+  }
+  #public > #devis > p:nth-of-type(2) > strong > a:visited {
+    color: red;
+  }
+  #public > #devis > section {
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:first-of-type {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+  }
+  #public > #devis > section > section:first-of-type > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:first-of-type > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:first-of-type > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:first-of-type > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(2) {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(3) {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea {
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #construct > h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > footer {
+    margin-top: 1.5rem;
+  }
+  #public > footer > section {
+    border-top: 1px solid #00c9ff;
+  }
+  #public > footer > section > ul {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+  #public > footer > section > ul > li {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+  #public > footer > section > ul > li > a {
+    color: black;
+  }
+  #public > footer > section > p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+/* Media Query pour smartphone */
+@media (max-width: 767px) {
+  #public {
+    min-height: 150vh;
+    margin-top: 0px;
+    font-family: "Roboto", sans-serif;
+    background: rgb(0, 18, 36);
+    background: linear-gradient(180deg, rgb(0, 18, 36) 0%, rgb(0, 67, 158) 100%);
+    color: #c5c6c7;
+  }
+  #public > header {
+    background-color: rgb(0, 18, 36);
+    width: 100%;
+  }
+  #public > header > nav {
+    width: 100%;
+    height: 25vh;
+    background-color: rgb(0, 18, 36);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+  }
+  #public > header > nav > ul > li > a {
+    font-size: 1rem;
+    display: block;
+    padding: 1rem;
+    color: var(--white);
+    text-decoration: none;
+  }
+  #public > header > nav > ul > li > a:hover {
+    text-decoration: underline #00c9ff;
+    background-color: var(--gray);
+  }
+  #public > header > nav > p {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+  #public > header > nav > p > a {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  #public > header > nav > p > #logout:hover {
+    color: red;
+  }
+  #public > header > label {
+    cursor: pointer;
+    padding: 0.1rem 2rem;
+  }
+  #public > header > label > span {
+    background: var(--white);
+    display: block;
+    height: 0.1rem;
+    position: relative;
+    width: 1.5rem;
+  }
+  #public > header > label > span::before, #public > header > label span::after {
+    background: var(--white);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.5s ease-out;
+    width: 100%;
+  }
+  #public > header > label > span::before {
+    top: 0.3rem;
+  }
+  #public > header > label > span::after {
+    top: -0.3rem;
+  }
+  #public > header > input {
+    display: none;
+  }
+  #public > header > input:checked ~ nav {
+    max-height: 100%;
+  }
+  #public > header > input:checked ~ .hamb .hamb-line {
+    background: transparent;
+  }
+  #public > header > input:checked ~ .hamb .hamb-line::before {
+    transform: rotate(315deg);
+    top: 0;
+  }
+  #public > header > input:checked ~ .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  #public > #home {
+    min-height: 110vh;
+    margin-top: 5rem;
+  }
+  #public > #home > h1 {
+    color: #0595b5;
+    font-family: "Lobster", cursive;
+    font-size: 4rem;
+    text-align: center;
+  }
+  #public > #home > section:first-of-type {
+    margin-top: 5rem;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #public > #home > section:first-of-type > .wrapper {
+    position: relative;
+    min-width: calc(75vw - 4rem);
+    max-width: calc(100vw - 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #public > #home > section:first-of-type > .wrapper > button {
+    display: none;
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #000;
+    box-shadow: 0 0 7px 7px rgba(129, 129, 129, 0.2745098039);
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator1 {
+    left: 0;
+    translate: -50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > .navigator2 {
+    right: 0;
+    translate: 50%;
+  }
+  #public > #home > section:first-of-type > .wrapper > button > i {
+    font-size: 2.3rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > button:hover {
+    filter: brightness(1.2);
+  }
+  #public > #home > section:first-of-type > .wrapper > button:active {
+    filter: brightness(0.8);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container {
+    position: relative;
+    width: 70vw;
+    max-width: 100%;
+    height: 55vh;
+    border: 4px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.25);
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    background-color: #ddd;
+  }
+  #public > #home > section:first-of-type > .wrapper > .container > .slider > img {
+    width: 75vw;
+    height: 100%;
+    object-fit: cover;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span {
+    width: 14px;
+    height: 14px;
+    border: 2px solid crimson;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: border 0.3s ease-in-out;
+  }
+  #public > #home > section:first-of-type > .wrapper > .dot > span > .clicked {
+    border-width: 7px;
+  }
+  #public > #home > section:nth-of-type(2) {
+    margin-top: 3rem;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  #public > #home > section:nth-of-type(2) > h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  #public > #home > section:nth-of-type(2) > p {
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+  }
+  #public > #home > section:nth-of-type(2) > p:first-of-type {
+    margin-top: 2rem;
+  }
+  #public > #authentification {
+    min-height: 150vh;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #authentification > section {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #authentification > section > section:first-of-type {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    height: 40vh;
+  }
+  #public > #authentification > section > section:first-of-type > h3 {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:first-of-type > form {
+    margin-top: 1rem;
+    width: 50vw;
+    margin-left: 3rem;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > label {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input {
+    width: 25vw;
+    height: 3vh;
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:first-of-type > form > input {
+    margin-top: 0.3rem;
+    width: 20vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) {
+    border: solid 1px rgba(4, 217, 255, 0.7);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    height: 68vh;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > h3 {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form {
+    margin-top: 1rem;
+    width: 50vw;
+    margin-left: 3rem;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > label {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input {
+    width: 25vw;
+    height: 3vh;
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #authentification > section > section:nth-of-type(2) > form > input {
+    margin-top: 0.3rem;
+    width: 20vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+  }
+  #public > #projet {
+    min-height: 60vh;
+    margin-top: 3rem;
+  }
+  #public > #projet > h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  #public > #projet > section {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #projet > section > section:first-of-type {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 30vh;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    background-color: #64afc3;
+    margin-bottom: 1.5rem;
+  }
+  #public > #projet > section > section:first-of-type > h3 {
+    margin-top: 5rem;
+    margin-left: 2rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(2) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 30vh;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    background-color: #64afc3;
+    margin-bottom: 1.5rem;
+  }
+  #public > #projet > section > section:nth-of-type(2) > h3 {
+    margin-top: 5rem;
+    margin-left: 2rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #projet > section > section:nth-of-type(3) {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 30vh;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    background-color: #64afc3;
+  }
+  #public > #projet > section > section:nth-of-type(3) > h3 {
+    margin-top: 5rem;
+    margin-left: 2rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > #devis {
+    min-height: 100vh;
+    margin-top: 5rem;
+  }
+  #public > #devis > h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:first-of-type {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  #public > #devis > p:nth-of-type(2) {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  #public > #devis > p:nth-of-type(2) > strong {
+    font-weight: bold;
+    color: red;
+  }
+  #public > #devis > p:nth-of-type(2) > strong > a:visited {
+    color: red;
+  }
+  #public > #devis > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 2.5rem;
+  }
+  #public > #devis > section > section:first-of-type {
+    width: 80vw;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:first-of-type > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:first-of-type > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 35vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:first-of-type > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:first-of-type > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:first-of-type > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:first-of-type > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(2) {
+    width: 80vw;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form {
+    margin-top: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 35vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a {
+    color: #c5c6c7;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(2) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #devis > section > section:nth-of-type(3) {
+    width: 80vw;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input {
+    margin-bottom: 1rem;
+    width: 35vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea {
+    margin-bottom: 1rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p {
+    margin-bottom: 1rem;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a {
+    color: #c5c6c7;
+    text-decoration: underline;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
+    color: #c5c6c7;
+    text-decoration: none;
+  }
+  #public > #devis > section > section:nth-of-type(3) > form > input {
+    margin-top: 1.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #construct > h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #public > footer {
+    margin-top: 1.5rem;
+  }
+  #public > footer > section {
+    border-top: 1px solid #00c9ff;
+  }
+  #public > footer > section > ul {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+  #public > footer > section > ul > li {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+  #public > footer > section > ul > li > a {
+    color: black;
+  }
+  #public > footer > section > p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 }
-#public > header {
-  color: white;
-  text-align: center;
-}
-#public > header > nav {
-  color: white;
-  text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-#public > header > nav > ul {
-  display: flex;
-  justify-content: center;
-}
-#public > header > nav > ul > li {
-  font-size: 1.5rem;
-  margin-left: 1.5rem;
-}
-#public > header > nav > ul > li > a {
-  color: white;
-  text-decoration: none;
-}
-#public > header > nav > ul > li > a:visited {
-  color: white;
-  text-decoration: none;
-}
-#public > header > nav > ul li:nth-of-type(4) {
-  justify-content: end;
-}
-#public > #home {
-  min-height: 110vh;
-  margin-top: 5rem;
-}
-#public > #home > h1 {
-  color: #0595b5;
-  font-family: "Lobster", cursive;
-  font-size: 7rem;
-  text-align: center;
-}
-#public > #home > section:first-of-type {
-  margin-top: 5rem;
-  height: 55vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#public > #home > section:first-of-type > .wrapper {
-  position: relative;
-  max-width: calc(100vw - 4rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-#public > #home > section:first-of-type > .wrapper > button {
-  display: none;
-  position: absolute;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  color: #000;
-  box-shadow: 0 0 7px 7px rgba(129, 129, 129, 0.2745098039);
-}
-#public > #home > section:first-of-type > .wrapper > button > .navigator1 {
-  left: 0;
-  translate: -50%;
-}
-#public > #home > section:first-of-type > .wrapper > button > .navigator2 {
-  right: 0;
-  translate: 50%;
-}
-#public > #home > section:first-of-type > .wrapper > button > i {
-  font-size: 2.3rem;
-}
-#public > #home > section:first-of-type > .wrapper > button:hover {
-  filter: brightness(1.2);
-}
-#public > #home > section:first-of-type > .wrapper > button:active {
-  filter: brightness(0.8);
-}
-#public > #home > section:first-of-type > .wrapper > .container {
-  position: relative;
-  width: 70vw;
-  max-width: 100%;
-  height: 55vh;
-  border: 4px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.25);
-}
-#public > #home > section:first-of-type > .wrapper > .container > .slider {
-  display: flex;
-  position: relative;
-  width: fit-content;
-  height: 100%;
-  background-color: #ddd;
-}
-#public > #home > section:first-of-type > .wrapper > .container > .slider > img {
-  width: 75vw;
-  height: 100%;
-  object-fit: cover;
-}
-#public > #home > section:first-of-type > .wrapper > .dot {
-  display: flex;
-  position: relative;
-  margin-top: 1rem;
-}
-#public > #home > section:first-of-type > .wrapper > .dot > span {
-  width: 14px;
-  height: 14px;
-  border: 2px solid crimson;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: border 0.3s ease-in-out;
-}
-#public > #home > section:first-of-type > .wrapper > .dot > span > .clicked {
-  border-width: 7px;
-}
-#public > #home > section:nth-of-type(2) {
-  margin-top: 3rem;
-  width: 45%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-#public > #home > section:nth-of-type(2) > h2 {
-  font-weight: bold;
-  font-size: 1.8rem;
-}
-#public > #home > section:nth-of-type(2) > p {
-  font-size: 1.2rem;
-}
-#public > #home > section:nth-of-type(2) > p:first-of-type {
-  margin-top: 2rem;
-}
-#public > #authentification {
-  min-height: 100vh;
-  margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
-#public > #authentification > h1 {
-  font-weight: bold;
-  font-size: 2rem;
-  margin-bottom: 5rem;
-  text-align: center;
-}
-#public > #authentification > section {
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
-}
-#public > #authentification > section > section:first-of-type {
-  border: solid 1px rgba(4, 217, 255, 0.7);
-  border-radius: 1rem;
-  box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
-  margin-right: 5rem;
-  width: 30vw;
-  height: 60vh;
-}
-#public > #authentification > section > section:first-of-type > h3 {
-  margin-top: 2.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-#public > #authentification > section > section:first-of-type > form {
-  margin-top: 3rem;
-  width: 20vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-#public > #authentification > section > section:first-of-type > form > fieldset {
-  display: flex;
-  flex-direction: column;
-}
-#public > #authentification > section > section:first-of-type > form > fieldset > label {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-#public > #authentification > section > section:first-of-type > form > fieldset > input {
-  width: 15vw;
-  height: 3vh;
-  margin-bottom: 1.5rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #authentification > section > section:first-of-type > form > fieldset > input:focus {
-  outline: thick double #32a1ce;
-}
-#public > #authentification > section > section:first-of-type > form > input {
-  margin-top: 2rem;
-  width: 8vw;
-  height: 4vh;
-  background-color: #00a6c3;
-  border: none;
-}
-#public > #authentification > section > section:nth-of-type(2) {
-  border: solid 1px rgba(4, 217, 255, 0.7);
-  border-radius: 1rem;
-  box-shadow: 2px 2px 2px 2px rgba(4, 217, 255, 0.3);
-  margin-left: 5rem;
-  width: 30vw;
-  height: 60vh;
-}
-#public > #authentification > section > section:nth-of-type(2) > h3 {
-  margin-top: 2.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-#public > #authentification > section > section:nth-of-type(2) > form {
-  margin-top: 1.5rem;
-  width: 20vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-#public > #authentification > section > section:nth-of-type(2) > form > fieldset {
-  display: flex;
-  flex-direction: column;
-}
-#public > #authentification > section > section:nth-of-type(2) > form > fieldset > label {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-#public > #authentification > section > section:nth-of-type(2) > form > fieldset > input {
-  width: 15vw;
-  height: 3vh;
-  margin-bottom: 1rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #authentification > section > section:nth-of-type(2) > form > fieldset > input:focus {
-  outline: thick double #32a1ce;
-}
-#public > #authentification > section > section:nth-of-type(2) > form > input {
-  margin-top: 1.5rem;
-  width: 8vw;
-  height: 4vh;
-  background-color: #00a6c3;
-  border: none;
-}
-#public > #projet {
-  min-height: 100vh;
-}
-#public > #devis {
-  min-height: 100vh;
-  margin-top: 5rem;
-}
-#public > #devis > h1 {
-  font-weight: bold;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-#public > #devis > p:first-of-type {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-#public > #devis > p:nth-of-type(2) {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-#public > #devis > p:nth-of-type(2) > strong {
-  font-weight: bold;
-  color: red;
-}
-#public > #devis > p:nth-of-type(2) > strong > a:visited {
-  color: red;
-}
-#public > #devis > section {
-  display: flex;
-  justify-content: center;
-  margin-right: auto;
-  margin-left: auto;
-}
-#public > #devis > section > section:first-of-type {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  margin-right: 3rem;
-}
-#public > #devis > section > section:first-of-type > h3 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
-#public > #devis > section > section:first-of-type > form {
-  margin-top: 3rem;
-  width: 65%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#public > #devis > section > section:first-of-type > form > fieldset {
-  display: flex;
-  flex-direction: column;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > label {
-  margin-bottom: 0.5rem;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > input {
-  margin-bottom: 1rem;
-  width: 15vw;
-  height: 3vh;
-  margin-bottom: 1.5rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > input:focus {
-  outline: thick double #32a1ce;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > .inputColor {
-  width: 5vh;
-  border: 2px double #32a1ce;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > .inputFile {
-  background-color: transparent;
-}
-#public > #devis > section > section:first-of-type > form > fieldset > .inputFile:focus {
-  outline: solid black;
-}
-#public > #devis > section > section:first-of-type > form > p {
-  margin-bottom: 1rem;
-}
-#public > #devis > section > section:first-of-type > form > p > a {
-  color: #c5c6c7;
-}
-#public > #devis > section > section:first-of-type > form > p > a:visited {
-  color: #c5c6c7;
-  text-decoration: none;
-}
-#public > #devis > section > section:first-of-type > form > input {
-  margin-top: 1.5rem;
-  width: 8vw;
-  height: 4vh;
-  background-color: #00a6c3;
-  border: none;
-  color: white;
-}
-#public > #devis > section > section:nth-of-type(2) {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  margin-right: 3rem;
-}
-#public > #devis > section > section:nth-of-type(2) > h3 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
-#public > #devis > section > section:nth-of-type(2) > form {
-  margin-top: 3rem;
-  width: 65%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset {
-  display: flex;
-  flex-direction: column;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > label {
-  margin-bottom: 0.5rem;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > input {
-  margin-bottom: 1rem;
-  width: 15vw;
-  height: 3vh;
-  margin-bottom: 1.5rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > input:focus {
-  outline: thick double #32a1ce;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputColor {
-  width: 5vh;
-  border: 2px double #32a1ce;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile {
-  background-color: transparent;
-}
-#public > #devis > section > section:nth-of-type(2) > form > fieldset > .inputFile:focus {
-  outline: solid black;
-}
-#public > #devis > section > section:nth-of-type(2) > form > p {
-  margin-bottom: 1rem;
-}
-#public > #devis > section > section:nth-of-type(2) > form > p > a {
-  color: #c5c6c7;
-}
-#public > #devis > section > section:nth-of-type(2) > form > p > a:visited {
-  color: #c5c6c7;
-  text-decoration: none;
-}
-#public > #devis > section > section:nth-of-type(2) > form > input {
-  margin-top: 1.5rem;
-  width: 8vw;
-  height: 4vh;
-  background-color: #00a6c3;
-  border: none;
-  color: white;
-}
-#public > #devis > section > section:nth-of-type(3) {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-}
-#public > #devis > section > section:nth-of-type(3) > h3 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
-#public > #devis > section > section:nth-of-type(3) > form {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  width: 65%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset {
-  display: flex;
-  flex-direction: column;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > label {
-  margin-bottom: 0.5rem;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > input {
-  margin-bottom: 1rem;
-  width: 15vw;
-  height: 3vh;
-  margin-bottom: 1.5rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > input:focus {
-  outline: thick double #32a1ce;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputColor {
-  width: 5vh;
-  border: 2px double #32a1ce;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile {
-  background-color: transparent;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > .inputFile:focus {
-  outline: solid black;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea {
-  margin-bottom: 1rem;
-  background-color: #0098b3;
-  border: none;
-}
-#public > #devis > section > section:nth-of-type(3) > form > fieldset > textarea:focus {
-  outline: thick double #32a1ce;
-}
-#public > #devis > section > section:nth-of-type(3) > form > p {
-  margin-bottom: 1rem;
-}
-#public > #devis > section > section:nth-of-type(3) > form > p > a {
-  color: #c5c6c7;
-  text-decoration: none;
-}
-#public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
-  color: #c5c6c7;
-  text-decoration: none;
-}
-#public > #devis > section > section:nth-of-type(3) > form > input {
-  margin-top: 1.5rem;
-  width: 8vw;
-  height: 4vh;
-  background-color: #00a6c3;
-  border: none;
-  color: white;
-}
-
-/* Partie Admin */
 
 /*# sourceMappingURL=style.css.map */

@@ -67,37 +67,47 @@ class AuthController extends AbstractController {
         if(isset($_POST['formLogin']))
         {
             // récupérer les champs du formulaire
-            $email = $_POST["login-email"];
-            $password = $_POST["login-password"];
+            $email = $_POST["loginEmail"];
+            $password = $_POST["loginPassword"];
             
             // utiliser le manager pour vérifier si un utilisateur avec cet email existe
             $user = $this->um->getUserByEmail($email);
             
-            if($user->getEmail() === $email) // si il existe, vérifier son mot de passe 
-            {
-                if(password_verify($password, $user->getPassword())) // si il est bon, connecter l'utilisateur 
-                {
-                    $_SESSION['id'] = $user->getId();
-                    $_SESSION["user"] = $user->getUser();
-                    $_SESSION["role"] = $user->getRole();
-                    header("Location: /res03-projet-final/home");
-                }
-                else // si il n'est pas bon renvoyer sur la page de connexion 
-                {
-                    echo 'mauvais mot de passe';
-                    //header("Location: /res03-projet-final/authentificator");
-                }
+            if($user === null){
+                
+                $_SESSION['formErrorMail'] = "L'adresse mail utilisé n'existe pas";
+                header("Location: /res03-projet-final/authentificator");
+                
             }
-            else // si il n'existe pas renvoyer vers la page de connexion
+            else
             {
-                echo '$user = false';
-                //header("Location: /res03-projet-final/authentificator");
+                if($user->getEmail() === $email) // si il existe, vérifier son mot de passe 
+                {
+                    if(password_verify($password, $user->getPassword())) // si il est bon, connecter l'utilisateur 
+                    {
+                        $_SESSION['id'] = $user->getId();
+                        $_SESSION['email'] = $user->getEmail();
+                        $_SESSION["user"] = $user->getUser();
+                        $_SESSION["role"] = $user->getRole();
+                        header("Location: /res03-projet-final/home");
+                    }
+                    else // si il n'est pas bon renvoyer sur la page de connexion 
+                    {
+                        
+                        $_SESSION["formErrorPassword"] = "Votre mot de passe n'est pas bon";
+                        header("Location: /res03-projet-final/authentificator");
+                    }
+                }
+                else // si il n'existe pas renvoyer vers la page de connexion
+                {
+                    $_SESSION['formErrorMail'] = "L'adresse mail utilisé n'existe pas";
+                    header("Location: /res03-projet-final/authentificator");
+                }
             }
         }
         else
         {
-            echo 'formLogin = false';
-            //header("Location: /res03-projet-final/authentificator");
+            header("Location: /res03-projet-final/authentificator");
         }
     }
     

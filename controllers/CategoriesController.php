@@ -56,30 +56,18 @@ class CategoriesController extends AbstractController{
     {
         
         $error = "";
-        if(isset($post["formName"]) && !empty($post["formName"])){
+        if(isset($_POST["formUpload"]) && !empty($_POST["formUpload"])){
 
-            foreach($post as $field){
-
-                if(empty($field)){
-    
-                    $error = "Il faut remplir tous les champs !";
-                }
-            }
-            if($error !== ""){
-                
-                echo $error;
-
-            }else{
-                
                 $title = $_POST['title'];
-                $media = $this->mediaManager->insertMedia($this->uploader->upload($_FILES, "category-image"));
-                $idMedia = $this-mediaManager->getLastIdMedia($media);
+                $upload = $this->uploader->upload($_FILES, 'image');
+                $media = $this->mediaManager->insertMedia($upload);
                 
-                $category = new Categories($title, $media, $idMedia);
+                $idMedia = $this->mediaManager->getLastIdMedia($media);
+                
+                $category = new Categories($title, $idMedia);
                 $newCategories = $this->cm->createCategories($category);
                 
                 header('Location: /res03-projet-final/admin/categories');
-            }
         }
         else
         {
@@ -98,7 +86,7 @@ class CategoriesController extends AbstractController{
             $uploader = new Uploader();
             $media = $uploader->upload($_FILES, "image");
             
-            $car = new User(null, $title, $media);
+            $car = new User(null, $title, $media, null);
             $car = $this->cm->updateCatageories($post);
             
         }

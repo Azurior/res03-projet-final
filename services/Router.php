@@ -199,7 +199,7 @@ class Router {
             }
             
             // Projet
-            else if($tab[0] === "admin" && $tab[1] !== null && $tab[2] === "create" && !isset($tab[3])) // page de création de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] === "create" && !isset($tab[3])) // page de création de projet
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -207,7 +207,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[2];
         
             }
-            else if($tab[0] === "admin" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "edit" && !isset($tab[4])) // page d'édit de projet
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -216,7 +216,7 @@ class Router {
                 $routeAndParams["methode"] = $tab[3];
                 
             }
-            else if($tab[0] === "admin" && $tab[1] !== null && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
+            else if($tab[0] === "admin" && $tab[1] === 'projects' && $tab[2] !== null && $tab[3] === "delete" && !isset($tab[4])) // page de suppression de projet
             {  
                  
                 $routeAndParams["route"] = "admin";
@@ -501,7 +501,7 @@ class Router {
                 
                 if($routeTab["sub-route"] === 'projects'){
                     
-                    $this->projectsController->create(); // appeler la méthode du controlleur pour créer un post
+                    $this->projectsController->create($post); // appeler la méthode du controlleur pour créer un post
                     
                 }else if ($routeTab["sub-route"] === 'categories'){
                     
@@ -518,7 +518,7 @@ class Router {
                 
             }
             
-            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'users' && $routeTab["user-id"] !== null && $routeTab["methode"] === "edit"){
+            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["methode"] === "edit"){
                 
                 $this->userController->updateUser($routeTab["user-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
                 
@@ -566,15 +566,15 @@ class Router {
                 
             }
             
-            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'users' && $routeTab["user-id"] !== null && $routeTab["methode"] === "delete"){
+            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["methode"] === "delete"){
                 
-                $this->userController->deleteUser($routeTab["user-id"]); // appeler la méthode du controlleur pour supprimer un utilisateur
+                $this->userController->deleteUser(intval($routeTab["user-id"])); // appeler la méthode du controlleur pour supprimer un utilisateur
                 
             }
             
             else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'projects' && $routeTab["project-id"] !== null && $routeTab["methode"] === "delete"){
                 
-                $this->projectController->deleteProject($routeTab["projects-id"]); // appeler la méthode du controlleur pour supprimer un projet
+                $this->projectsController->deleteProject(intval($routeTab["project-id"])); // appeler la méthode du controlleur pour supprimer un projet
                 
             }
             
@@ -598,19 +598,19 @@ class Router {
             
             else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devislogo' && $routeTab["devislogo-id"] !== null && $routeTab["methode"] === "delete"){
                 
-                $this->devisController->devisLogoDelete($routeTab["devislogo-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+                $this->devisController->devisLogoDelete(intval($routeTab["devislogo-id"])); // appeler la méthode du controlleur pour afficher tout les utilisateurs
                 
             }
             
             else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'deviswallpaper' && $routeTab["deviswallpaper-id"] !== null && $routeTab["methode"] === "delete"){
                 
-                $this->devisController->devisWallpaperDelete($routeTab["deviswallpaper-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+                $this->devisController->devisWallpaperDelete(intval($routeTab["deviswallpaper-id"])); // appeler la méthode du controlleur pour afficher tout les utilisateurs
                 
             }
             
             else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'devisscene' && $routeTab["devisscene-id"] !== null && $routeTab["methode"] === "delete"){
                 
-                $this->devisController->getAllDevisSceneDelete($routeTab["devisscene-id"]); // appeler la méthode du controlleur pour afficher tout les utilisateurs
+                $this->devisController->devisSceneDelete(intval($routeTab["devisscene-id"])); // appeler la méthode du controlleur pour afficher tout les utilisateurs
                 
             }
             
