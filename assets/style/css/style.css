@@ -1250,7 +1250,6 @@ table {
   }
   #public > #devis > section > section:nth-of-type(3) > form > p > a {
     color: #c5c6c7;
-    text-decoration: none;
   }
   #public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
     color: #c5c6c7;
@@ -1509,7 +1508,7 @@ table {
     font-size: 1.8rem;
   }
   #public > #home > section:nth-of-type(2) > p {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-size: 1.2rem;
   }
   #public > #home > section:nth-of-type(2) > p:first-of-type {
@@ -1788,7 +1787,8 @@ table {
   }
   #public > #devis > section > section:first-of-type > form > input {
     margin-top: 1.5rem;
-    width: 8vw;
+    margin-bottom: 1rem;
+    width: 17vw;
     height: 4vh;
     background-color: #00a6c3;
     border: none;
@@ -1855,7 +1855,8 @@ table {
   }
   #public > #devis > section > section:nth-of-type(2) > form > input {
     margin-top: 1.5rem;
-    width: 8vw;
+    margin-bottom: 1rem;
+    width: 17vw;
     height: 4vh;
     background-color: #00a6c3;
     border: none;
@@ -1930,7 +1931,8 @@ table {
   }
   #public > #devis > section > section:nth-of-type(3) > form > input {
     margin-top: 1.5rem;
-    width: 8vw;
+    margin-bottom: 1rem;
+    width: 17vw;
     height: 4vh;
     background-color: #00a6c3;
     border: none;

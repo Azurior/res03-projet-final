@@ -1707,7 +1707,7 @@
                             & > a{
                                 
                                 color: #c5c6c7;
-                                text-decoration: none;
+                                
                             }
                             
                             & > a:visited{
@@ -1733,7 +1733,7 @@
             }
             
             
-        }
+    }
         
         & > #construct{
             
@@ -2083,7 +2083,7 @@
                 
                 & > p{
                     
-                    margin-bottom: 0.8rem;
+                    margin-bottom: 1rem;
                     font-size: 1.2rem;
                 }
                 
@@ -2337,7 +2337,6 @@
             min-height: 100vh;
             margin-top: 5rem;
             
-            
             & > h1{
                 
                 font-weight: bold;
@@ -2466,7 +2465,8 @@
                         & > input{
                             
                             margin-top: 1.5rem;
-                            width: 8vw;
+                            margin-bottom: 1rem;
+                            width: 17vw;
                             height: 4vh;
                             background-color: #00a6c3;
                             border: none;
@@ -2569,7 +2569,8 @@
                         & > input{
                             
                             margin-top: 1.5rem;
-                            width: 8vw;
+                            margin-bottom: 1rem;
+                            width: 17vw;
                             height: 4vh;
                             background-color: #00a6c3;
                             border: none;
@@ -2680,7 +2681,8 @@
                         & > input{
                             
                             margin-top: 1.5rem;
-                            width: 8vw;
+                            margin-bottom: 1rem;
+                            width: 17vw;
                             height: 4vh;
                             background-color: #00a6c3;
                             border: none;
@@ -2691,8 +2693,6 @@
                     }
                 }
             }
-            
-            
         }
         
         & > #construct{
