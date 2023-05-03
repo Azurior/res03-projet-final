@@ -2,12 +2,12 @@
 
 /* Déclaration des variables */
 let imgArray = [
-  "https://i.goopics.net/a6bizj.png",
-  "https://i.goopics.net/3egh2v.png",
-  "https://i.goopics.net/zhe9zk.png",
-  "https://i.goopics.net/h1bbbi.png",
-  "https://i.goopics.net/wb3uxh.png",
-  "https://i.goopics.net/lxasv9.png"
+  "https://i.goopics.net/5rl4ug.jpg",
+  "https://i.goopics.net/f83yt5.jpg",
+  "https://i.goopics.net/tnlkko.jpg",
+  "https://i.goopics.net/2f3h2z.jpg",
+  "https://i.goopics.net/1sib4e.jpg",
+  "https://i.goopics.net/zjag8p.jpg"
 ];
 let counter = 1;
 let interval = "";
@@ -32,7 +32,7 @@ let dots = "";
 let firstClone = `<img src = "${slides[0].src}" id='firstClone'>`;
 let lastClone = `<img src = "${slides[slides.length - 1].src}" id='lastClone'>`;
 
-/**/
+/*Permet aux images un effet de slide entre elle*/
 slider.innerHTML = lastClone + slider.innerHTML + firstClone;
 slides = slider.querySelectorAll("img");
 slides.forEach((slides1) => {

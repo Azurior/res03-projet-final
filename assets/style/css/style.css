@@ -634,7 +634,6 @@ table {
   }
   #public > #devis > section > section:nth-of-type(3) > form > p > a {
     color: #c5c6c7;
-    text-decoration: none;
   }
   #public > #devis > section > section:nth-of-type(3) > form > p > a:visited {
     color: #c5c6c7;

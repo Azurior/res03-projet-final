@@ -43,7 +43,7 @@ class AuthController extends AbstractController {
                 $_SESSION["user"] = $user;
                 
                 // le renvoyer vers l'accueil
-                header("Location: /res03-projet-final/home");
+                header("Location: /res03-projet-final/authentificator");
             }
             else
             {

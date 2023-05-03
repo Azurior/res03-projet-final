@@ -76,7 +76,7 @@ class CategoriesManager extends AbstractManager {
             'id' => null,
             'title' => $categories->getTitle(),
             'idMedia' => $categories->getIdMedia(),
-            'idArticle' => null
+            'idArticle' => $categories->getIdArticles()
         ];
         $query->execute($parameters);
         
