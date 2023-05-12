@@ -90,6 +90,15 @@
                     & > #logout:hover{
                         color: red;
                     }
+                    
+                    & > #user:hover{
+                        color:#09ec33;
+                    }
+                    
+                    & > #admin:hover{
+                        text-decoration: underline;
+                        text-decoration-color:#ec8409;
+                    }
                 }
 
             }
@@ -100,6 +109,150 @@
             
             & > label{
                 display:none;
+            }
+        }
+        
+        & > #user{
+            
+            height: 81vh;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            
+            & > h1{
+                
+                
+                text-align: center;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            
+            & > section:first-of-type{
+                
+                display: flex;
+                flex-direction: row;
+                margin-left: auto;
+                margin-right: auto;
+                
+                & > section:first-of-type{
+                
+                    padding-top: 1.8rem;
+                    padding-bottom : 1.8rem;
+                    border-radius: 0.5rem;
+                    margin-right: 3rem;
+                
+                    & > p{
+                        
+                        text-align: center;
+                        font-size: 1.3rem;
+                        margin-top: 1rem;
+                    }
+                
+                }
+            
+                & > section:nth-of-type(2){
+                    
+                    padding-top: 1.8rem;
+                    padding-bottom : 1.8rem;
+                    border-radius: 0.5rem;
+                
+                    & > p{
+                        
+                        text-align: center;
+                        font-size: 1.3rem;
+                        margin-top: 1rem;
+                    }
+                    
+                }
+            }
+            
+            & > section:nth-of-type(2){
+                
+                display: flex;
+                flex-direction: column;
+                margin-right:auto;
+                margin-left:auto;
+                
+                & > section:first-of-type{
+                
+                    margin-top: 0.5rem;
+                    text-align: center;
+                    margin-right: 3rem;
+                    
+                    & > h3{
+                        
+                        font-size: 1.3rem;
+                        margin-bottom: 1rem;
+                    }
+                    
+                    & > form{
+                        
+                        & > fieldset{
+                                
+                                
+                                display: flex;
+                                flex-direction: column;
+                                
+                                & > label{
+                                    
+                                    margin-bottom: 0.5rem;
+                                }
+                                
+                                & > input{
+                                    
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    margin-bottom: 1rem;
+                                    width: 15vw;
+                                    height: 3vh;
+                                    margin-bottom: 1.5rem;
+                                    background-color: #0098b3;
+                                    border: none;
+                                }
+                                
+                                & > input:focus{
+                                    
+                                    outline: thick double #32a1ce;;
+                                }
+                                
+                                & > .inputColor{
+                                    
+                                    width: 5vh;
+                                    border: 2px double #32a1ce;
+                                    
+                                }
+                                
+                                & > .inputFile{
+                                    
+                                    background-color: transparent;
+                                }
+                                
+                                & > .inputFile:focus{
+                                    
+                                    outline: solid black;
+                                }
+                                
+                                
+                            }
+                            
+                         & > input{
+                                
+                            margin-top: 0.5rem;
+                            width: 8vw;
+                            height: 4vh;
+                            background-color: #00a6c3;
+                            border: none;
+                            color: white;
+                        }
+                    }
+                }
+                
+                & > p{
+                    color:#09ec33;
+                    margin-top:1rem;
+                    text-align:center;
+                }
+            
             }
         }
         
@@ -114,6 +267,19 @@
                 font-family: 'Lobster', cursive;
                 font-size: 7rem;
                 text-align:center;
+            }
+            
+            & > figure{
+                
+                margin-right: auto;
+                margin-left: auto;
+                text-align:center;
+                
+                & > img{
+                    
+                    height: 40vh;
+                    
+                }
             }
             
             
@@ -254,6 +420,7 @@
                 & > p:first-of-type{
                     
                     margin-top: 2rem;
+                    margin-bottom: 1.5rem;
                 }
             }
         }
@@ -1004,6 +1171,216 @@
             
             & > label{
                 display:none;
+            }
+        }
+        
+        & > #user{
+            
+            height: 81vh;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            
+            & > h1{
+                
+                
+                text-align: center;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            
+            & > section:first-of-type{
+                
+                display: flex;
+                flex-direction: row;
+                margin-left: auto;
+                margin-right: auto;
+                
+                & > section:first-of-type{
+                
+                    padding-top: 1.8rem;
+                    padding-bottom : 1.8rem;
+                    border-radius: 0.5rem;
+                    margin-right: 3rem;
+                
+                    & > p{
+                        
+                        text-align: center;
+                        font-size: 1.3rem;
+                        margin-top: 1rem;
+                    }
+                
+                }
+            
+                & > section:nth-of-type(2){
+                    
+                    padding-top: 1.8rem;
+                    padding-bottom : 1.8rem;
+                    border-radius: 0.5rem;
+                
+                    & > p{
+                        
+                        text-align: center;
+                        font-size: 1.3rem;
+                        margin-top: 1rem;
+                    }
+                    
+                }
+            }
+            
+            & > section:nth-of-type(2){
+                
+                display: flex;
+                flex-direction: row;
+                margin-right:auto;
+                margin-left:auto;
+                
+                & > section:first-of-type{
+                
+                    margin-top: 0.5rem;
+                    text-align: center;
+                    margin-right: 3rem;
+                    
+                    & > h3{
+                        
+                        font-size: 1.3rem;
+                        margin-bottom: 1rem;
+                    }
+                    
+                    & > form{
+                        
+                        & > fieldset{
+                                
+                                
+                                display: flex;
+                                flex-direction: column;
+                                
+                                & > label{
+                                    
+                                    margin-bottom: 0.5rem;
+                                }
+                                
+                                & > input{
+                                    
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    margin-bottom: 1rem;
+                                    width: 15vw;
+                                    height: 3vh;
+                                    margin-bottom: 1.5rem;
+                                    background-color: #0098b3;
+                                    border: none;
+                                }
+                                
+                                & > input:focus{
+                                    
+                                    outline: thick double #32a1ce;;
+                                }
+                                
+                                & > .inputColor{
+                                    
+                                    width: 5vh;
+                                    border: 2px double #32a1ce;
+                                    
+                                }
+                                
+                                & > .inputFile{
+                                    
+                                    background-color: transparent;
+                                }
+                                
+                                & > .inputFile:focus{
+                                    
+                                    outline: solid black;
+                                }
+                                
+                                
+                            }
+                            
+                         & > input{
+                                
+                            margin-top: 0.5rem;
+                            width: 8vw;
+                            height: 4vh;
+                            background-color: #00a6c3;
+                            border: none;
+                            color: white;
+                        }
+                    }
+                }
+            
+                & > section:nth-of-type(2){
+                
+                margin-top: 0.5rem;
+                text-align: center;
+                
+                & > h3{
+                    
+                    font-size: 1.3rem;
+                    margin-bottom: 1rem;
+                }
+                
+                & > form{
+                    
+                    & > fieldset{
+                            
+                            
+                            display: flex;
+                            flex-direction: column;
+                            
+                            & > label{
+                                
+                                margin-bottom: 0.5rem;
+                            }
+                            
+                            & > input{
+                                
+                                margin-left:auto;
+                                margin-right:auto;
+                                margin-bottom: 1rem;
+                                width: 15vw;
+                                height: 3vh;
+                                margin-bottom: 1.5rem;
+                                background-color: #0098b3;
+                                border: none;
+                            }
+                            
+                            & > input:focus{
+                                
+                                outline: thick double #32a1ce;;
+                            }
+                            
+                            & > .inputColor{
+                                
+                                width: 5vh;
+                                border: 2px double #32a1ce;
+                                
+                            }
+                            
+                            & > .inputFile{
+                                
+                                background-color: transparent;
+                            }
+                            
+                            & > .inputFile:focus{
+                                
+                                outline: solid black;
+                            }
+                            
+                            
+                        }
+                        
+                     & > input{
+                            
+                        margin-top: 1rem;
+                        width: 8vw;
+                        height: 4vh;
+                        background-color: #00a6c3;
+                        border: none;
+                        color: white;
+                    }
+                }
+            }
             }
         }
         
@@ -2789,7 +3166,3 @@
     }
     
 }
-
-
-
-

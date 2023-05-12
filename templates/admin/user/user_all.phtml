@@ -30,6 +30,7 @@
                         <td><?= $user->getEmail(); ?></td>
                         <td><?= $user->getRole(); ?></td>
                         <td>
+                            <a class="btn btn-info" href="/res03-projet-final/admin/user/<?= $user->getId(); ?>/edit" role="button">Editer</a>
                             <a class="btn btn-danger" href="/res03-projet-final/admin/user/<?= $user->getId(); ?>/delete" role="button">Supprimer</a>
                         </td>
                     </tr>

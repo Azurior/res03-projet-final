@@ -1,0 +1,32 @@
+<main class="container py-5">
+<h2>Modifier un utilisateur</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Pseudo
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+            foreach($data as $user){ 
+        ?>
+        <tr>
+            <td><?= $user->getId(); ?></td>
+            <td><?= $user->getUser(); }?></td>
+        </tr>
+    </tbody>
+</table>
+<form method='POST'>
+    <input type="hidden" name="formUpdateUser" id="formUpdateUser" value="formUpdateUser" />
+    <fieldset>
+        <label for="updateUser">Modifié le pseudo :</label>
+        <input type="text" name="updateUser"/>
+    </fieldset>
+    <input type="submit" value="Ajouter"/>
+</form>
+</main>

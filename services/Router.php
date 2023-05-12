@@ -155,11 +155,17 @@ class Router {
             {
                 $routeAndParams["route"] = "logout";
             }
-            else if($tab[0] === "user" && $tab[1] !== null &&!isset($tab[2])) // page d'un Utilisateur  
+            else if($tab[0] === "user" && $tab[1] !== null && !isset($tab[2])) // page d'un Utilisateur  
             {  
                  
                 $routeAndParams["route"] = "user"; 
                 $routeAndParams["user-id"] = $tab[1];
+                 
+            }
+            else if($tab[0] === "updatePassword" && !isset($tab[1])) // page d'un Utilisateur  
+            {  
+                 
+                $routeAndParams["route"] = "updatePassword"; 
                  
             }
             
@@ -447,7 +453,11 @@ class Router {
         }
         else if($routeTab["route"] === "user" && $routeTab["user-id"] !== null) // condition(s) pour envoyer vers la page de l'utilisateur 
         {  
-            $this->userController->getUser(intval($routeTab["user-id"])); // appeler la méthode du controlleur pour s'inscrire
+            $this->userController->getUser($routeTab["user-id"]); // appeler la méthode du controlleur pour voir l'utiliisateur en fonction de son ID
+        }
+        else if($routeTab["route"] === "updatePassword")
+        {
+            $this->userController->updateUserPassword();
         }
         
         //----------------------------------------------------- Admin -----------------------------------------------------\\
@@ -518,7 +528,8 @@ class Router {
                 
             }
             
-            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["methode"] === "edit"){
+            else if($routeTab["route"] === 'admin' && $routeTab["sub-route"] === 'user' && $routeTab["user-id"] !== null && $routeTab["methode"] === "edit")
+            {
                 
                 $this->userController->updateUser($routeTab["user-id"]); // appeler la méthode du controlleur pour modifier un utilisateur
                 

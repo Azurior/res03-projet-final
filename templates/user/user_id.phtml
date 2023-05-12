@@ -1,0 +1,49 @@
+<main id="user">
+    <h1>Votre profil :</h1>
+    <section>
+        <h2 class="sr-only">Données profil</h2>
+        <section>
+            <h3 class="sr-only">Vos infos</h3>
+            <p>
+                Votre pseudo : 
+            </p>
+            <p>
+                Votre adresse mail :
+            </p>
+        </section>
+        <section>
+            <h3 class="sr-only">Vos infos</h3>
+            
+            <p>
+                <?= $data['user']; ?>
+            </p>
+            <p>
+                <?= $data['email']; ?>
+            </p>
+        </section>
+    </section>
+    <section>
+        <h2 class="sr-only">Modifier</h2>
+        <section>
+            <h3>Modifier mon mot de passe :</h3>
+            <form action="/res03-projet-final/updatePassword" method="POST">
+                <input type="hidden" name="formUpdateUser" id="formUpdateUser" value="formUpdateUser" />
+                <fieldset>
+                    <label for="oldPassword">Votre mot de passe actuel :</label>
+                    <input type="password" name="oldPassword"/>
+                    <?php if(isset($_SESSION["errorOldPassword"])){ ?>
+                        <p><?= $_SESSION["errorOldPassword"]?></p>
+                    <?php } ?>
+                </fieldset>
+                <fieldset>
+                    <label for="newPassword">Votre nouveau mot de passe :</label>
+                    <input type="password" name="newPassword"/>
+                </fieldset>
+                <input type="submit" name="submit" value="Modifier"/>
+            </form>
+        </section>
+        <?php if(isset($_SESSION['valideUpdate'])){ ?>
+            <p><?= $_SESSION['valideUpdate']?></p>
+        <?php } ?>
+    </section>
+</main>

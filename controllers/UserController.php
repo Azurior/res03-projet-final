@@ -18,19 +18,19 @@ class UserController extends AbstractController {
         $this->renderAdmin('user', 'all', $allUsers);
     }
 
-    public function getUser(string $get)
+    public function getUser(int $get)
     {
          // get the user from the manager
         // either by email or by id
         
-        $id = intval($get);
-        $userId = $this->um->getUserById($id);
+        $userId = $this->um->getUserById($get);
 
         $user = $userId->toArray();
         
+        
         // render
         
-        $this->renderAdmin('user', 'id', $user);
+        $this->renderPublic('user', 'id', $user);
 
         
     }
@@ -45,37 +45,97 @@ class UserController extends AbstractController {
 
     }
 
+    public function updateUserPassword()
+    {
+        $id = $_SESSION["id"];
+        $user = $this->um->getUserById($id);
+        
+        
+        if(isset($_POST['formUpdateUser'])){
+            
+
+            
+            $oldPassword = $_POST['oldPassword'];
+            $checkOldPassword = password_verify($oldPassword, $user->getPassword());
+            $newPassword = password_hash($_POST['newPassword'],PASSWORD_DEFAULT);
+            $role = $_SESSION["role"];
+            
+                
+            if($checkOldPassword){
+                
+                
+                $updateEmail = $user->getEmail($id);
+                $updateUser = $user->getUser($id);
+                
+                  
+                $newUser = new User($updateUser, $updateEmail, $newPassword, $role);
+                $newUser->setId($id);
+                $user = $this->um->updateUser($newUser);
+                
+                $_SESSION['valideUpdate'] = "Félicitation, votre mot de passe a été modifié";
+                header("Location: /res03-projet-final/user/$id");
+                    
+            }
+            else{
+                    
+                $_SESSION["errorOldPassword"] = "Votre ancien mot de passe n'est pas bon";
+                header("Location: /res03-projet-final/user/$id");
+            }
+            
+        }
+        else{
+            
+            
+            header("Location: /res03-projet-final/user/$id");
+        }
+    }
+    
     public function updateUser(int $id)
     {
-        $userId = getUser($id);
+       
+        $user = $this->um->getUserById($id);
+        $array = [];
+        $array[] = $user;
         
         
-        if(isset($_POST['formUpdateUser']) === true){
+        if(isset($_POST['formUpdateUser'])){
             
-            $user = $_POST['user'];
-            $role = $_POST['role'];
+
             
-            // update the user in the manager
-            $user = new User($user, $role);
-            $user->getId($id);
-            $user->getEmail($id);
-            $user->getPassword($id);
-            $user = $this->um->updateUser($user);
-    
-            // render the updated user
-            header('Location: /res03-projet-final/admin/users');
+            $updateUser = $_POST['updateUser'];
+            
+                
+            if(isset($updateUser)){
+                
+                
+                $updateEmail = $user->getEmail($id);
+                $updatePassword = $user->getPassword($id);
+                $role = $user->getRole($id);
+                
+                  
+                $newUser = new User($updateUser, $updateEmail, $updatePassword, $role);
+                $newUser->setId($id);
+                $user = $this->um->updateUser($newUser);
+                
+                header("Location: /res03-projet-final/admin/users");
+                    
+            }
+            else{
+                    
+                $this->renderAdmin('user', 'edit', $array);
+            }
             
         }
-        else
-        {
-            header('Location: /res03-projet-final/admin/users/<?= $user->getId(); ?>/edit');
+        else{
+            
+            
+            $this->renderAdmin('user', 'edit', $array);
         }
-        
     }
 
     public function deleteUser(int $id)
     {
-        echo 'fonction deleteUser du controller';
+        
         // delete the user in the manager
         $this->um->deleteUser($id);
 

@@ -125,11 +125,114 @@ table {
   #public > header > nav > p > #logout:hover {
     color: red;
   }
+  #public > header > nav > p > #user:hover {
+    color: #09ec33;
+  }
+  #public > header > nav > p > #admin:hover {
+    text-decoration: underline;
+    text-decoration-color: #ec8409;
+  }
   #public > header > input {
     display: none;
   }
   #public > header > label {
     display: none;
+  }
+  #public > #user {
+    height: 81vh;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #user > h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  #public > #user > section:first-of-type {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #user > section:first-of-type > section:first-of-type {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-radius: 0.5rem;
+    margin-right: 3rem;
+  }
+  #public > #user > section:first-of-type > section:first-of-type > p {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+  #public > #user > section:first-of-type > section:nth-of-type(2) {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-radius: 0.5rem;
+  }
+  #public > #user > section:first-of-type > section:nth-of-type(2) > p {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+  #public > #user > section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type {
+    margin-top: 0.5rem;
+    text-align: center;
+    margin-right: 3rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > input {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > input {
+    margin-top: 0.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #user > section:nth-of-type(2) > p {
+    color: #09ec33;
+    margin-top: 1rem;
+    text-align: center;
   }
   #public > #home {
     min-height: 110vh;
@@ -140,6 +243,14 @@ table {
     font-family: "Lobster", cursive;
     font-size: 7rem;
     text-align: center;
+  }
+  #public > #home > figure {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  #public > #home > figure > img {
+    height: 40vh;
   }
   #public > #home > section:first-of-type {
     margin-top: 5rem;
@@ -241,6 +352,7 @@ table {
   }
   #public > #home > section:nth-of-type(2) > p:first-of-type {
     margin-top: 2rem;
+    margin-bottom: 1.5rem;
   }
   #public > #authentification {
     min-height: 100vh;
@@ -758,6 +870,143 @@ table {
   }
   #public > header > label {
     display: none;
+  }
+  #public > #user {
+    height: 81vh;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #user > h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  #public > #user > section:first-of-type {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #public > #user > section:first-of-type > section:first-of-type {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-radius: 0.5rem;
+    margin-right: 3rem;
+  }
+  #public > #user > section:first-of-type > section:first-of-type > p {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+  #public > #user > section:first-of-type > section:nth-of-type(2) {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-radius: 0.5rem;
+  }
+  #public > #user > section:first-of-type > section:nth-of-type(2) > p {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+  #public > #user > section:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type {
+    margin-top: 0.5rem;
+    text-align: center;
+    margin-right: 3rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > input {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #user > section:nth-of-type(2) > section:first-of-type > form > input {
+    margin-top: 0.5rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > label {
+    margin-bottom: 0.5rem;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > input {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 15vw;
+    height: 3vh;
+    margin-bottom: 1.5rem;
+    background-color: #0098b3;
+    border: none;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > input:focus {
+    outline: thick double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > .inputColor {
+    width: 5vh;
+    border: 2px double #32a1ce;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > .inputFile {
+    background-color: transparent;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > fieldset > .inputFile:focus {
+    outline: solid black;
+  }
+  #public > #user > section:nth-of-type(2) > section:nth-of-type(2) > form > input {
+    margin-top: 1rem;
+    width: 8vw;
+    height: 4vh;
+    background-color: #00a6c3;
+    border: none;
+    color: white;
   }
   #public > #home {
     min-height: 110vh;

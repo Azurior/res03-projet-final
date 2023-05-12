@@ -24,7 +24,7 @@ class UserManager extends AbstractManager {
     public function getUserById(int $id) : User
     {
         // get the user with $id from the database
-        $query = $this->db->prepare('SELECT * FROM users WHERE :id');
+        $query = $this->db->prepare('SELECT * FROM users WHERE id=:id');
         $parameters = [
             'id' => $id
         ];
@@ -86,10 +86,10 @@ class UserManager extends AbstractManager {
         // return it with its id
     }
 
-    public function updateUser(User $user) : User
+    public function updateUser(User $user) : void
     {
         // update the user in the database
-        $query = $this->db->prepare('UPDATE users SET :user, :email, :password, :role WHERE :id');
+        $query = $this->db->prepare('UPDATE users SET user=:user, email=:email, password=:password, role=:role WHERE id=:id');
         $parameters = [
             'id' => $user->getId(),
             'user' => $user->getUser(),
@@ -99,17 +99,8 @@ class UserManager extends AbstractManager {
         ];
         $query->execute($parameters);
         
-        $query = $this->db->prepare('SELECT * FROM users WHERE :id');
-        $parameters = [
-            'id' => $user->getId()
-        ];
-        $query->execute($parameters);
-        $item = $query->fetch(PDO::FETCH_ASSOC);
         
-        $user = new User($item["user"], $item["email"], $item['password'], $item['role']);
-        $user->setId($item['id']);
         
-        return $user;
         // return it
     }
 

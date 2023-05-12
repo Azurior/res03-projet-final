@@ -10,7 +10,7 @@
         <p>
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
                     
-                        <?= $_SESSION['user'] ?>
+                        <a href="/res03-projet-final/user/<?= $_SESSION['id'] ?>" id="user"><?= $_SESSION['user'] ?></a>
                     
                     /
                     <a href="/res03-projet-final/logout" id="logout">
@@ -18,10 +18,10 @@
                     </a>
                 <?php }else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){ ?>
                     
-                        <?= $_SESSION['user'] ?>
+                        <a href="/res03-projet-final/user/<?= $_SESSION['id'] ?>" id="user"><?= $_SESSION['user'] ?></a>
                     
                     | 
-                    <a href="/res03-projet-final/admin">
+                    <a href="/res03-projet-final/admin" id="admin">
                         Admin
                     </a>
                      · 

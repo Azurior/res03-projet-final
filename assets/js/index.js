@@ -1,3 +1,6 @@
+/* Thanks to Miraz : https://codepen.io/Mirazul/pen/poZdVQP  */
+
+
 /* -------------------------- Carousel -------------------------- */
 
 /* Déclaration des variables */
@@ -23,7 +26,7 @@ for (let n = 0; n < imgArray.length; n++) {
   slider.appendChild(img);
 }
 
-/*Déclaraition de nouvelles variable en fonction du tableau d'image*/
+/*Déclaraition de nouvelles variable en fonction du tableau d'image et des tailes*/
 let slides = slider.querySelectorAll("img");
 let dotDiv = document.querySelector(".dot");
 let containerWidth = container.clientWidth;
