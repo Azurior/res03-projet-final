@@ -10,7 +10,7 @@ function validFormRegister(){
             let confPassword = document.getElementById('register-confPassword').value.trim();
             let regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s-']{2,50}$/;
             
-            if(username.length < 2){
+            if(username.length < 4){
                 
                 alert('Votre pseudo doit comporter au moins 2 caractères');
                 e.preventDefault();
@@ -53,9 +53,9 @@ function validFormRegister(){
 
 function validFormLogin(){
     
-        let loginForm = document.getElementById('loginForm');
+        let formLogin = document.getElementById('formLogin');
         
-        loginForm.addEventListener('submit', function(e){
+        formLogin.addEventListener('submit', function(e){
             
             let loginEmail = document.getElementById('loginEmail').value.trim();
             let loginPassword = document.getElementById('loginPassword').value.trim();
@@ -83,7 +83,7 @@ function validFormLogin(){
             }
             
             
-            loginForm.submit();
+            formLogin.submit();
         });
     }
     

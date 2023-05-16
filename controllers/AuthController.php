@@ -22,10 +22,10 @@ class AuthController extends AbstractController {
         if(isset($_POST["formRegister"]) === true)
         {
             // récupérer les champs du formulaire 
-            $username = $_POST["register-username"];
-            $email = $_POST["register-email"];
-            $password = $_POST["register-password"];
-            $confPassword = $_POST["register-confPassword"];
+            $username = $this->clean($_POST["register-username"]);
+            $email = $this->clean($_POST["register-email"]);
+            $password = $this->clean($_POST["register-password"]);
+            $confPassword = $this->clean($_POST["register-confPassword"]);
             $role = "user";
             
             if($password === $confPassword)
@@ -67,8 +67,8 @@ class AuthController extends AbstractController {
         if(isset($_POST['formLogin']))
         {
             // récupérer les champs du formulaire
-            $email = $_POST["loginEmail"];
-            $password = $_POST["loginPassword"];
+            $email = $this->clean($_POST["loginEmail"]);
+            $password = $this->clean($_POST["loginPassword"]);
             
             // utiliser le manager pour vérifier si un utilisateur avec cet email existe
             $user = $this->um->getUserByEmail($email);

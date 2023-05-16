@@ -451,13 +451,15 @@ class Router {
         {  
             $this->authController->logout(); // appeler la méthode du controlleur pour se déconnecter 
         }
-        else if($routeTab["route"] === "user" && $routeTab["user-id"] !== null) // condition(s) pour envoyer vers la page de l'utilisateur 
-        {  
-            $this->userController->getUser($routeTab["user-id"]); // appeler la méthode du controlleur pour voir l'utiliisateur en fonction de son ID
-        }
         else if($routeTab["route"] === "updatePassword")
         {
             $this->userController->updateUserPassword();
+        }
+        else if(isset($_SESSION['role']) && ($routeTab["route"] === "user" && $routeTab["user-id"] !== null))
+        {
+                
+                $this->userController->getUser($routeTab["user-id"]); // appeler la méthode du controlleur pour voir l'utiliisateur en fonction de son ID
+                
         }
         
         //----------------------------------------------------- Admin -----------------------------------------------------\\

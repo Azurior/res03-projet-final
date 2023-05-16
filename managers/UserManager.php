@@ -21,7 +21,7 @@ class UserManager extends AbstractManager {
         return $users;
     }
 
-    public function getUserById(int $id) : User
+    public function getUserById(int $id) : ?User
     {
         // get the user with $id from the database
         $query = $this->db->prepare('SELECT * FROM users WHERE id=:id');
@@ -31,11 +31,21 @@ class UserManager extends AbstractManager {
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
-        $newUser->setId($user['id']);
+        if($user)
+        {
+        
+            $newUser = new User($user["user"], $user["email"], $user['password'], $user['role']);
+            $newUser->setId($user['id']);
+            return $newUser;
+            
+        }
+        else{
+            
+            return null;
+        }
         
         
-        return $newUser;
+        
     }
     
     public function getUserByEmail(string $email) : ?User

@@ -11,23 +11,36 @@
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'user'){ ?>
                     
                         <a href="/res03-projet-final/user/<?= $_SESSION['id'] ?>" id="user"><?= $_SESSION['user'] ?></a>
-                    
+        </p>
+        <p>
                     /
+        </p>
+        <p>
                     <a href="/res03-projet-final/logout" id="logout">
                         Deconnexion
                     </a>
+        </p>
                 <?php }else if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){ ?>
-                    
+        <p>          
                         <a href="/res03-projet-final/user/<?= $_SESSION['id'] ?>" id="user"><?= $_SESSION['user'] ?></a>
-                    
-                    | 
+        </p>
+        <p>
+                    |
+        </p>
+        <p>
                     <a href="/res03-projet-final/admin" id="admin">
                         Admin
                     </a>
+        </p>
+        <p>
                      · 
+        </p>
+        <p>
                     <a href="/res03-projet-final/logout" id="logout">
                         Deconnexion
                     </a>
+        </p>
+        <p>
                 <?php }else if(!isset($_SESSION['role'])){ ?>
                     <a href="/res03-projet-final/authentificator">
                         Connexion / S'inscrire

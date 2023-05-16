@@ -31,19 +31,23 @@
                 <fieldset>
                     <label for="oldPassword">Votre mot de passe actuel :</label>
                     <input type="password" name="oldPassword"/>
-                    <?php if(isset($_SESSION["errorOldPassword"])){ ?>
+                    <?php if(isset($_SESSION["errorOldPassword"])){?>
                         <p><?= $_SESSION["errorOldPassword"]?></p>
                     <?php } ?>
                 </fieldset>
                 <fieldset>
                     <label for="newPassword">Votre nouveau mot de passe :</label>
-                    <input type="password" name="newPassword"/>
+                    <input type="password" name="newPassword" id="newPassword"/>
+                    <?php if(isset($_SESSION["lenghtPassword"])){?>
+                        <p><?= $_SESSION["lenghtPassword"]?></p>
+                    <?php } ?>
                 </fieldset>
                 <input type="submit" name="submit" value="Modifier"/>
             </form>
         </section>
-        <?php if(isset($_SESSION['valideUpdate'])){ ?>
+        <?php if(isset($_SESSION['valideUpdate'])){?>
             <p><?= $_SESSION['valideUpdate']?></p>
         <?php } ?>
     </section>
 </main>
+<script type="application/javascript" src="../assets/js/validFormUpdateUser.js"></script>

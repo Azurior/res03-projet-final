@@ -22,5 +22,12 @@ abstract class AbstractController
     protected function render(array $values)  
     {  
         echo json_encode($values);  
-    }  
+    }
+    
+    protected function clean(string $string)
+    {
+        $clear = htmlspecialchars($string);
+        
+        return $clear;
+    }
 }

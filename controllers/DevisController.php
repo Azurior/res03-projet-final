@@ -51,14 +51,14 @@ class DevisController extends AbstractController{
         if(isset($_POST['formLogo']) && isset($_SESSION['id']))
         {
             // récupérer les champs du formulaire
-            $theme = $_POST["themeLogo"];
-            $primaryColor = $_POST["primaryColorLogo"];
-            $secondaryColor= $_POST['secondaryColorLogo'];
-            $option1Color= $_POST['option1ColorLogo'];
-            $option2Color= $_POST['option2ColorLogo'];
-            $option3Color= $_POST['option3ColorLogo'];
-            $text= $_POST['textLogo'];
-            $sizeProject= $_POST['sizeProjectLogo'];
+            $theme = $this->clean($_POST["themeLogo"]);
+            $primaryColor = $this->clean($_POST["primaryColorLogo"]);
+            $secondaryColor= $this->clean($_POST['secondaryColorLogo']);
+            $option1Color= $this->clean($_POST['option1ColorLogo']);
+            $option2Color= $this->clean($_POST['option2ColorLogo']);
+            $option3Color= $this->clean($_POST['option3ColorLogo']);
+            $text= $this->clean($_POST['textLogo']);
+            $sizeProject= $this->clean($_POST['sizeProjectLogo']);
             $idUser = $_SESSION['id'];
             
             $createDevisLogo = new Devis($theme, $primaryColor, $secondaryColor, $option1Color, $option2Color, $option3Color, $text, $sizeProject, $idUser);
@@ -83,14 +83,14 @@ class DevisController extends AbstractController{
         if(isset($_POST['formWallpaper']) && isset($_SESSION['id']))
         {
             // récupérer les champs du formulaire
-            $theme = $_POST["themeWallpaper"];
-            $primaryColor = $_POST["primaryColorWallpaper"];
-            $secondaryColor= $_POST['secondaryColorWallpaper'];
-            $option1Color= $_POST['option1ColorWallpaper'];
-            $option2Color= $_POST['option2ColorWallpaper'];
-            $option3Color= $_POST['option3ColorWallpaper'];
-            $text= $_POST['textWallpaper'];
-            $sizeProject= $_POST['sizeProjectWallpaper'];
+            $theme = $this->clean($_POST["themeWallpaper"]);
+            $primaryColor = $this->clean($_POST["primaryColorWallpaper"]);
+            $secondaryColor= $this->clean($_POST['secondaryColorWallpaper']);
+            $option1Color= $this->clean($_POST['option1ColorWallpaper']);
+            $option2Color= $this->clean($_POST['option2ColorWallpaper']);
+            $option3Color= $this->clean($_POST['option3ColorWallpaper']);
+            $text= $this->clean($_POST['textWallpaper']);
+            $sizeProject= $this->clean($_POST['sizeProjectWallpaper']);
             $idUser = $_SESSION['id'];
             
             $createDevisWallpaper = new Devis($theme, $primaryColor, $secondaryColor, $option1Color, $option2Color, $option3Color, $text, $sizeProject, $idUser);
@@ -115,16 +115,16 @@ class DevisController extends AbstractController{
         if(isset($_POST['formScene']) && isset($_SESSION['id']))
         {
             // récupérer les champs du formulaire
-            $numberScene = $_POST['numberScene'];
-            $description = $_POST['description'];
-            $theme = $_POST["themeScene"];
-            $primaryColor = $_POST["primaryColorScene"];
-            $secondaryColor= $_POST['secondaryColorScene'];
-            $option1Color= $_POST['option1ColorScene'];
-            $option2Color= $_POST['option2ColorScene'];
-            $option3Color= $_POST['option3ColorScene'];
-            $text= $_POST['textScene'];
-            $sizeProject= $_POST['sizeProjectScene'];
+            $numberScene = $this->clean($_POST['numberScene']);
+            $description = $this->clean($_POST['description']);
+            $theme = $this->clean($_POST["themeScene"]);
+            $primaryColor = $this->clean($_POST["primaryColorScene"]);
+            $secondaryColor= $this->clean($_POST['secondaryColorScene']);
+            $option1Color= $this->clean($_POST['option1ColorScene']);
+            $option2Color= $this->clean($_POST['option2ColorScene']);
+            $option3Color= $this->clean($_POST['option3ColorScene']);
+            $text= $this->clean($_POST['textScene']);
+            $sizeProject= $this->clean($_POST['sizeProjectScene']);
             $idUser = $_SESSION['id'];
             
             $createDevisScene = new DevisScene($numberScene, $description, $theme, $primaryColor, $secondaryColor, $option1Color, $option2Color, $option3Color, $text, $sizeProject, $idUser);

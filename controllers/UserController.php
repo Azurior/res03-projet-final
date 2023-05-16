@@ -20,17 +20,36 @@ class UserController extends AbstractController {
 
     public function getUser(int $get)
     {
-         // get the user from the manager
-        // either by email or by id
+       
+       if(isset($_SESSION['id']) && $get === $_SESSION['id'])
+       {
+           $userId = $this->um->getUserById($get);
+           
+           if($userId)
+           {
+    
+                $user = $userId->toArray();
+                
+                
+                // render
+                
+                $this->renderPublic('user', 'id', $user);
+           }
+           else
+           {
+               
+               header('Location: /res03-projet-final/home');
+               
+           }
+       }
+       else
+       {
+           
+           header('Location: /res03-projet-final/home');
+           
+       }
         
-        $userId = $this->um->getUserById($get);
-
-        $user = $userId->toArray();
         
-        
-        // render
-        
-        $this->renderPublic('user', 'id', $user);
 
         
     }
@@ -38,9 +57,10 @@ class UserController extends AbstractController {
     public function createUser(array $post)
     {
         // create the user in the manager
-        $password_hash = password_hash($past['password'], PASSWORD_DEFAULT);
+        $password = $this->clear($post['password']);
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
         
-        $user = new User(null, $post["user"], $post["email"], $password_hash, "user");
+        $user = new User(null, $this->clear($post["user"]), $this->clear($post["email"]), $password_hash, "user");
         $user = $this->um->createUser($user);
 
     }
@@ -55,26 +75,32 @@ class UserController extends AbstractController {
             
 
             
-            $oldPassword = $_POST['oldPassword'];
+            $oldPassword = $this->clean($_POST['oldPassword']);
             $checkOldPassword = password_verify($oldPassword, $user->getPassword());
-            $newPassword = password_hash($_POST['newPassword'],PASSWORD_DEFAULT);
+            $newPassword = password_hash($this->clean($_POST['newPassword']),PASSWORD_DEFAULT);
             $role = $_SESSION["role"];
             
                 
             if($checkOldPassword){
                 
-                
-                $updateEmail = $user->getEmail($id);
-                $updateUser = $user->getUser($id);
-                
-                  
-                $newUser = new User($updateUser, $updateEmail, $newPassword, $role);
-                $newUser->setId($id);
-                $user = $this->um->updateUser($newUser);
-                
-                $_SESSION['valideUpdate'] = "Félicitation, votre mot de passe a été modifié";
-                header("Location: /res03-projet-final/user/$id");
+                if(strlen($_POST['newPassword']) < 8){
+                    $updateEmail = $user->getEmail($id);
+                    $updateUser = $user->getUser($id);
                     
+                      
+                    $newUser = new User($updateUser, $updateEmail, $newPassword, $role);
+                    $newUser->setId($id);
+                    $user = $this->um->updateUser($newUser);
+                    
+                    $_SESSION['valideUpdate'] = "Félicitation, votre mot de passe a été modifié";
+                    header("Location: /res03-projet-final/user/$id");
+                }
+                else{
+                    
+                    $_SESSION["lenghtPassword"] = "Votre mot de passe doit contenir 8 caractères minimum";
+                    header("Location: /res03-projet-final/user/$id");
+                    
+                }
             }
             else{
                     
