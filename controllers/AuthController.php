@@ -31,23 +31,31 @@ class AuthController extends AbstractController {
             if($password === $confPassword)
             {
                 
-                // chiffrer le mot de passe 
-                $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+                if(strlen($password) > 8){
                 
-                // appeler le manager pour créer l'utilisateur en base de données
-                $createUser = new User($username, $email, $hashPassword, $role);
-                
-                $user = $this->um->createUser($createUser);
-                
-                // connecter l'utilisateur
-                $_SESSION["user"] = $user;
-                
-                // le renvoyer vers l'accueil
-                header("Location: /res03-projet-final/authentificator");
+                    // chiffrer le mot de passe 
+                    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+                    
+                    // appeler le manager pour créer l'utilisateur en base de données
+                    $createUser = new User($username, $email, $hashPassword, $role);
+                    
+                    $user = $this->um->createUser($createUser);
+                    
+                    // connecter l'utilisateur
+                    $_SESSION["user"] = $user;
+                    
+                    // le renvoyer vers l'accueil
+                    header("Location: /res03-projet-final/authentificator");
+                }
+                else{
+                    
+                    $_SESSION['errorPassword'] = "Votre mot de passe doit contenir 8 caractères minimum";
+                    header("Location: /res03-projet-final/authentificator");
+                }
             }
             else
             {
-                
+                $_SESSION['errorPasswordAndConf'] = "Votre mot de passe doit correspondre avec la confirmation !";
                 header("Location: /res03-projet-final/authentificator");
             }
         }

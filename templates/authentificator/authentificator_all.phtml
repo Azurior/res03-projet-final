@@ -25,8 +25,8 @@
 </section>
 <section id="registerForm">
     <h3>S'inscrire</h3>
-    <form action="/res03-projet-final/check-register" method="POST">
-        <input type="hidden" name="formRegister" id="formRegister" value="formRegister" /> 
+    <form action="/res03-projet-final/check-register" method="POST" id="formRegister">
+        <input type="hidden" name="formRegister" value="formRegister" /> 
         <fieldset>
             <label for="register-username">Pseudo :</label>
             <input type="text" id="register-username" name="register-username"/>
@@ -38,15 +38,20 @@
         <fieldset>
             <label for="register-password">Votre mot de passe :</label>
             <input type="password" id="register-password" name="register-password"/>
+            <?php if(isset($_SESSION['errorPassword'])){ ?>
+                <p><?= $_SESSION['errorPassword']?></p>
+            <?php } ?>
         </fieldset>
         <fieldset>
             <label for="register-confPassword">Confirmation du mot de passe :</label>
             <input type="password" id="register-confPassword" name="register-confPassword"/>
         </fieldset>
-        <!--<input type="checkbox" name="mention"/><label for="mention">Mention légal</label>-->
+        <?php if(isset($_SESSION['errorPasswordAndConf'])){ ?>
+            <p><?= $_SESSION['errorPasswordAndConf']?></p>
+        <?php } ?>
         <input type="submit" name="submit" value="S'inscrire"/>
     </form>
 </section>
 </section>
 </main>
-<script src="../res03-projet-final/assets/js/validFormAuthentificator.js"></script>
+<script type="module" src="../res03-projet-final/assets/js/validate-user.js"></script>
